@@ -19,7 +19,13 @@ if (process.env.NODE_ENV !== 'test') {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const authRoutes = require('./routes/authRoutes');
+
+// API Routes
+app.use('/api/auth', authRoutes);
+
 // Health Check Endpoint with PostgreSQL test query
+
 app.get('/api/health', async (req, res) => {
   try {
     const dbResult = await query('SELECT NOW() AS current_time, current_database() AS db_name');

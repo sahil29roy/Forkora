@@ -1,9 +1,10 @@
-const { query } = require('../config/db');
+import { query } from '../config/db';
+import { User, CreateUserData } from '../types';
 
 /**
  * Inserts a new user record.
  */
-async function createUser({
+export async function createUser({
   role = 'STUDENT',
   display_name,
   email,
@@ -13,7 +14,7 @@ async function createUser({
   preferred_language = 'en',
   is_minor = false,
   password_hash,
-}) {
+}: CreateUserData): Promise<User> {
   const sql = `
     INSERT INTO users (
       role, display_name, email, phone, class_level, 
@@ -25,7 +26,7 @@ async function createUser({
   const values = [
     role,
     display_name,
-    email.toLowerCase().trim(),
+    email.trim().toLowerCase(),
     phone,
     class_level,
     school_id,
@@ -34,33 +35,31 @@ async function createUser({
     password_hash,
   ];
 
-  const result = await query(sql, values);
+  const result = await query<User>(sql, values);
   return result.rows[0];
 }
 
-
-async function findUserByEmail(email) {
+export async function findUserByEmail(email: string): Promise<User | null> {
   const sql = `SELECT * FROM users WHERE LOWER(email) = LOWER($1);`;
-  const result = await query(sql, [email.trim()]);
+  const result = await query<User>(sql, [email.trim().toLowerCase()]);
   return result.rows[0] || null;
 }
 
-
-async function findUserById(id) {
+export async function findUserById(id: string): Promise<User | null> {
   const sql = `
     SELECT id, role, display_name, email, phone, class_level, 
            school_id, preferred_language, is_minor, is_email_verified, email_verified_at, created_at, updated_at, last_active_at
     FROM users 
     WHERE id = $1;
   `;
-  const result = await query(sql, [id]);
+  const result = await query<User>(sql, [id]);
   return result.rows[0] || null;
 }
 
 /**
  * Marks user email as verified.
  */
-async function updateEmailVerified(userId) {
+export async function updateEmailVerified(userId: string): Promise<User | null> {
   const sql = `
     UPDATE users 
     SET is_email_verified = true, 
@@ -68,22 +67,14 @@ async function updateEmailVerified(userId) {
     WHERE id = $1
     RETURNING id, role, display_name, email, is_email_verified, email_verified_at;
   `;
-  const result = await query(sql, [userId]);
+  const result = await query<User>(sql, [userId]);
   return result.rows[0] || null;
 }
 
 /**
  * Updates last active timestamp for a user.
  */
-async function updateLastActive(userId) {
+export async function updateLastActive(userId: string): Promise<void> {
   const sql = `UPDATE users SET last_active_at = CURRENT_TIMESTAMP WHERE id = $1;`;
   await query(sql, [userId]);
 }
-
-module.exports = {
-  createUser,
-  findUserByEmail,
-  findUserById,
-  updateEmailVerified,
-  updateLastActive,
-};

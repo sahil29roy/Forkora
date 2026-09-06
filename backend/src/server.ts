@@ -1,9 +1,9 @@
-const app = require('./app');
-const { testConnection } = require('./config/db');
+import app from './app';
+import { testConnection } from './config/db';
 
 const PORT = process.env.PORT || 5000;
 
-async function startServer() {
+async function startServer(): Promise<void> {
   try {
     // Verify Database connection on startup
     await testConnection();
@@ -15,7 +15,7 @@ async function startServer() {
       console.log(`🔗 Health Check: http://localhost:${PORT}/api/health`);
       console.log(`==================================================\n`);
     });
-  } catch (err) {
+  } catch (err: any) {
     console.error('❌ Failed to connect to PostgreSQL database on startup:', err.message);
     process.exit(1);
   }

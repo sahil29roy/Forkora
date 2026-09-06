@@ -1,5 +1,5 @@
-const { Pool } = require('pg');
-const dotenv = require('dotenv');
+import { Pool, QueryResult, QueryResultRow } from 'pg';
+import dotenv from 'dotenv';
 
 dotenv.config();
 
@@ -13,21 +13,21 @@ const poolConfig = process.env.DATABASE_URL
       password: process.env.DB_PASSWORD || 'postgres',
     };
 
-const pool = new Pool({
+export const pool = new Pool({
   ...poolConfig,
   max: 20,
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 5000,
 });
 
-pool.on('error', (err) => {
+pool.on('error', (err: Error) => {
   console.error('Unexpected error on idle PostgreSQL client:', err);
 });
 
 /**
  * Tests database connectivity.
  */
-async function testConnection() {
+export async function testConnection(): Promise<QueryResultRow> {
   const client = await pool.connect();
   try {
     const res = await client.query('SELECT NOW() AS now, current_database() AS db_name');
@@ -41,18 +41,15 @@ async function testConnection() {
 /**
  * Helper to execute a query with standard parameters.
  */
-async function query(text, params) {
+export async function query<R extends QueryResultRow = any>(
+  text: string,
+  params?: any[]
+): Promise<QueryResult<R>> {
   const start = Date.now();
-  const res = await pool.query(text, params);
+  const res = params ? await pool.query<R>(text, params) : await pool.query<R>(text);
   const duration = Date.now() - start;
   if (process.env.NODE_ENV === 'development') {
     console.log(`[Query] executed in ${duration}ms | rows: ${res.rowCount}`);
   }
   return res;
 }
-
-module.exports = {
-  pool,
-  query,
-  testConnection,
-};

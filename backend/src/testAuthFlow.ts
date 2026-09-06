@@ -1,13 +1,13 @@
-const http = require('http');
-const app = require('./app');
-const { query } = require('./config/db');
+import http from 'http';
+import app from './app';
+import { query } from './config/db';
 
 const PORT = 5009;
 
-function request(method, path, body, token = null) {
+function request(method: string, path: string, body: any = null, token: string | null = null): Promise<{ status: number; data?: any; raw?: string }> {
   return new Promise((resolve, reject) => {
     const postData = body ? JSON.stringify(body) : '';
-    const headers = {
+    const headers: Record<string, string | number> = {
       'Content-Type': 'application/json',
       'Content-Length': Buffer.byteLength(postData),
     };
@@ -29,9 +29,9 @@ function request(method, path, body, token = null) {
         res.on('end', () => {
           try {
             const json = JSON.parse(data);
-            resolve({ status: res.statusCode, data: json });
+            resolve({ status: res.statusCode || 500, data: json });
           } catch (e) {
-            resolve({ status: res.statusCode, raw: data });
+            resolve({ status: res.statusCode || 500, raw: data });
           }
         });
       }
@@ -43,7 +43,7 @@ function request(method, path, body, token = null) {
   });
 }
 
-async function runTests() {
+async function runTests(): Promise<void> {
   const server = app.listen(PORT, async () => {
     console.log(`\n🧪 Testing Auth Flow on temporary port ${PORT}...\n`);
 
@@ -139,7 +139,7 @@ async function runTests() {
       console.log('   Response:', signoutRes.data);
 
       console.log('\n✅ ALL AUTHENTICATION AND EMAIL VERIFICATION TESTS PASSED SUCCESSFULLY!\n');
-    } catch (err) {
+    } catch (err: any) {
       console.error('\n❌ Test Error:', err.message);
     } finally {
       server.close();

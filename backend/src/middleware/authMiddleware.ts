@@ -1,7 +1,13 @@
-const { verifyToken } = require('../utils/authUtils');
-const { findUserById } = require('../models/userModel');
+import { Response, NextFunction } from 'express';
+import { verifyToken } from '../utils/authUtils';
+import { findUserById } from '../models/userModel';
+import { AuthenticatedRequest } from '../types';
 
-async function authenticateToken(req, res, next) {
+export async function authenticateToken(
+  req: AuthenticatedRequest,
+  res: Response,
+  next: NextFunction
+): Promise<Response | void> {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.startsWith('Bearer ') ? authHeader.split(' ')[1] : null;
 
@@ -25,7 +31,7 @@ async function authenticateToken(req, res, next) {
 
     req.user = user;
     next();
-  } catch (err) {
+  } catch (err: any) {
     if (err.name === 'TokenExpiredError') {
       return res.status(401).json({
         error: 'Token Expired',
@@ -40,8 +46,11 @@ async function authenticateToken(req, res, next) {
   }
 }
 
-
-function requireEmailVerified(req, res, next) {
+export function requireEmailVerified(
+  req: AuthenticatedRequest,
+  res: Response,
+  next: NextFunction
+): Response | void {
   if (!req.user) {
     return res.status(401).json({ error: 'Unauthorized', message: 'User not authenticated.' });
   }
@@ -56,8 +65,3 @@ function requireEmailVerified(req, res, next) {
 
   next();
 }
-
-module.exports = {
-  authenticateToken,
-  requireEmailVerified,
-};

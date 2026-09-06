@@ -1,31 +1,32 @@
-const {
+import { Request, Response, NextFunction } from 'express';
+import {
   createUser,
   findUserByEmail,
-  findUserById,
   updateEmailVerified,
   updateLastActive,
-} = require('../models/userModel');
-const {
+} from '../models/userModel';
+import {
   createVerificationCode,
   getLatestVerificationCode,
   deleteUserVerificationCodes,
-} = require('../models/verificationModel');
-const { createSession, endSession } = require('../models/sessionModel');
-const {
+} from '../models/verificationModel';
+import { createSession, endSession } from '../models/sessionModel';
+import {
   hashPassword,
   comparePassword,
   generateToken,
   generateOTP,
-} = require('../utils/authUtils');
-const { sendVerificationEmail } = require('../services/emailService');
+} from '../utils/authUtils';
+import { sendVerificationEmail } from '../services/emailService';
+import { AuthenticatedRequest, UserRole } from '../types';
 
-const VALID_ROLES = ['STUDENT', 'GUARDIAN', 'COUNSELLOR', 'ADMIN'];
+const VALID_ROLES: UserRole[] = ['STUDENT', 'GUARDIAN', 'COUNSELLOR', 'ADMIN'];
 
 /**
  * @route   POST /api/auth/signup
  * @desc    Registers a new user and dispatches email verification OTP via Resend API.
  */
-async function signup(req, res, next) {
+export async function signup(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
   try {
     const {
       display_name,
@@ -50,7 +51,7 @@ async function signup(req, res, next) {
       return res.status(400).json({ error: 'Validation Error', message: 'Password must be at least 6 characters long.' });
     }
 
-    const upperRole = role.toUpperCase();
+    const upperRole = (role as string).toUpperCase() as UserRole;
     if (!VALID_ROLES.includes(upperRole)) {
       return res.status(400).json({ error: 'Validation Error', message: `Invalid role. Must be one of: ${VALID_ROLES.join(', ')}` });
     }
@@ -110,7 +111,7 @@ async function signup(req, res, next) {
  * @route   POST /api/auth/verify-email
  * @desc    Verifies the 6-digit OTP code sent to user email.
  */
-async function verifyEmail(req, res, next) {
+export async function verifyEmail(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
   try {
     const { email, code } = req.body;
 
@@ -148,7 +149,7 @@ async function verifyEmail(req, res, next) {
       });
     }
 
-    if (verificationRecord.code !== code.trim()) {
+    if (verificationRecord.code !== (code as string).trim()) {
       return res.status(400).json({
         error: 'Invalid Code',
         message: 'The verification code provided is incorrect. Please check your email and try again.',
@@ -164,6 +165,10 @@ async function verifyEmail(req, res, next) {
 
     // Mark email verified & clean up tokens
     const updatedUser = await updateEmailVerified(user.id);
+    if (!updatedUser) {
+      return res.status(500).json({ error: 'Server Error', message: 'Failed to update verification status.' });
+    }
+
     await deleteUserVerificationCodes(user.id);
 
     // Create tracking session & generate JWT
@@ -192,11 +197,11 @@ async function verifyEmail(req, res, next) {
  * @route   POST /api/auth/resend-verification
  * @desc    Resends a fresh 6-digit email verification OTP via Resend API.
  */
-async function resendVerificationCode(req, res, next) {
+export async function resendVerificationCode(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
   try {
     const { email } = req.body;
 
-    if (!email || !email.trim()) {
+    if (!email || !(email as string).trim()) {
       return res.status(400).json({ error: 'Validation Error', message: 'Email address is required.' });
     }
 
@@ -236,7 +241,7 @@ async function resendVerificationCode(req, res, next) {
  * @route   POST /api/auth/signin
  * @desc    Authenticates credentials and returns JWT session token.
  */
-async function signin(req, res, next) {
+export async function signin(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
   try {
     const { email, password, device_type = 'web', app_version = '1.0.0' } = req.body;
 
@@ -245,7 +250,7 @@ async function signin(req, res, next) {
     }
 
     const user = await findUserByEmail(email);
-    if (!user) {
+    if (!user || !user.password_hash) {
       return res.status(401).json({ error: 'Authentication Failed', message: 'Invalid email or password.' });
     }
 
@@ -286,7 +291,7 @@ async function signin(req, res, next) {
  * @route   GET /api/auth/me
  * @desc    Gets authenticated user profile.
  */
-async function me(req, res, next) {
+export async function me(req: AuthenticatedRequest, res: Response, next: NextFunction): Promise<Response | void> {
   try {
     const user = req.user;
     return res.status(200).json({
@@ -302,7 +307,7 @@ async function me(req, res, next) {
  * @route   POST /api/auth/signout
  * @desc    Ends active session.
  */
-async function signout(req, res, next) {
+export async function signout(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
   try {
     const { sessionId } = req.body;
     if (sessionId) {
@@ -317,12 +322,3 @@ async function signout(req, res, next) {
     next(err);
   }
 }
-
-module.exports = {
-  signup,
-  verifyEmail,
-  resendVerificationCode,
-  signin,
-  me,
-  signout,
-};

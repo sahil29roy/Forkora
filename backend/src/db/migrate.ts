@@ -1,7 +1,7 @@
-const fs = require('fs');
-const path = require('path');
-const { Client } = require('pg');
-const dotenv = require('dotenv');
+import fs from 'fs';
+import path from 'path';
+import { Client } from 'pg';
+import dotenv from 'dotenv';
 
 dotenv.config();
 
@@ -11,7 +11,7 @@ const dbUser = process.env.DB_USER || 'postgres';
 const dbPassword = process.env.DB_PASSWORD || 'postgres';
 const dbName = process.env.DB_NAME || 'forkora';
 
-async function ensureDatabaseExists() {
+async function ensureDatabaseExists(): Promise<void> {
   const rootClient = new Client({
     host: dbHost,
     port: dbPort,
@@ -28,13 +28,12 @@ async function ensureDatabaseExists() {
     );
     if (res.rowCount === 0) {
       console.log(`[Migration] Database "${dbName}" does not exist. Creating...`);
-      // Escape database name in identifier
       await rootClient.query(`CREATE DATABASE "${dbName}"`);
       console.log(`[Migration] Database "${dbName}" created successfully.`);
     } else {
       console.log(`[Migration] Database "${dbName}" already exists.`);
     }
-  } catch (err) {
+  } catch (err: any) {
     console.error(`[Migration Error] Failed checking/creating database:`, err.message);
     throw err;
   } finally {
@@ -42,7 +41,7 @@ async function ensureDatabaseExists() {
   }
 }
 
-async function runMigrations() {
+async function runMigrations(): Promise<void> {
   await ensureDatabaseExists();
 
   const client = new Client({
@@ -57,7 +56,6 @@ async function runMigrations() {
     await client.connect();
     console.log(`[Migration] Connected to database "${dbName}".`);
 
-    // Create tracking table if not exists
     await client.query(`
       CREATE TABLE IF NOT EXISTS schema_migrations (
         id SERIAL PRIMARY KEY,
@@ -66,9 +64,8 @@ async function runMigrations() {
       );
     `);
 
-    // Read executed migrations
     const executedRes = await client.query(`SELECT filename FROM schema_migrations`);
-    const executedFiles = new Set(executedRes.rows.map((row) => row.filename));
+    const executedFiles = new Set(executedRes.rows.map((row: { filename: string }) => row.filename));
 
     const migrationsDir = path.join(__dirname, 'migrations');
     if (!fs.existsSync(migrationsDir)) {
@@ -105,7 +102,7 @@ async function runMigrations() {
         await client.query('COMMIT');
         console.log(`  ✓ [SUCCESS] ${file}`);
         appliedCount++;
-      } catch (err) {
+      } catch (err: any) {
         await client.query('ROLLBACK');
         console.error(`  ✗ [FAILED] ${file}:`, err.message);
         throw err;
@@ -113,7 +110,7 @@ async function runMigrations() {
     }
 
     console.log(`\n[Migration Complete] Successfully applied ${appliedCount} new migration(s).`);
-  } catch (err) {
+  } catch (err: any) {
     console.error('[Migration Execution Failed]', err);
     process.exit(1);
   } finally {

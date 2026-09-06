@@ -1,4 +1,5 @@
-const { Resend } = require('resend');
+import { Resend } from 'resend';
+import { SendVerificationEmailOptions } from '../types';
 
 const apiKey = process.env.RESEND_API_KEY || 're_dev_placeholder_key';
 const isPlaceholderKey = !apiKey || apiKey === 're_dev_placeholder_key' || apiKey.includes('your_');
@@ -8,14 +9,12 @@ const fromEmail = process.env.EMAIL_FROM || 'Forkora Auth <onboarding@resend.dev
 
 /**
  * Sends a 6-digit email verification code via Resend API.
- * 
- * @param {Object} options
- * @param {string} options.email - Recipient email address
- * @param {string} options.name - User's display name
- * @param {string} options.code - 6-digit OTP code
- * @returns {Promise<Object>} Resend response or dev output object
  */
-async function sendVerificationEmail({ email, name, code }) {
+export async function sendVerificationEmail({
+  email,
+  name,
+  code,
+}: SendVerificationEmailOptions): Promise<any> {
   const subject = `${code} is your Forkora verification code`;
   
   const htmlContent = `
@@ -71,22 +70,22 @@ async function sendVerificationEmail({ email, name, code }) {
   }
 
   try {
-    const data = await resend.emails.send({
+    const response = await resend.emails.send({
       from: fromEmail,
       to: [email],
       subject: subject,
       html: htmlContent,
     });
 
-    console.log(`[Resend SDK] Email sent successfully via API. Message ID:`, data.id || data);
+    console.log(`[Resend SDK] Email sent successfully via API. Response:`, response);
     return {
-      success: true,
+      success: !response.error,
       mode: 'resend_api',
-      data,
+      data: response.data,
+      error: response.error?.message,
     };
-  } catch (err) {
+  } catch (err: any) {
     console.error(`[Resend SDK Error] Failed to send email via Resend API:`, err.message);
-    // Log fallback code so developer/testing isn't blocked by API errors (e.g. unverified domain)
     return {
       success: true,
       mode: 'fallback_error_log',
@@ -95,7 +94,3 @@ async function sendVerificationEmail({ email, name, code }) {
     };
   }
 }
-
-module.exports = {
-  sendVerificationEmail,
-};

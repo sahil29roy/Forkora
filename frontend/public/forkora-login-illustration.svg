@@ -1,0 +1,134 @@
+<svg width="800" height="680" viewBox="0 0 800 680" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="skyLight" x1="400" y1="0" x2="400" y2="680" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#EFF4FF"/>
+      <stop offset="40%" stop-color="#DFEAFF"/>
+      <stop offset="100%" stop-color="#C7DAFE"/>
+    </linearGradient>
+
+    <linearGradient id="farMountLight" x1="400" y1="180" x2="400" y2="440" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#C7D2FE" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#A5B4FC" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <linearGradient id="midMountLight" x1="400" y1="240" x2="400" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#93C5FD" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#818CF8" stop-opacity="0.92"/>
+    </linearGradient>
+
+    <linearGradient id="hillLight1" x1="150" y1="360" x2="150" y2="600" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#8BB49B" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#5E8B73" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <linearGradient id="hillLight2" x1="600" y1="340" x2="600" y2="650" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#7EA98F" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#527D66" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <linearGradient id="pathLight" x1="450" y1="320" x2="250" y2="680" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#EDE6D6" stop-opacity="0.6"/>
+      <stop offset="40%" stop-color="#F7F1E6"/>
+      <stop offset="100%" stop-color="#EADBBA"/>
+    </linearGradient>
+
+    <filter id="shadowLight" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#1E1B4B" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+
+  <!-- Sky Canvas -->
+  <rect width="800" height="680" rx="32" fill="url(#skyLight)"/>
+
+  <!-- Distant Clouds & Sun Glow -->
+  <circle cx="560" cy="180" r="120" fill="#FFFFFF" opacity="0.4"/>
+  <circle cx="560" cy="180" r="60" fill="#FEF08A" opacity="0.3"/>
+  <path d="M100 170C120 150 160 150 180 170C200 160 230 165 240 185C250 205 235 220 215 220H90C75 220 65 205 75 185C80 175 90 170 100 170Z" fill="#FFFFFF" opacity="0.65"/>
+  <path d="M600 110C620 95 650 95 670 110C685 100 710 105 720 120C730 140 715 155 695 155H590C575 155 565 140 575 120C580 112 590 110 600 110Z" fill="#FFFFFF" opacity="0.5"/>
+
+  <!-- Mountain Layers -->
+  <path d="M0 410L120 290L240 390L370 250L480 350L600 220L720 330L800 260V680H0V410Z" fill="url(#farMountLight)"/>
+  <path d="M0 460L160 340L290 440L430 300L560 420L690 310L800 400V680H0V460Z" fill="url(#midMountLight)"/>
+
+  <!-- Rolling Hills -->
+  <path d="M0 430C160 430 240 500 380 520C280 590 150 650 0 680V430Z" fill="url(#hillLight1)"/>
+  <path d="M800 420C660 430 560 480 460 540C570 590 690 630 800 660V420Z" fill="url(#hillLight2)"/>
+
+  <!-- Pine Silhouettes -->
+  <g fill="#3D5A4C" opacity="0.7">
+    <polygon points="90,420 82,448 98,448"/>
+    <polygon points="90,435 78,460 102,460"/>
+    <polygon points="130,430 123,455 137,455"/>
+    <polygon points="170,450 163,475 177,475"/>
+    <polygon points="680,410 673,435 687,435"/>
+    <polygon points="720,425 713,450 727,450"/>
+  </g>
+
+  <!-- Winding Path -->
+  <path d="M440 310C430 360 470 390 490 425C520 480 450 510 390 555C310 615 250 640 170 680H380C460 640 550 590 590 520C620 460 560 420 520 390C485 360 470 330 465 310H440Z" fill="url(#pathLight)"/>
+  <path d="M452 315C448 365 490 395 505 428C530 480 465 515 405 558C335 615 270 645 210 680" stroke="#D3C7A8" stroke-width="3" stroke-dasharray="12 16" stroke-linecap="round" opacity="0.85"/>
+
+  <!-- Foreground Vegetation -->
+  <ellipse cx="140" cy="670" rx="160" ry="35" fill="#364F42"/>
+  <ellipse cx="680" cy="670" rx="180" ry="40" fill="#344C40"/>
+
+  <!-- Signpost -->
+  <g filter="url(#shadowLight)">
+    <rect x="532" y="190" width="22" height="470" rx="6" fill="#334155"/>
+    <path d="M532 190L543 175L554 190H532Z" fill="#1E293B"/>
+
+    <!-- Sign 1: Higher Studies -->
+    <g transform="translate(460, 220)">
+      <path d="M0 12C0 5.37 5.37 0 12 0H180L215 26L180 52H12C5.37 52 0 46.63 0 40V12Z" fill="#3B82F6"/>
+      <circle cx="18" cy="26" r="3.5" fill="#BFDBFE"/>
+      <text x="100" y="32" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">Higher Studies</text>
+    </g>
+
+    <!-- Sign 2: Careers -->
+    <g transform="translate(385, 285)">
+      <path d="M35 0H203C209.63 0 215 5.37 215 12V40C215 46.63 209.63 52 203 52H35L0 26L35 0Z" fill="#4F46E5"/>
+      <circle cx="197" cy="26" r="3.5" fill="#C7D2FE"/>
+      <text x="115" y="32" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">Careers</text>
+    </g>
+
+    <!-- Sign 3: Skill Development -->
+    <g transform="translate(450, 350)">
+      <path d="M0 12C0 5.37 5.37 0 12 0H200L235 26L200 52H12C5.37 52 0 46.63 0 40V12Z" fill="#0D9488"/>
+      <circle cx="18" cy="26" r="3.5" fill="#99F6E4"/>
+      <text x="110" y="32" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">Skill Development</text>
+    </g>
+
+    <!-- Sign 4: Global Opportunities -->
+    <g transform="translate(365, 415)">
+      <path d="M35 0H235C241.63 0 247 5.37 247 12V40C247 46.63 241.63 52 235 52H35L0 26L35 0Z" fill="#1E40AF"/>
+      <circle cx="229" cy="26" r="3.5" fill="#93C5FD"/>
+      <text x="130" y="32" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">Global Opportunities</text>
+    </g>
+  </g>
+
+  <!-- Student Explorer (Back view looking forward) -->
+  <g transform="translate(80, 370)">
+    <ellipse cx="60" cy="285" rx="55" ry="14" fill="#1E293B" opacity="0.25"/>
+    <!-- Legs & Trousers -->
+    <path d="M42 195L34 265H56L62 198L42 195Z" fill="#1E293B"/>
+    <path d="M68 198L74 265H96L88 195L68 198Z" fill="#0F172A"/>
+    <!-- Shoes -->
+    <ellipse cx="45" cy="268" rx="16" ry="6" fill="#FFFFFF"/>
+    <ellipse cx="85" cy="268" rx="16" ry="6" fill="#FFFFFF"/>
+
+    <!-- Backpack -->
+    <rect x="34" y="90" width="62" height="84" rx="20" fill="#1E293B"/>
+    <rect x="40" y="105" width="50" height="58" rx="12" fill="#334155"/>
+    <circle cx="65" cy="135" r="4" fill="#38BDF8"/>
+
+    <!-- Blue Shirt & Body -->
+    <path d="M30 82C38 68 52 64 65 64C78 64 92 68 100 82L106 140C106 155 95 165 82 165H48C35 165 24 155 24 140L30 82Z" fill="#3B82F6"/>
+    <!-- Left/Right Arms -->
+    <path d="M26 82L15 125C13 132 17 140 24 142C30 144 36 138 37 130L42 96L26 82Z" fill="#2563EB"/>
+    <path d="M104 82L115 125C117 132 113 140 106 142C100 144 94 138 93 130L88 96L104 82Z" fill="#1D4ED8"/>
+
+    <!-- Head & Hair (Back of head) -->
+    <circle cx="65" cy="40" r="22" fill="#FBCFE8"/>
+    <path d="M43 38C43 18 53 12 65 12C77 12 87 18 87 38C87 48 80 54 65 54C50 54 43 48 43 38Z" fill="#0F172A"/>
+  </g>
+</svg>

@@ -1,0 +1,159 @@
+<svg width="800" height="680" viewBox="0 0 800 680" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Deep Twilight / Midnight Nebula Sky Gradient -->
+    <linearGradient id="skyDark" x1="400" y1="0" x2="400" y2="680" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0F111A"/>
+      <stop offset="45%" stop-color="#181829"/>
+      <stop offset="100%" stop-color="#221C38"/>
+    </linearGradient>
+
+    <!-- Mountain Dark Gradients -->
+    <linearGradient id="farMountDark" x1="400" y1="180" x2="400" y2="440" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#312E81" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#1E1B4B" stop-opacity="0.8"/>
+    </linearGradient>
+
+    <linearGradient id="midMountDark" x1="400" y1="240" x2="400" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2E2A5C" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#191735" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <linearGradient id="hillDark1" x1="150" y1="360" x2="150" y2="600" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1B2838" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#111A24" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <linearGradient id="hillDark2" x1="600" y1="340" x2="600" y2="650" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1E243B" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#121626" stop-opacity="0.98"/>
+    </linearGradient>
+
+    <!-- Glowing Path in Night -->
+    <linearGradient id="pathDark" x1="450" y1="310" x2="250" y2="680" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.35"/>
+      <stop offset="40%" stop-color="#6366F1" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#4F46E5" stop-opacity="0.4"/>
+    </linearGradient>
+
+    <!-- Glowing Drop Shadows -->
+    <filter id="neonGlow1" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Deep Midnight Canvas -->
+  <rect width="800" height="680" rx="32" fill="url(#skyDark)" stroke="#262638" stroke-width="1.5"/>
+
+  <!-- Celestial Glow & Crescent Moon -->
+  <circle cx="580" cy="150" r="100" fill="#6366F1" opacity="0.15" filter="url(#neonGlow1)"/>
+  <circle cx="580" cy="140" r="28" fill="#F8FAFC" opacity="0.9"/>
+  <circle cx="588" cy="136" r="24" fill="#141524"/>
+
+  <!-- Twinkling Stars in Night Sky -->
+  <g fill="#F8FAFC" opacity="0.75">
+    <circle cx="120" cy="80" r="1.5"/>
+    <circle cx="180" cy="120" r="2"/>
+    <circle cx="260" cy="70" r="1"/>
+    <circle cx="340" cy="110" r="2"/>
+    <circle cx="430" cy="60" r="1.5"/>
+    <circle cx="510" cy="95" r="2.5"/>
+    <circle cx="680" cy="80" r="1.5"/>
+    <circle cx="720" cy="130" r="2"/>
+    <circle cx="160" cy="200" r="1"/>
+    <circle cx="290" cy="180" r="2"/>
+  </g>
+  <!-- Diamond Star Sparkle -->
+  <path d="M470 120L473 130L483 133L473 136L470 146L467 136L457 133L467 130L470 120Z" fill="#38BDF8" opacity="0.9"/>
+  <path d="M220 100L222 107L229 109L222 111L220 118L218 111L211 109L218 107L220 100Z" fill="#FBBF24" opacity="0.8"/>
+
+  <!-- Mountain Silhouettes -->
+  <path d="M0 410L120 290L240 390L370 250L480 350L600 220L720 330L800 260V680H0V410Z" fill="url(#farMountDark)"/>
+  <path d="M0 460L160 340L290 440L430 300L560 420L690 310L800 400V680H0V460Z" fill="url(#midMountDark)"/>
+
+  <!-- Rolling Hills (Dark Midnight Hues) -->
+  <path d="M0 430C160 430 240 500 380 520C280 590 150 650 0 680V430Z" fill="url(#hillDark1)"/>
+  <path d="M800 420C660 430 560 480 460 540C570 590 690 630 800 660V420Z" fill="url(#hillDark2)"/>
+
+  <!-- Pine Tree Silhouettes in Dark Mode -->
+  <g fill="#0D131C" opacity="0.9">
+    <polygon points="90,420 82,448 98,448"/>
+    <polygon points="90,435 78,460 102,460"/>
+    <polygon points="130,430 123,455 137,455"/>
+    <polygon points="170,450 163,475 177,475"/>
+    <polygon points="680,410 673,435 687,435"/>
+    <polygon points="720,425 713,450 727,450"/>
+  </g>
+
+  <!-- Luminescent Winding Path -->
+  <path d="M440 310C430 360 470 390 490 425C520 480 450 510 390 555C310 615 250 640 170 680H380C460 640 550 590 590 520C620 460 560 420 520 390C485 360 470 330 465 310H440Z" fill="url(#pathDark)"/>
+  <path d="M452 315C448 365 490 395 505 428C530 480 465 515 405 558C335 615 270 645 210 680" stroke="#818CF8" stroke-width="3" stroke-dasharray="12 16" stroke-linecap="round" opacity="0.85"/>
+
+  <!-- Foreground Dark Ground -->
+  <ellipse cx="140" cy="670" rx="160" ry="35" fill="#0A0E17"/>
+  <ellipse cx="680" cy="670" rx="180" ry="40" fill="#090C14"/>
+
+  <!-- ==================== LUMINOUS SIGNPOST ==================== -->
+  <g>
+    <!-- Post -->
+    <rect x="532" y="190" width="22" height="470" rx="6" fill="#1E2235"/>
+    <path d="M532 190L543 175L554 190H532Z" fill="#2E334D"/>
+
+    <!-- Sign 1: Higher Studies -->
+    <g transform="translate(460, 220)">
+      <path d="M0 12C0 5.37 5.37 0 12 0H180L215 26L180 52H12C5.37 52 0 46.63 0 40V12Z" fill="#2563EB" stroke="#60A5FA" stroke-width="1.5"/>
+      <circle cx="18" cy="26" r="3.5" fill="#BFDBFE"/>
+      <text x="100" y="32" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">Higher Studies</text>
+    </g>
+
+    <!-- Sign 2: Careers -->
+    <g transform="translate(385, 285)">
+      <path d="M35 0H203C209.63 0 215 5.37 215 12V40C215 46.63 209.63 52 203 52H35L0 26L35 0Z" fill="#4338CA" stroke="#818CF8" stroke-width="1.5"/>
+      <circle cx="197" cy="26" r="3.5" fill="#C7D2FE"/>
+      <text x="115" y="32" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">Careers</text>
+    </g>
+
+    <!-- Sign 3: Skill Development -->
+    <g transform="translate(450, 350)">
+      <path d="M0 12C0 5.37 5.37 0 12 0H200L235 26L200 52H12C5.37 52 0 46.63 0 40V12Z" fill="#0F766E" stroke="#2DD4BF" stroke-width="1.5"/>
+      <circle cx="18" cy="26" r="3.5" fill="#99F6E4"/>
+      <text x="110" y="32" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">Skill Development</text>
+    </g>
+
+    <!-- Sign 4: Global Opportunities -->
+    <g transform="translate(365, 415)">
+      <path d="M35 0H235C241.63 0 247 5.37 247 12V40C247 46.63 241.63 52 235 52H35L0 26L35 0Z" fill="#1E3A8A" stroke="#38BDF8" stroke-width="1.5"/>
+      <circle cx="229" cy="26" r="3.5" fill="#93C5FD"/>
+      <text x="130" y="32" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">Global Opportunities</text>
+    </g>
+  </g>
+
+  <!-- Student Explorer in Dark Mode (Back view) -->
+  <g transform="translate(80, 370)">
+    <ellipse cx="60" cy="285" rx="55" ry="14" fill="#000000" opacity="0.6"/>
+    <!-- Legs & Trousers -->
+    <path d="M42 195L34 265H56L62 198L42 195Z" fill="#111827"/>
+    <path d="M68 198L74 265H96L88 195L68 198Z" fill="#090D15"/>
+    <!-- Shoes -->
+    <ellipse cx="45" cy="268" rx="16" ry="6" fill="#E2E8F0"/>
+    <ellipse cx="85" cy="268" rx="16" ry="6" fill="#E2E8F0"/>
+
+    <!-- Backpack -->
+    <rect x="34" y="90" width="62" height="84" rx="20" fill="#1E2235"/>
+    <rect x="40" y="105" width="50" height="58" rx="12" fill="#2E334D"/>
+    <circle cx="65" cy="135" r="4" fill="#38BDF8"/>
+
+    <!-- Luminous Blue Shirt & Body -->
+    <path d="M30 82C38 68 52 64 65 64C78 64 92 68 100 82L106 140C106 155 95 165 82 165H48C35 165 24 155 24 140L30 82Z" fill="#3B82F6"/>
+    <!-- Arms -->
+    <path d="M26 82L15 125C13 132 17 140 24 142C30 144 36 138 37 130L42 96L26 82Z" fill="#2563EB"/>
+    <path d="M104 82L115 125C117 132 113 140 106 142C100 144 94 138 93 130L88 96L104 82Z" fill="#1D4ED8"/>
+
+    <!-- Head & Dark Hair -->
+    <circle cx="65" cy="40" r="22" fill="#F472B6" opacity="0.8"/>
+    <path d="M43 38C43 18 53 12 65 12C77 12 87 18 87 38C87 48 80 54 65 54C50 54 43 48 43 38Z" fill="#090D15"/>
+  </g>
+</svg>

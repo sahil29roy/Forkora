@@ -1,0 +1,127 @@
+<svg width="800" height="680" viewBox="0 0 800 680" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Canvas Gradient -->
+    <linearGradient id="bgGradLight" x1="400" y1="0" x2="400" y2="680" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#EFF4FF"/>
+      <stop offset="50%" stop-color="#E5EDFF"/>
+      <stop offset="100%" stop-color="#D9E5FE"/>
+    </linearGradient>
+
+    <!-- Glowing Orbs -->
+    <linearGradient id="orbGradLight1" x1="180" y1="180" x2="420" y2="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#C7D2FE" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#E0E7FF" stop-opacity="0.1"/>
+    </linearGradient>
+
+    <linearGradient id="orbGradLight2" x1="480" y1="100" x2="720" y2="340" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#99F6E4" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#CCFBF1" stop-opacity="0.1"/>
+    </linearGradient>
+
+    <!-- Character Clothing Gradients -->
+    <linearGradient id="sweaterLight" x1="220" y1="280" x2="220" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+
+    <!-- Drop Shadows -->
+    <filter id="cardShadowLight" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#1E1B4B" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Sky Canvas with Rounded Border -->
+  <rect width="800" height="680" rx="32" fill="url(#bgGradLight)"/>
+
+  <!-- Background Decorative Geometry -->
+  <circle cx="280" cy="300" r="160" fill="url(#orbGradLight1)"/>
+  <circle cx="620" cy="180" r="130" fill="url(#orbGradLight2)"/>
+  <circle cx="600" cy="340" r="200" stroke="#C7D2FE" stroke-width="1.5" stroke-dasharray="8 12" opacity="0.6"/>
+
+  <!-- ==================== LEFT: STUDENT WITH LAPTOP ==================== -->
+  <ellipse cx="230" cy="610" rx="140" ry="20" fill="#1E293B" opacity="0.15"/>
+
+  <g transform="translate(60, 90)">
+    <!-- Wavy Dark Hair (Back) -->
+    <path d="M125 150C100 170 85 220 88 280C90 320 115 360 135 375C125 340 115 290 125 240C128 220 135 180 145 160L125 150Z" fill="#1E1B4B"/>
+    <path d="M210 150C245 170 265 220 262 280C260 320 235 360 215 375C225 340 235 290 225 240C222 220 215 180 205 160L210 150Z" fill="#1E1B4B"/>
+
+    <!-- Crossed Legs & Dark Pants -->
+    <path d="M80 435C70 455 65 480 85 500C110 525 180 525 240 500C210 475 180 465 140 450L80 435Z" fill="#1E293B"/>
+    <path d="M260 435C270 455 275 480 255 500C230 525 160 525 100 500C130 475 160 465 200 450L260 435Z" fill="#0F172A"/>
+
+    <!-- Sneakers -->
+    <ellipse cx="90" cy="510" rx="20" ry="10" fill="#FFFFFF"/>
+    <ellipse cx="250" cy="510" rx="20" ry="10" fill="#FFFFFF"/>
+
+    <!-- Torso & Blue Sweater -->
+    <path d="M125 250C135 235 155 230 170 230C185 230 205 235 215 250L230 380C230 420 215 445 170 445C125 445 110 420 110 380L125 250Z" fill="url(#sweaterLight)"/>
+    <path d="M152 230C155 242 162 248 170 248C178 248 185 242 188 230" stroke="#1D4ED8" stroke-width="3" fill="none"/>
+
+    <!-- Arms -->
+    <path d="M120 260L95 340C90 355 100 370 115 375L165 385L175 360L135 345L145 270L120 260Z" fill="#2563EB"/>
+    <ellipse cx="178" cy="375" rx="9" ry="6" fill="#FED7AA"/>
+    <path d="M220 260L245 340C250 355 240 370 225 375L185 388L175 365L205 345L195 270L220 260Z" fill="#1D4ED8"/>
+    <ellipse cx="182" cy="380" rx="9" ry="6" fill="#FED7AA"/>
+
+    <!-- Face & Head -->
+    <rect x="160" y="200" width="20" height="34" rx="8" fill="#FED7AA"/>
+    <ellipse cx="170" cy="180" rx="28" ry="32" fill="#FED7AA"/>
+
+    <!-- Facial Features -->
+    <path d="M155 175C158 171 163 171 166 175" stroke="#0F172A" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M174 175C177 171 182 171 185 175" stroke="#0F172A" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="152" cy="185" r="4.5" fill="#F472B6" opacity="0.4"/>
+    <circle cx="188" cy="185" r="4.5" fill="#F472B6" opacity="0.4"/>
+    <path d="M162 192C166 197 174 197 178 192" stroke="#BE185D" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Wavy Hair (Front) -->
+    <path d="M140 160C140 120 160 115 175 115C200 115 210 125 210 160C210 175 200 185 195 190C190 165 180 150 165 150C150 150 142 165 140 185C138 175 140 168 140 160Z" fill="#0F172A"/>
+
+    <!-- Laptop -->
+    <path d="M125 385L215 385L228 420H112L125 385Z" fill="#334155"/>
+    <path d="M135 320L205 320L215 385H125L135 320Z" fill="#0F172A"/>
+    <circle cx="170" cy="350" r="8" fill="#38BDF8" opacity="0.8"/>
+  </g>
+
+  <!-- ==================== RIGHT: FLOATING PATHWAY CARD ==================== -->
+  <g transform="translate(470, 140)" filter="url(#cardShadowLight)">
+    <!-- White Card Surface -->
+    <rect width="270" height="370" rx="22" fill="#FFFFFF"/>
+    <rect x="1" y="1" width="268" height="368" rx="21" stroke="#E2E8F0" stroke-width="1.5"/>
+
+    <!-- Row 1: Explore -->
+    <g transform="translate(24, 25)">
+      <rect width="46" height="46" rx="13" fill="#EFF6FF"/>
+      <circle cx="23" cy="23" r="12" stroke="#3B82F6" stroke-width="2.5"/>
+      <polygon points="23,15 26,23 23,31 20,23" fill="#3B82F6"/>
+      <polygon points="15,23 23,20 31,23 23,26" fill="#60A5FA"/>
+      <text x="62" y="30" font-family="Inter, -apple-system, sans-serif" font-size="17" font-weight="700" fill="#0F172A">Explore</text>
+    </g>
+
+    <!-- Row 2: Compare -->
+    <g transform="translate(24, 110)">
+      <rect width="46" height="46" rx="13" fill="#F0FDFA"/>
+      <path d="M15 19H29M29 19L25 15M29 19L25 23" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M31 27H17M17 27L21 23M17 27L21 31" stroke="#14B8A6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="62" y="30" font-family="Inter, -apple-system, sans-serif" font-size="17" font-weight="700" fill="#0F172A">Compare</text>
+    </g>
+
+    <!-- Row 3: Plan -->
+    <g transform="translate(24, 195)">
+      <rect width="46" height="46" rx="13" fill="#EEF2FF"/>
+      <rect x="15" y="15" width="16" height="16" rx="4" stroke="#4F46E5" stroke-width="2.5"/>
+      <path d="M19 12V16M27 12V16M15 20H31" stroke="#4F46E5" stroke-width="2" stroke-linecap="round"/>
+      <text x="62" y="30" font-family="Inter, -apple-system, sans-serif" font-size="17" font-weight="700" fill="#0F172A">Plan</text>
+    </g>
+
+    <!-- Row 4: Achieve -->
+    <g transform="translate(24, 280)">
+      <rect width="46" height="46" rx="13" fill="#ECFDF5"/>
+      <path d="M17 15H29V23C29 26.31 26.31 29 23 29C19.69 29 17 26.31 17 23V15Z" stroke="#059669" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M17 18H13V21C13 22.5 14.5 23.5 17 24" stroke="#059669" stroke-width="2" stroke-linecap="round"/>
+      <path d="M29 18H33V21C33 22.5 31.5 24.5 29 24" stroke="#059669" stroke-width="2" stroke-linecap="round"/>
+      <text x="62" y="30" font-family="Inter, -apple-system, sans-serif" font-size="17" font-weight="700" fill="#0F172A">Achieve</text>
+    </g>
+  </g>
+</svg>

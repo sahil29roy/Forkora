@@ -1,0 +1,132 @@
+<svg width="800" height="680" viewBox="0 0 800 680" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Dark Mode Sky Canvas -->
+    <linearGradient id="bgGradDark" x1="400" y1="0" x2="400" y2="680" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0F111A"/>
+      <stop offset="50%" stop-color="#161726"/>
+      <stop offset="100%" stop-color="#1C1832"/>
+    </linearGradient>
+
+    <!-- Glowing Orbs -->
+    <linearGradient id="orbGradDark1" x1="180" y1="180" x2="420" y2="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6366F1" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#312E81" stop-opacity="0.05"/>
+    </linearGradient>
+
+    <linearGradient id="orbGradDark2" x1="480" y1="100" x2="720" y2="340" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2DD4BF" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#0F766E" stop-opacity="0.05"/>
+    </linearGradient>
+
+    <!-- Drop Shadows -->
+    <filter id="cardShadowDark" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Deep Midnight Canvas -->
+  <rect width="800" height="680" rx="32" fill="url(#bgGradDark)" stroke="#262638" stroke-width="1.5"/>
+
+  <!-- Background Decorative Geometry -->
+  <circle cx="280" cy="300" r="160" fill="url(#orbGradDark1)"/>
+  <circle cx="620" cy="180" r="130" fill="url(#orbGradDark2)"/>
+  <circle cx="600" cy="340" r="200" stroke="#312E81" stroke-width="1.5" stroke-dasharray="8 12" opacity="0.6"/>
+
+  <!-- Stars -->
+  <g fill="#F8FAFC" opacity="0.7">
+    <circle cx="120" cy="80" r="1.5"/>
+    <circle cx="180" cy="120" r="2"/>
+    <circle cx="260" cy="70" r="1"/>
+    <circle cx="430" cy="60" r="1.5"/>
+    <circle cx="510" cy="95" r="2"/>
+    <circle cx="680" cy="80" r="1.5"/>
+    <circle cx="720" cy="130" r="2"/>
+  </g>
+  <path d="M420 180L423 188L431 191L423 194L420 202L417 194L409 191L417 188L420 180Z" fill="#FBBF24" opacity="0.8"/>
+  <path d="M740 120L742 126L748 128L742 130L740 136L738 130L732 128L738 126L740 120Z" fill="#38BDF8" opacity="0.9"/>
+
+  <!-- ==================== LEFT: STUDENT WITH LAPTOP ==================== -->
+  <ellipse cx="230" cy="610" rx="140" ry="20" fill="#000000" opacity="0.5"/>
+
+  <g transform="translate(60, 90)">
+    <!-- Wavy Dark Hair (Back) -->
+    <path d="M125 150C100 170 85 220 88 280C90 320 115 360 135 375C125 340 115 290 125 240C128 220 135 180 145 160L125 150Z" fill="#090D15"/>
+    <path d="M210 150C245 170 265 220 262 280C260 320 235 360 215 375C225 340 235 290 225 240C222 220 215 180 205 160L210 150Z" fill="#090D15"/>
+
+    <!-- Crossed Legs & Dark Pants -->
+    <path d="M80 435C70 455 65 480 85 500C110 525 180 525 240 500C210 475 180 465 140 450L80 435Z" fill="#111827"/>
+    <path d="M260 435C270 455 275 480 255 500C230 525 160 525 100 500C130 475 160 465 200 450L260 435Z" fill="#090D15"/>
+
+    <!-- Sneakers -->
+    <ellipse cx="90" cy="510" rx="20" ry="10" fill="#E2E8F0"/>
+    <ellipse cx="250" cy="510" rx="20" ry="10" fill="#E2E8F0"/>
+
+    <!-- Torso & Blue Sweater -->
+    <path d="M125 250C135 235 155 230 170 230C185 230 205 235 215 250L230 380C230 420 215 445 170 445C125 445 110 420 110 380L125 250Z" fill="#2563EB"/>
+    <path d="M152 230C155 242 162 248 170 248C178 248 185 242 188 230" stroke="#3B82F6" stroke-width="3" fill="none"/>
+
+    <!-- Arms -->
+    <path d="M120 260L95 340C90 355 100 370 115 375L165 385L175 360L135 345L145 270L120 260Z" fill="#1D4ED8"/>
+    <ellipse cx="178" cy="375" rx="9" ry="6" fill="#F472B6" opacity="0.8"/>
+    <path d="M220 260L245 340C250 355 240 370 225 375L185 388L175 365L205 345L195 270L220 260Z" fill="#1E40AF"/>
+    <ellipse cx="182" cy="380" rx="9" ry="6" fill="#F472B6" opacity="0.8"/>
+
+    <!-- Face & Head -->
+    <rect x="160" y="200" width="20" height="34" rx="8" fill="#FDBA74" opacity="0.85"/>
+    <ellipse cx="170" cy="180" rx="28" ry="32" fill="#FDBA74" opacity="0.85"/>
+
+    <!-- Facial Features -->
+    <path d="M155 175C158 171 163 171 166 175" stroke="#0F172A" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M174 175C177 171 182 171 185 175" stroke="#0F172A" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M162 192C166 197 174 197 178 192" stroke="#BE185D" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Wavy Hair (Front) -->
+    <path d="M140 160C140 120 160 115 175 115C200 115 210 125 210 160C210 175 200 185 195 190C190 165 180 150 165 150C150 150 142 165 140 185C138 175 140 168 140 160Z" fill="#090D15"/>
+
+    <!-- Laptop -->
+    <path d="M125 385L215 385L228 420H112L125 385Z" fill="#1E2235"/>
+    <path d="M135 320L205 320L215 385H125L135 320Z" fill="#0F111A"/>
+    <circle cx="170" cy="350" r="8" fill="#38BDF8" opacity="0.9"/>
+  </g>
+
+  <!-- ==================== RIGHT: FLOATING PATHWAY CARD (DARK MODE) ==================== -->
+  <g transform="translate(470, 140)" filter="url(#cardShadowDark)">
+    <!-- Dark Card Surface -->
+    <rect width="270" height="370" rx="22" fill="#161726"/>
+    <rect x="1" y="1" width="268" height="368" rx="21" stroke="#2B2C42" stroke-width="1.5"/>
+
+    <!-- Row 1: Explore -->
+    <g transform="translate(24, 25)">
+      <rect width="46" height="46" rx="13" fill="#1E293B"/>
+      <circle cx="23" cy="23" r="12" stroke="#60A5FA" stroke-width="2.5"/>
+      <polygon points="23,15 26,23 23,31 20,23" fill="#3B82F6"/>
+      <polygon points="15,23 23,20 31,23 23,26" fill="#93C5FD"/>
+      <text x="62" y="30" font-family="Inter, -apple-system, sans-serif" font-size="17" font-weight="700" fill="#F8FAFC">Explore</text>
+    </g>
+
+    <!-- Row 2: Compare -->
+    <g transform="translate(24, 110)">
+      <rect width="46" height="46" rx="13" fill="#132E2E"/>
+      <path d="M15 19H29M29 19L25 15M29 19L25 23" stroke="#2DD4BF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M31 27H17M17 27L21 23M17 27L21 31" stroke="#14B8A6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="62" y="30" font-family="Inter, -apple-system, sans-serif" font-size="17" font-weight="700" fill="#F8FAFC">Compare</text>
+    </g>
+
+    <!-- Row 3: Plan -->
+    <g transform="translate(24, 195)">
+      <rect width="46" height="46" rx="13" fill="#242145"/>
+      <rect x="15" y="15" width="16" height="16" rx="4" stroke="#818CF8" stroke-width="2.5"/>
+      <path d="M19 12V16M27 12V16M15 20H31" stroke="#818CF8" stroke-width="2" stroke-linecap="round"/>
+      <text x="62" y="30" font-family="Inter, -apple-system, sans-serif" font-size="17" font-weight="700" fill="#F8FAFC">Plan</text>
+    </g>
+
+    <!-- Row 4: Achieve -->
+    <g transform="translate(24, 280)">
+      <rect width="46" height="46" rx="13" fill="#133829"/>
+      <path d="M17 15H29V23C29 26.31 26.31 29 23 29C19.69 29 17 26.31 17 23V15Z" stroke="#34D399" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M17 18H13V21C13 22.5 14.5 23.5 17 24" stroke="#34D399" stroke-width="2" stroke-linecap="round"/>
+      <path d="M29 18H33V21C33 22.5 31.5 24.5 29 24" stroke="#34D399" stroke-width="2" stroke-linecap="round"/>
+      <text x="62" y="30" font-family="Inter, -apple-system, sans-serif" font-size="17" font-weight="700" fill="#F8FAFC">Achieve</text>
+    </g>
+  </g>
+</svg>

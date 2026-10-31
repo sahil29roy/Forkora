@@ -1,4 +1,4 @@
-CREATE TABLE sessions (
+CREATE TABLE IF NOT EXISTS sessions (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     device_type VARCHAR(100) CONSTRAINT chk_sessions_device_not_empty CHECK (device_type IS NULL OR length(trim(device_type)) > 0),
@@ -9,4 +9,4 @@ CREATE TABLE sessions (
     CONSTRAINT chk_sessions_dates CHECK (ended_at IS NULL OR ended_at >= started_at)
 );
 
-CREATE INDEX idx_sessions_user_started ON sessions(user_id, started_at);
+CREATE INDEX IF NOT EXISTS idx_sessions_user_started ON sessions(user_id, started_at);

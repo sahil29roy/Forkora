@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import { query } from './config/db';
 import authRoutes from './routes/authRoutes';
+import onboardingRoutes from './routes/onboardingRoutes';
 
 const app = express();
 
@@ -22,6 +23,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // API Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/onboarding', onboardingRoutes);
+app.use('/api/v1/profile/onboarding', onboardingRoutes);
 
 // Health Check Endpoint with PostgreSQL test query
 app.get('/api/health', async (req: Request, res: Response) => {

@@ -10,6 +10,7 @@ import { Dashboard } from '@/pages/Dashboard'
 import { Terms } from '@/pages/Terms'
 import { Privacy } from '@/pages/Privacy'
 import { AssessmentOverviewPage } from '@/pages/assessment/AssessmentOverviewPage'
+import { AssessmentIntro } from '@/pages/assessment/AssessmentIntro'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/assessments" element={<AssessmentOverviewPage />} />
             <Route path="/assessment" element={<AssessmentOverviewPage />} />
+            <Route path="/assessment/intro" element={<AssessmentIntro />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="*" element={<Navigate to="/" replace />} />

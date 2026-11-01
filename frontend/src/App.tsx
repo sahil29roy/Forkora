@@ -9,6 +9,7 @@ import { Onboarding } from '@/pages/Onboarding'
 import { Dashboard } from '@/pages/Dashboard'
 import { Terms } from '@/pages/Terms'
 import { Privacy } from '@/pages/Privacy'
+import { AssessmentIntro } from '@/pages/assessment/AssessmentIntro'
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/onboarding" element={<Onboarding />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/assessment" element={<AssessmentIntro />} />
+            <Route path="/assessment/intro" element={<AssessmentIntro />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="*" element={<Navigate to="/" replace />} />

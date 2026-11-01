@@ -11,10 +11,10 @@ export function JourneyInfoPanel() {
     : '/forkora-class10-boy-light.svg'
 
   const journeyHighlights = [
-    'Explore suitable streams (Science, Commerce, Arts and others).',
-    'Discover career paths and future opportunities.',
-    'Check eligibility and subject requirements.',
-    'Compare multiple paths and switching options.',
+    'Explore suitable streams and career paths.',
+    'Discover top courses (Engineering, CS, AI/ML, Business, and more).',
+    'Check eligibility, entrance exams, and subject requirements.',
+    'Compare multiple career options and future outcomes.',
   ]
 
   return (
@@ -31,7 +31,7 @@ export function JourneyInfoPanel() {
         </div>
 
         <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight text-foreground leading-snug">
-          Your Journey After Class 10th
+          Your Journey After School
         </h2>
 
         <p className="text-xs sm:text-sm text-muted leading-relaxed font-normal">

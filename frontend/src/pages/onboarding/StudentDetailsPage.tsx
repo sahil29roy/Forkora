@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { Loader2, ArrowRight, AlertCircle, Sparkles, CheckCircle2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Alert, AlertDescription } from '@/components/ui/alert'
@@ -15,28 +15,73 @@ import type {
   OnboardingFormErrors,
 } from '@/types/onboarding.types'
 
+const STAGE1_DRAFT_KEY = 'forkora_stage1_student_details'
+
 export function StudentDetailsPage() {
   const navigate = useNavigate()
+  const location = useLocation()
   const { user, token } = useAuth()
 
-  // Section A State: Student Details
-  const [studentDetails, setStudentDetails] = useState<StudentDetails>({
-    studentName: user?.display_name || '',
-    currentClass: '',
-    phoneNumber: '',
-    contactEmail: '',
+  // Section A State: Student Details (initialized from location.state or sessionStorage draft)
+  const [studentDetails, setStudentDetails] = useState<StudentDetails>(() => {
+    if (location.state?.studentName || location.state?.currentClass) {
+      return {
+        studentName: location.state.studentName || user?.display_name || '',
+        currentClass: location.state.currentClass || '',
+        phoneNumber: location.state.phoneNumber || '',
+        contactEmail: location.state.contactEmail || '',
+      }
+    }
+    try {
+      const saved = sessionStorage.getItem(STAGE1_DRAFT_KEY)
+      if (saved) {
+        const parsed = JSON.parse(saved)
+        if (parsed?.studentDetails) return parsed.studentDetails
+      }
+    } catch {
+      // Ignore
+    }
+    return {
+      studentName: user?.display_name || '',
+      currentClass: '',
+      phoneNumber: '',
+      contactEmail: '',
+    }
   })
 
-  // Section B State: Parent / Guardian Details
-  const [familyDetails, setFamilyDetails] = useState<FamilyDetails>({
-    parent1: {
-      name: '',
-      occupation: '',
-    },
-    parent2: {
-      name: '',
-      occupation: '',
-    },
+  // Section B State: Parent / Guardian Details (initialized from location.state or draft)
+  const [familyDetails, setFamilyDetails] = useState<FamilyDetails>(() => {
+    if (location.state?.fatherName || location.state?.motherName) {
+      return {
+        parent1: {
+          name: location.state.fatherName || '',
+          occupation: location.state.fatherOccupation || '',
+        },
+        parent2: {
+          name: location.state.motherName || '',
+          occupation: location.state.motherOccupation || '',
+        },
+      }
+    }
+    try {
+      const saved = sessionStorage.getItem(STAGE1_DRAFT_KEY)
+      if (saved) {
+        const parsed = JSON.parse(saved)
+        if (parsed?.familyDetails) return parsed.familyDetails
+      }
+    } catch {
+      // Ignore
+    }
+    return {
+      parent1: {
+        name: '',
+        occupation: '',
+      },
+      parent2: {
+        name: '',
+        occupation: '',
+      },
+    }
   })
 
   // Form State
@@ -120,6 +165,16 @@ export function StudentDetailsPage() {
     })
   }
 
+  // Auto-scroll to family section if navigated from Father & Mother Details edit
+  useEffect(() => {
+    if (location.state?.focusSection === 'family') {
+      setTimeout(() => {
+        const el = document.getElementById('family-details-section')
+        el?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }, 100)
+    }
+  }, [location.state])
+
   // Handle Form Submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -146,19 +201,33 @@ export function StudentDetailsPage() {
       await onboardingService.submitStage1(validation.normalizedData, token)
       setIsSuccess(true)
 
+      // Cache stage 1 draft
+      try {
+        sessionStorage.setItem(
+          STAGE1_DRAFT_KEY,
+          JSON.stringify({ studentDetails, familyDetails })
+        )
+      } catch {
+        // Ignore
+      }
+
       // 2. Class-Based Next Step Navigation
       const selectedClass = Number(studentDetails.currentClass)
       const targetAcademicBranch = selectedClass <= 10 ? 'class-10' : 'class-12'
 
       // Smooth transition to allow the user to see the success state
       setTimeout(() => {
-        navigate(`/onboarding?step=academic&branch=${targetAcademicBranch}&class=${selectedClass}`, {
-          state: {
-            studentName: studentDetails.studentName,
-            currentClass: selectedClass,
-            branch: targetAcademicBranch,
-          },
-        })
+        if (location.state?.fromReview) {
+          navigate(`/onboarding?step=review&class=${selectedClass}`)
+        } else {
+          navigate(`/onboarding?step=academic&branch=${targetAcademicBranch}&class=${selectedClass}`, {
+            state: {
+              studentName: studentDetails.studentName,
+              currentClass: selectedClass,
+              branch: targetAcademicBranch,
+            },
+          })
+        }
       }, 700)
     } catch (err: any) {
       if (err instanceof OnboardingApiError) {
@@ -204,7 +273,7 @@ export function StudentDetailsPage() {
           <Alert className="border-success/30 bg-success/10 text-success">
             <CheckCircle2 className="h-4 w-4 shrink-0" />
             <AlertDescription className="text-xs sm:text-sm font-medium">
-              Details saved successfully! Proceeding to Academic Info...
+              Details saved successfully! Proceeding...
             </AlertDescription>
           </Alert>
         )}
@@ -220,12 +289,14 @@ export function StudentDetailsPage() {
           />
 
           {/* SECTION B: Parent / Guardian Details */}
-          <ParentDetailsSection
-            familyDetails={familyDetails}
-            onChange={handleFamilyChange}
-            errors={errors}
-            disabled={isSubmitting || isLoadingProfile}
-          />
+          <div id="family-details-section">
+            <ParentDetailsSection
+              familyDetails={familyDetails}
+              onChange={handleFamilyChange}
+              errors={errors}
+              disabled={isSubmitting || isLoadingProfile}
+            />
+          </div>
 
           {/* Submit Action Area */}
           <div className="pt-2 sm:pt-4 border-t border-border/60 flex flex-col sm:flex-row items-center justify-between gap-4">

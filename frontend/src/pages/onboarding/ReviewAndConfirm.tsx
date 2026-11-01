@@ -543,8 +543,9 @@ export function ReviewAndConfirm() {
           onEdit={handleEditAcademic}
         />
 
-        {/* Section 4: Areas of Interest */}
+        {/* Section 4: Areas of Interest / Academic Stream Preferences */}
         <AreasOfInterestReview
+          currentClass={reviewData.student.currentClass}
           interests={reviewData.interests}
           onEdit={handleEditInterests}
         />

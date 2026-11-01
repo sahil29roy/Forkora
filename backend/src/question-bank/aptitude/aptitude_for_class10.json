@@ -1,0 +1,1484 @@
+[
+    {
+        "id": 1,
+        "topic": "Number Series",
+        "difficulty": "Easy",
+        "question": "Find the next number: 3, 6, 12, 24, ?",
+        "options": [
+            "36",
+            "42",
+            "48",
+            "30"
+        ],
+        "answer": "48"
+    },
+    {
+        "id": 2,
+        "topic": "Number Series",
+        "difficulty": "Easy",
+        "question": "Find the next number: 5, 11, 17, 23, ?",
+        "options": [
+            "29",
+            "28",
+            "30",
+            "27"
+        ],
+        "answer": "29"
+    },
+    {
+        "id": 3,
+        "topic": "Number Series",
+        "difficulty": "Easy",
+        "question": "Find the next number: 100, 91, 82, 73, ?",
+        "options": [
+            "65",
+            "63",
+            "62",
+            "64"
+        ],
+        "answer": "64"
+    },
+    {
+        "id": 4,
+        "topic": "Number Series",
+        "difficulty": "Easy",
+        "question": "Find the next number: 1, 4, 9, 16, 25, ?",
+        "options": [
+            "30",
+            "36",
+            "35",
+            "49"
+        ],
+        "answer": "36"
+    },
+    {
+        "id": 5,
+        "topic": "Number Series",
+        "difficulty": "Easy",
+        "question": "Find the next number: 2, 6, 18, 54, ?",
+        "options": [
+            "108",
+            "72",
+            "148",
+            "162"
+        ],
+        "answer": "162"
+    },
+    {
+        "id": 6,
+        "topic": "Number Series",
+        "difficulty": "Easy",
+        "question": "Find the next number: 1, 1, 2, 3, 5, 8, ?",
+        "options": [
+            "12",
+            "11",
+            "13",
+            "15"
+        ],
+        "answer": "13"
+    },
+    {
+        "id": 7,
+        "topic": "Number Series",
+        "difficulty": "Easy",
+        "question": "Find the next number: 7, 14, 28, 56, ?",
+        "options": [
+            "84",
+            "98",
+            "112",
+            "102"
+        ],
+        "answer": "112"
+    },
+    {
+        "id": 8,
+        "topic": "Number Series",
+        "difficulty": "Easy",
+        "question": "Find the next number: 90, 80, 71, 63, ?",
+        "options": [
+            "58",
+            "56",
+            "55",
+            "57"
+        ],
+        "answer": "56"
+    },
+    {
+        "id": 9,
+        "topic": "Number Series",
+        "difficulty": "Easy",
+        "question": "Find the next number: 2, 5, 10, 17, 26, ?",
+        "options": [
+            "37",
+            "35",
+            "36",
+            "38"
+        ],
+        "answer": "37"
+    },
+    {
+        "id": 10,
+        "topic": "Number Series",
+        "difficulty": "Easy",
+        "question": "Find the next number: 1, 8, 27, 64, ?",
+        "options": [
+            "100",
+            "216",
+            "121",
+            "125"
+        ],
+        "answer": "125"
+    },
+    {
+        "id": 11,
+        "topic": "Alphabet Series",
+        "difficulty": "Easy",
+        "question": "Find the next letter: A, C, E, G, ?",
+        "options": [
+            "H",
+            "I",
+            "J",
+            "K"
+        ],
+        "answer": "I"
+    },
+    {
+        "id": 12,
+        "topic": "Alphabet Series",
+        "difficulty": "Easy",
+        "question": "Find the next letter: Z, X, V, T, ?",
+        "options": [
+            "S",
+            "Q",
+            "P",
+            "R"
+        ],
+        "answer": "R"
+    },
+    {
+        "id": 13,
+        "topic": "Alphabet Series",
+        "difficulty": "Easy",
+        "question": "Find the next letter: B, E, H, K, ?",
+        "options": [
+            "N",
+            "M",
+            "O",
+            "L"
+        ],
+        "answer": "N"
+    },
+    {
+        "id": 14,
+        "topic": "Alphabet Series",
+        "difficulty": "Easy",
+        "question": "Find the next pair: AZ, BY, CX, DW, ?",
+        "options": [
+            "EX",
+            "FV",
+            "EU",
+            "EV"
+        ],
+        "answer": "EV"
+    },
+    {
+        "id": 15,
+        "topic": "Alphabet Series",
+        "difficulty": "Easy",
+        "question": "Which letter is 5th to the right of F in the English alphabet?",
+        "options": [
+            "J",
+            "L",
+            "K",
+            "M"
+        ],
+        "answer": "K"
+    },
+    {
+        "id": 16,
+        "topic": "Alphabet Series",
+        "difficulty": "Easy",
+        "question": "Which letter is exactly in the middle of D and J?",
+        "options": [
+            "F",
+            "H",
+            "E",
+            "G"
+        ],
+        "answer": "G"
+    },
+    {
+        "id": 17,
+        "topic": "Alphabet Series",
+        "difficulty": "Easy",
+        "question": "Find the next group: ACE, BDF, CEG, ?",
+        "options": [
+            "DFH",
+            "DGH",
+            "EFH",
+            "CFH"
+        ],
+        "answer": "DFH"
+    },
+    {
+        "id": 18,
+        "topic": "Alphabet Series",
+        "difficulty": "Easy",
+        "question": "Which letter is 4th to the left of M in the English alphabet?",
+        "options": [
+            "H",
+            "J",
+            "I",
+            "K"
+        ],
+        "answer": "I"
+    },
+    {
+        "id": 19,
+        "topic": "Coding-Decoding",
+        "difficulty": "Easy",
+        "question": "If CAT is coded as DBU, how is DOG coded?",
+        "options": [
+            "EPH",
+            "EQH",
+            "CNF",
+            "FPI"
+        ],
+        "answer": "EPH"
+    },
+    {
+        "id": 20,
+        "topic": "Coding-Decoding",
+        "difficulty": "Easy",
+        "question": "If A=1, B=2, C=3 and so on, what is the code for BAD?",
+        "options": [
+            "124",
+            "241",
+            "214",
+            "412"
+        ],
+        "answer": "214"
+    },
+    {
+        "id": 21,
+        "topic": "Coding-Decoding",
+        "difficulty": "Easy",
+        "question": "If MANGO is written as NBOHP, how is APPLE written?",
+        "options": [
+            "BQQMF",
+            "BPQMF",
+            "CQQNG",
+            "BQQLF"
+        ],
+        "answer": "BQQMF"
+    },
+    {
+        "id": 22,
+        "topic": "Coding-Decoding",
+        "difficulty": "Easy",
+        "question": "If A=1, B=2 and so on, what is the code for CODE?",
+        "options": [
+            "3 14 4 5",
+            "3 15 5 4",
+            "4 15 4 5",
+            "3 15 4 5"
+        ],
+        "answer": "3 15 4 5"
+    },
+    {
+        "id": 23,
+        "topic": "Coding-Decoding",
+        "difficulty": "Easy",
+        "question": "If TABLE is written as UBCMF, how is CHAIR written?",
+        "options": [
+            "DIBJS",
+            "DIBIS",
+            "BGZHQ",
+            "DJCKT"
+        ],
+        "answer": "DIBJS"
+    },
+    {
+        "id": 24,
+        "topic": "Coding-Decoding",
+        "difficulty": "Easy",
+        "question": "If FRIEND is coded as GSJFOE, how is MOTHER coded?",
+        "options": [
+            "NPUIFS",
+            "NOUIFS",
+            "LNSGDQ",
+            "NPUHFS"
+        ],
+        "answer": "NPUIFS"
+    },
+    {
+        "id": 25,
+        "topic": "Coding-Decoding",
+        "difficulty": "Easy",
+        "question": "If ART is coded as 1 18 20, how is TAR coded?",
+        "options": [
+            "18 1 20",
+            "1 20 18",
+            "20 18 1",
+            "20 1 18"
+        ],
+        "answer": "20 1 18"
+    },
+    {
+        "id": 26,
+        "topic": "Coding-Decoding",
+        "difficulty": "Easy",
+        "question": "In a code, 'sky' means 'blue', 'blue' means 'sea', 'sea' means 'water', 'water' means 'tree'. What do we drink?",
+        "options": [
+            "sea",
+            "tree",
+            "sky",
+            "blue"
+        ],
+        "answer": "tree"
+    },
+    {
+        "id": 27,
+        "topic": "Analogy",
+        "difficulty": "Easy",
+        "question": "Bird : Nest :: Bee : ?",
+        "options": [
+            "Honey",
+            "Hive",
+            "Flower",
+            "Sting"
+        ],
+        "answer": "Hive"
+    },
+    {
+        "id": 28,
+        "topic": "Analogy",
+        "difficulty": "Easy",
+        "question": "Doctor : Hospital :: Teacher : ?",
+        "options": [
+            "Book",
+            "Student",
+            "School",
+            "Chalk"
+        ],
+        "answer": "School"
+    },
+    {
+        "id": 29,
+        "topic": "Analogy",
+        "difficulty": "Easy",
+        "question": "Hot : Cold :: Day : ?",
+        "options": [
+            "Sun",
+            "Night",
+            "Light",
+            "Noon"
+        ],
+        "answer": "Night"
+    },
+    {
+        "id": 30,
+        "topic": "Analogy",
+        "difficulty": "Easy",
+        "question": "Pen : Write :: Knife : ?",
+        "options": [
+            "Cut",
+            "Sharp",
+            "Kitchen",
+            "Steel"
+        ],
+        "answer": "Cut"
+    },
+    {
+        "id": 31,
+        "topic": "Analogy",
+        "difficulty": "Easy",
+        "question": "Fish : Water :: Camel : ?",
+        "options": [
+            "Hump",
+            "Sand",
+            "Desert",
+            "Animal"
+        ],
+        "answer": "Desert"
+    },
+    {
+        "id": 32,
+        "topic": "Analogy",
+        "difficulty": "Easy",
+        "question": "2 : 8 :: 3 : ?",
+        "options": [
+            "9",
+            "18",
+            "27",
+            "12"
+        ],
+        "answer": "27"
+    },
+    {
+        "id": 33,
+        "topic": "Analogy",
+        "difficulty": "Easy",
+        "question": "Eye : See :: Ear : ?",
+        "options": [
+            "Hear",
+            "Listen",
+            "Sound",
+            "Music"
+        ],
+        "answer": "Hear"
+    },
+    {
+        "id": 34,
+        "topic": "Analogy",
+        "difficulty": "Easy",
+        "question": "India : Rupee :: Japan : ?",
+        "options": [
+            "Dollar",
+            "Yuan",
+            "Yen",
+            "Won"
+        ],
+        "answer": "Yen"
+    },
+    {
+        "id": 35,
+        "topic": "Classification / Odd One Out",
+        "difficulty": "Easy",
+        "question": "Find the odd one out: Apple, Mango, Potato, Banana",
+        "options": [
+            "Potato",
+            "Apple",
+            "Mango",
+            "Banana"
+        ],
+        "answer": "Potato"
+    },
+    {
+        "id": 36,
+        "topic": "Classification / Odd One Out",
+        "difficulty": "Easy",
+        "question": "Find the odd one out: Triangle, Square, Circle, Rectangle",
+        "options": [
+            "Triangle",
+            "Square",
+            "Rectangle",
+            "Circle"
+        ],
+        "answer": "Circle"
+    },
+    {
+        "id": 37,
+        "topic": "Classification / Odd One Out",
+        "difficulty": "Easy",
+        "question": "Find the odd one out: 2, 3, 5, 9, 11",
+        "options": [
+            "2",
+            "11",
+            "9",
+            "5"
+        ],
+        "answer": "9"
+    },
+    {
+        "id": 38,
+        "topic": "Classification / Odd One Out",
+        "difficulty": "Easy",
+        "question": "Find the odd one out: Cat, Lion, Tiger, Eagle",
+        "options": [
+            "Cat",
+            "Lion",
+            "Tiger",
+            "Eagle"
+        ],
+        "answer": "Eagle"
+    },
+    {
+        "id": 39,
+        "topic": "Classification / Odd One Out",
+        "difficulty": "Easy",
+        "question": "Find the odd one out: Mercury, Venus, Moon, Mars",
+        "options": [
+            "Mercury",
+            "Moon",
+            "Venus",
+            "Mars"
+        ],
+        "answer": "Moon"
+    },
+    {
+        "id": 40,
+        "topic": "Classification / Odd One Out",
+        "difficulty": "Easy",
+        "question": "Find the odd one out (number of days in the month): January, March, June, October",
+        "options": [
+            "January",
+            "March",
+            "October",
+            "June"
+        ],
+        "answer": "June"
+    },
+    {
+        "id": 41,
+        "topic": "Classification / Odd One Out",
+        "difficulty": "Easy",
+        "question": "Find the odd one out: Hindi, Tamil, Punjabi, Python",
+        "options": [
+            "Hindi",
+            "Tamil",
+            "Python",
+            "Punjabi"
+        ],
+        "answer": "Python"
+    },
+    {
+        "id": 42,
+        "topic": "Classification / Odd One Out",
+        "difficulty": "Easy",
+        "question": "Find the odd one out: 16, 25, 36, 48",
+        "options": [
+            "48",
+            "16",
+            "25",
+            "36"
+        ],
+        "answer": "48"
+    },
+    {
+        "id": 43,
+        "topic": "Blood Relations",
+        "difficulty": "Easy",
+        "question": "Pointing to a man, Riya says, \"He is the son of my mother's only brother.\" How is the man related to Riya?",
+        "options": [
+            "Brother",
+            "Uncle",
+            "Cousin",
+            "Nephew"
+        ],
+        "answer": "Cousin"
+    },
+    {
+        "id": 44,
+        "topic": "Blood Relations",
+        "difficulty": "Easy",
+        "question": "A is the sister of B. B is the father of C. How is A related to C?",
+        "options": [
+            "Mother",
+            "Aunt",
+            "Grandmother",
+            "Sister"
+        ],
+        "answer": "Aunt"
+    },
+    {
+        "id": 45,
+        "topic": "Blood Relations",
+        "difficulty": "Easy",
+        "question": "How is your father's mother related to you?",
+        "options": [
+            "Aunt",
+            "Mother-in-law",
+            "Grandmother",
+            "Sister"
+        ],
+        "answer": "Grandmother"
+    },
+    {
+        "id": 46,
+        "topic": "Blood Relations",
+        "difficulty": "Easy",
+        "question": "Your mother's brother is called your:",
+        "options": [
+            "Maternal uncle",
+            "Paternal uncle",
+            "Cousin",
+            "Nephew"
+        ],
+        "answer": "Maternal uncle"
+    },
+    {
+        "id": 47,
+        "topic": "Blood Relations",
+        "difficulty": "Easy",
+        "question": "Anil is Sunita's brother. Sunita is Raj's mother. How is Anil related to Raj?",
+        "options": [
+            "Father",
+            "Maternal uncle",
+            "Cousin",
+            "Grandfather"
+        ],
+        "answer": "Maternal uncle"
+    },
+    {
+        "id": 48,
+        "topic": "Blood Relations",
+        "difficulty": "Easy",
+        "question": "Pointing to a photo, Meena says, \"He is the husband of my mother's only daughter.\" Who is he to Meena?",
+        "options": [
+            "Brother",
+            "Father",
+            "Uncle",
+            "Husband"
+        ],
+        "answer": "Husband"
+    },
+    {
+        "id": 49,
+        "topic": "Blood Relations",
+        "difficulty": "Easy",
+        "question": "A and B are brothers. C is A's father. D is C's father. How is D related to B?",
+        "options": [
+            "Uncle",
+            "Grandfather",
+            "Father",
+            "Cousin"
+        ],
+        "answer": "Grandfather"
+    },
+    {
+        "id": 50,
+        "topic": "Blood Relations",
+        "difficulty": "Easy",
+        "question": "How is your mother's mother's husband related to you?",
+        "options": [
+            "Maternal grandfather",
+            "Paternal grandfather",
+            "Uncle",
+            "Father"
+        ],
+        "answer": "Maternal grandfather"
+    },
+    {
+        "id": 51,
+        "topic": "Direction Sense",
+        "difficulty": "Easy",
+        "question": "A man walks 5 km north, then turns right and walks 5 km. In which direction is he from the starting point?",
+        "options": [
+            "North-west",
+            "South-east",
+            "East",
+            "North-east"
+        ],
+        "answer": "North-east"
+    },
+    {
+        "id": 52,
+        "topic": "Direction Sense",
+        "difficulty": "Easy",
+        "question": "Facing east, you turn left. Which direction are you facing now?",
+        "options": [
+            "North",
+            "South",
+            "West",
+            "East"
+        ],
+        "answer": "North"
+    },
+    {
+        "id": 53,
+        "topic": "Direction Sense",
+        "difficulty": "Easy",
+        "question": "In the morning, Ravi stands facing the sun. Towards which direction does his shadow fall?",
+        "options": [
+            "East",
+            "West",
+            "North",
+            "South"
+        ],
+        "answer": "West"
+    },
+    {
+        "id": 54,
+        "topic": "Direction Sense",
+        "difficulty": "Easy",
+        "question": "Rahul walks 10 m south, then turns left. Which direction is he facing now?",
+        "options": [
+            "West",
+            "North",
+            "East",
+            "South"
+        ],
+        "answer": "East"
+    },
+    {
+        "id": 55,
+        "topic": "Direction Sense",
+        "difficulty": "Easy",
+        "question": "A man walks 3 km west, then 4 km north. How far is he from the starting point?",
+        "options": [
+            "7 km",
+            "5 km",
+            "6 km",
+            "4 km"
+        ],
+        "answer": "5 km"
+    },
+    {
+        "id": 56,
+        "topic": "Direction Sense",
+        "difficulty": "Easy",
+        "question": "Facing north, you turn 90 degrees right and then 90 degrees right again. Which direction are you facing?",
+        "options": [
+            "South",
+            "North",
+            "West",
+            "East"
+        ],
+        "answer": "South"
+    },
+    {
+        "id": 57,
+        "topic": "Direction Sense",
+        "difficulty": "Easy",
+        "question": "Facing west, you turn right. Which direction are you facing now?",
+        "options": [
+            "South",
+            "East",
+            "North",
+            "West"
+        ],
+        "answer": "North"
+    },
+    {
+        "id": 58,
+        "topic": "Direction Sense",
+        "difficulty": "Easy",
+        "question": "Priya walks 6 m east, then 8 m north. How far is she from the starting point?",
+        "options": [
+            "14 m",
+            "12 m",
+            "10 m",
+            "8 m"
+        ],
+        "answer": "10 m"
+    },
+    {
+        "id": 59,
+        "topic": "Ranking and Ordering",
+        "difficulty": "Easy",
+        "question": "Rohan is 7th from the top in a class of 30. What is his rank from the bottom?",
+        "options": [
+            "23",
+            "24",
+            "22",
+            "25"
+        ],
+        "answer": "24"
+    },
+    {
+        "id": 60,
+        "topic": "Ranking and Ordering",
+        "difficulty": "Easy",
+        "question": "In a row, Amit is 12th from the left and 9th from the right. How many people are in the row?",
+        "options": [
+            "21",
+            "19",
+            "22",
+            "20"
+        ],
+        "answer": "20"
+    },
+    {
+        "id": 61,
+        "topic": "Ranking and Ordering",
+        "difficulty": "Easy",
+        "question": "A is taller than B, and B is taller than C. Who is the tallest?",
+        "options": [
+            "B",
+            "C",
+            "A",
+            "Cannot be said"
+        ],
+        "answer": "A"
+    },
+    {
+        "id": 62,
+        "topic": "Ranking and Ordering",
+        "difficulty": "Easy",
+        "question": "Tara is 5th from the front and 6th from the back in a queue. How many people are in the queue?",
+        "options": [
+            "11",
+            "10",
+            "9",
+            "12"
+        ],
+        "answer": "10"
+    },
+    {
+        "id": 63,
+        "topic": "Ranking and Ordering",
+        "difficulty": "Easy",
+        "question": "P is older than Q. R is younger than Q. S is older than P. Who is the youngest?",
+        "options": [
+            "P",
+            "Q",
+            "S",
+            "R"
+        ],
+        "answer": "R"
+    },
+    {
+        "id": 64,
+        "topic": "Ranking and Ordering",
+        "difficulty": "Easy",
+        "question": "A student ranks 15th from the top and 20th from the bottom. How many students are in the class?",
+        "options": [
+            "34",
+            "35",
+            "33",
+            "36"
+        ],
+        "answer": "34"
+    },
+    {
+        "id": 65,
+        "topic": "Ranking and Ordering",
+        "difficulty": "Easy",
+        "question": "Seema is 8th from the front in a queue and 5 people stand behind her. How many people are in the queue?",
+        "options": [
+            "14",
+            "12",
+            "13",
+            "15"
+        ],
+        "answer": "13"
+    },
+    {
+        "id": 66,
+        "topic": "Ranking and Ordering",
+        "difficulty": "Easy",
+        "question": "Among A, B, C and D: A scored more than B but less than C, and D scored less than B. Who scored the second highest?",
+        "options": [
+            "C",
+            "D",
+            "B",
+            "A"
+        ],
+        "answer": "A"
+    },
+    {
+        "id": 67,
+        "topic": "Basic Mathematical Reasoning",
+        "difficulty": "Easy",
+        "question": "What is the value of 15 + 3 x 4?",
+        "options": [
+            "72",
+            "27",
+            "18",
+            "24"
+        ],
+        "answer": "27"
+    },
+    {
+        "id": 68,
+        "topic": "Basic Mathematical Reasoning",
+        "difficulty": "Easy",
+        "question": "What is the smallest prime number?",
+        "options": [
+            "0",
+            "1",
+            "2",
+            "3"
+        ],
+        "answer": "2"
+    },
+    {
+        "id": 69,
+        "topic": "Basic Mathematical Reasoning",
+        "difficulty": "Easy",
+        "question": "What is the perimeter of a square with side 7 cm?",
+        "options": [
+            "49 cm",
+            "14 cm",
+            "21 cm",
+            "28 cm"
+        ],
+        "answer": "28 cm"
+    },
+    {
+        "id": 70,
+        "topic": "Basic Mathematical Reasoning",
+        "difficulty": "Easy",
+        "question": "What is the LCM of 4 and 6?",
+        "options": [
+            "24",
+            "10",
+            "12",
+            "2"
+        ],
+        "answer": "12"
+    },
+    {
+        "id": 71,
+        "topic": "Basic Mathematical Reasoning",
+        "difficulty": "Easy",
+        "question": "What is the average of 10, 20 and 30?",
+        "options": [
+            "15",
+            "25",
+            "20",
+            "60"
+        ],
+        "answer": "20"
+    },
+    {
+        "id": 72,
+        "topic": "Basic Mathematical Reasoning",
+        "difficulty": "Easy",
+        "question": "What is 25% of 80?",
+        "options": [
+            "25",
+            "20",
+            "16",
+            "40"
+        ],
+        "answer": "20"
+    },
+    {
+        "id": 73,
+        "topic": "Basic Mathematical Reasoning",
+        "difficulty": "Easy",
+        "question": "If x + 7 = 19, what is x?",
+        "options": [
+            "26",
+            "11",
+            "13",
+            "12"
+        ],
+        "answer": "12"
+    },
+    {
+        "id": 74,
+        "topic": "Basic Mathematical Reasoning",
+        "difficulty": "Easy",
+        "question": "How many sides does a hexagon have?",
+        "options": [
+            "5",
+            "8",
+            "6",
+            "7"
+        ],
+        "answer": "6"
+    },
+    {
+        "id": 75,
+        "topic": "Basic Mathematical Reasoning",
+        "difficulty": "Easy",
+        "question": "What is the HCF of 12 and 18?",
+        "options": [
+            "3",
+            "6",
+            "36",
+            "9"
+        ],
+        "answer": "6"
+    },
+    {
+        "id": 76,
+        "topic": "Basic Mathematical Reasoning",
+        "difficulty": "Easy",
+        "question": "What is the sum of the angles of a triangle?",
+        "options": [
+            "90 degrees",
+            "270 degrees",
+            "360 degrees",
+            "180 degrees"
+        ],
+        "answer": "180 degrees"
+    },
+    {
+        "id": 77,
+        "topic": "Percentage and Ratio",
+        "difficulty": "Easy",
+        "question": "What is 20% of 150?",
+        "options": [
+            "30",
+            "15",
+            "20",
+            "25"
+        ],
+        "answer": "30"
+    },
+    {
+        "id": 78,
+        "topic": "Percentage and Ratio",
+        "difficulty": "Easy",
+        "question": "What is the simplest form of the ratio 12 : 18?",
+        "options": [
+            "3 : 4",
+            "6 : 9",
+            "2 : 3",
+            "4 : 5"
+        ],
+        "answer": "2 : 3"
+    },
+    {
+        "id": 79,
+        "topic": "Percentage and Ratio",
+        "difficulty": "Easy",
+        "question": "The price of an item is Rs 200. It increases by 10%. What is the new price?",
+        "options": [
+            "Rs 210",
+            "Rs 220",
+            "Rs 230",
+            "Rs 202"
+        ],
+        "answer": "Rs 220"
+    },
+    {
+        "id": 80,
+        "topic": "Percentage and Ratio",
+        "difficulty": "Easy",
+        "question": "A student scores 45 out of 60. What is the percentage?",
+        "options": [
+            "70%",
+            "80%",
+            "85%",
+            "75%"
+        ],
+        "answer": "75%"
+    },
+    {
+        "id": 81,
+        "topic": "Percentage and Ratio",
+        "difficulty": "Easy",
+        "question": "Rs 50 is divided in the ratio 2 : 3. What is the smaller share?",
+        "options": [
+            "Rs 25",
+            "Rs 15",
+            "Rs 20",
+            "Rs 30"
+        ],
+        "answer": "Rs 20"
+    },
+    {
+        "id": 82,
+        "topic": "Percentage and Ratio",
+        "difficulty": "Easy",
+        "question": "In a class of 40 students, 60% are girls. How many boys are there?",
+        "options": [
+            "16",
+            "24",
+            "14",
+            "18"
+        ],
+        "answer": "16"
+    },
+    {
+        "id": 83,
+        "topic": "Percentage and Ratio",
+        "difficulty": "Easy",
+        "question": "The ratio of boys to girls is 3 : 2 and there are 30 students in total. How many boys are there?",
+        "options": [
+            "12",
+            "20",
+            "15",
+            "18"
+        ],
+        "answer": "18"
+    },
+    {
+        "id": 84,
+        "topic": "Percentage and Ratio",
+        "difficulty": "Easy",
+        "question": "A shirt costs Rs 500 and a 20% discount is given. What is the selling price?",
+        "options": [
+            "Rs 480",
+            "Rs 400",
+            "Rs 450",
+            "Rs 420"
+        ],
+        "answer": "Rs 400"
+    },
+    {
+        "id": 85,
+        "topic": "Time and Work (basic)",
+        "difficulty": "Easy",
+        "question": "A can finish a job in 10 days. What fraction of the job does A finish in 1 day?",
+        "options": [
+            "1/5",
+            "1/10",
+            "10",
+            "1/100"
+        ],
+        "answer": "1/10"
+    },
+    {
+        "id": 86,
+        "topic": "Time and Work (basic)",
+        "difficulty": "Easy",
+        "question": "2 men finish a job in 6 days. How many days will 1 man take to finish it alone?",
+        "options": [
+            "3 days",
+            "8 days",
+            "12 days",
+            "10 days"
+        ],
+        "answer": "12 days"
+    },
+    {
+        "id": 87,
+        "topic": "Time and Work (basic)",
+        "difficulty": "Easy",
+        "question": "A and B each can finish a job in 6 days working alone. How long will they take working together?",
+        "options": [
+            "3 days",
+            "12 days",
+            "6 days",
+            "2 days"
+        ],
+        "answer": "3 days"
+    },
+    {
+        "id": 88,
+        "topic": "Time and Work (basic)",
+        "difficulty": "Easy",
+        "question": "4 workers paint a wall in 3 days. How many days will 6 workers take?",
+        "options": [
+            "4 days",
+            "1 day",
+            "3 days",
+            "2 days"
+        ],
+        "answer": "2 days"
+    },
+    {
+        "id": 89,
+        "topic": "Time and Work (basic)",
+        "difficulty": "Easy",
+        "question": "A pipe fills a tank in 8 hours. How long will it take to fill half the tank?",
+        "options": [
+            "2 hours",
+            "6 hours",
+            "4 hours",
+            "16 hours"
+        ],
+        "answer": "4 hours"
+    },
+    {
+        "id": 90,
+        "topic": "Time and Work (basic)",
+        "difficulty": "Easy",
+        "question": "A can finish a job in 15 days. What fraction of the job is done in 5 days?",
+        "options": [
+            "1/3",
+            "1/5",
+            "5/15 of the remaining work",
+            "3/5"
+        ],
+        "answer": "1/3"
+    },
+    {
+        "id": 91,
+        "topic": "Logical Puzzles",
+        "difficulty": "Easy",
+        "question": "How many months of the year have at least 28 days?",
+        "options": [
+            "1",
+            "2",
+            "12",
+            "11"
+        ],
+        "answer": "12"
+    },
+    {
+        "id": 92,
+        "topic": "Logical Puzzles",
+        "difficulty": "Easy",
+        "question": "Statements: All cats are animals. Some animals are wild. Which conclusion is definitely true?",
+        "options": [
+            "All animals are cats",
+            "All cats are animals",
+            "All cats are wild",
+            "No cat is wild"
+        ],
+        "answer": "All cats are animals"
+    },
+    {
+        "id": 93,
+        "topic": "Logical Puzzles",
+        "difficulty": "Easy",
+        "question": "I have hands but cannot clap. What am I?",
+        "options": [
+            "Robot",
+            "Statue",
+            "Clock",
+            "Glove"
+        ],
+        "answer": "Clock"
+    },
+    {
+        "id": 94,
+        "topic": "Logical Puzzles",
+        "difficulty": "Easy",
+        "question": "A farmer has 17 sheep. All but 9 die. How many sheep are left?",
+        "options": [
+            "8",
+            "9",
+            "17",
+            "26"
+        ],
+        "answer": "9"
+    },
+    {
+        "id": 95,
+        "topic": "Logical Puzzles",
+        "difficulty": "Easy",
+        "question": "Which is heavier: 1 kg of cotton or 1 kg of iron?",
+        "options": [
+            "1 kg of iron",
+            "Cannot be said",
+            "1 kg of cotton",
+            "Both weigh the same"
+        ],
+        "answer": "Both weigh the same"
+    },
+    {
+        "id": 96,
+        "topic": "Logical Puzzles",
+        "difficulty": "Easy",
+        "question": "If yesterday was Wednesday, what day will tomorrow be?",
+        "options": [
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+        ],
+        "answer": "Friday"
+    },
+    {
+        "id": 97,
+        "topic": "Logical Puzzles",
+        "difficulty": "Easy",
+        "question": "There are 3 apples and you take away 2. How many apples do you have?",
+        "options": [
+            "1",
+            "3",
+            "0",
+            "2"
+        ],
+        "answer": "2"
+    },
+    {
+        "id": 98,
+        "topic": "Logical Puzzles",
+        "difficulty": "Easy",
+        "question": "If 5 cats catch 5 mice in 5 minutes, how long will 1 cat take to catch 1 mouse?",
+        "options": [
+            "1 minute",
+            "5 minutes",
+            "25 minutes",
+            "10 minutes"
+        ],
+        "answer": "5 minutes"
+    },
+    {
+        "id": 99,
+        "topic": "Pattern Recognition",
+        "difficulty": "Easy",
+        "question": "Find the next pair: AB, CD, EF, ?",
+        "options": [
+            "FG",
+            "HI",
+            "GH",
+            "GI"
+        ],
+        "answer": "GH"
+    },
+    {
+        "id": 100,
+        "topic": "Pattern Recognition",
+        "difficulty": "Easy",
+        "question": "Find the next number: 1, 2, 4, 7, 11, ?",
+        "options": [
+            "15",
+            "16",
+            "17",
+            "14"
+        ],
+        "answer": "16"
+    },
+    {
+        "id": 101,
+        "topic": "Pattern Recognition",
+        "difficulty": "Easy",
+        "question": "Find the next pair: ZA, YB, XC, ?",
+        "options": [
+            "WD",
+            "WC",
+            "VD",
+            "XD"
+        ],
+        "answer": "WD"
+    },
+    {
+        "id": 102,
+        "topic": "Pattern Recognition",
+        "difficulty": "Easy",
+        "question": "Find the next number: 11, 22, 33, ?",
+        "options": [
+            "44",
+            "43",
+            "55",
+            "34"
+        ],
+        "answer": "44"
+    },
+    {
+        "id": 103,
+        "topic": "Pattern Recognition",
+        "difficulty": "Easy",
+        "question": "Find the next number: 1, 3, 6, 10, 15, ?",
+        "options": [
+            "20",
+            "22",
+            "21",
+            "25"
+        ],
+        "answer": "21"
+    },
+    {
+        "id": 104,
+        "topic": "Pattern Recognition",
+        "difficulty": "Easy",
+        "question": "Find the next group: ABD, BCE, CDF, ?",
+        "options": [
+            "DEF",
+            "DFG",
+            "CEG",
+            "DEG"
+        ],
+        "answer": "DEG"
+    },
+    {
+        "id": 105,
+        "topic": "Pattern Recognition",
+        "difficulty": "Easy",
+        "question": "Find the next number: 3, 5, 9, 17, 33, ?",
+        "options": [
+            "65",
+            "66",
+            "49",
+            "64"
+        ],
+        "answer": "65"
+    },
+    {
+        "id": 106,
+        "topic": "Pattern Recognition",
+        "difficulty": "Easy",
+        "question": "Find the next number: 81, 27, 9, 3, ?",
+        "options": [
+            "0",
+            "2",
+            "1",
+            "6"
+        ],
+        "answer": "1"
+    },
+    {
+        "id": 107,
+        "topic": "Visual and Spatial Reasoning",
+        "difficulty": "Easy",
+        "question": "How many faces does a cube have?",
+        "options": [
+            "8",
+            "6",
+            "4",
+            "12"
+        ],
+        "answer": "6"
+    },
+    {
+        "id": 108,
+        "topic": "Visual and Spatial Reasoning",
+        "difficulty": "Easy",
+        "question": "How many edges does a cube have?",
+        "options": [
+            "12",
+            "6",
+            "8",
+            "16"
+        ],
+        "answer": "12"
+    },
+    {
+        "id": 109,
+        "topic": "Visual and Spatial Reasoning",
+        "difficulty": "Easy",
+        "question": "A square sheet of paper is folded in half along its diagonal. What shape do you get?",
+        "options": [
+            "Rectangle",
+            "Triangle",
+            "Smaller square",
+            "Pentagon"
+        ],
+        "answer": "Triangle"
+    },
+    {
+        "id": 110,
+        "topic": "Visual and Spatial Reasoning",
+        "difficulty": "Easy",
+        "question": "What is the mirror image of the letter \"b\" when a vertical mirror is placed on its right side?",
+        "options": [
+            "p",
+            "q",
+            "d",
+            "b"
+        ],
+        "answer": "d"
+    },
+    {
+        "id": 111,
+        "topic": "Visual and Spatial Reasoning",
+        "difficulty": "Easy",
+        "question": "What is the angle between the hour and minute hands of a clock at exactly 3:00?",
+        "options": [
+            "60 degrees",
+            "90 degrees",
+            "120 degrees",
+            "180 degrees"
+        ],
+        "answer": "90 degrees"
+    },
+    {
+        "id": 112,
+        "topic": "Visual and Spatial Reasoning",
+        "difficulty": "Easy",
+        "question": "How many triangles are there in a square with both diagonals drawn?",
+        "options": [
+            "4",
+            "6",
+            "8",
+            "10"
+        ],
+        "answer": "8"
+    },
+    {
+        "id": 113,
+        "topic": "Visual and Spatial Reasoning",
+        "difficulty": "Easy",
+        "question": "How many corners (vertices) does a cube have?",
+        "options": [
+            "6",
+            "12",
+            "10",
+            "8"
+        ],
+        "answer": "8"
+    },
+    {
+        "id": 114,
+        "topic": "Visual and Spatial Reasoning",
+        "difficulty": "Easy",
+        "question": "What does the capital letter \"N\" look like when rotated by 180 degrees?",
+        "options": [
+            "M",
+            "Z",
+            "N",
+            "W"
+        ],
+        "answer": "N"
+    }
+]

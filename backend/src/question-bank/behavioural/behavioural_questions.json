@@ -1,0 +1,632 @@
+[
+  {
+    "id": 1,
+    "category": "Problem-solving and critical thinking",
+    "topic": "Problem-solving and critical thinking",
+    "question": "I enjoy solving problems even when they require considerable effort.",
+    "statement": "I enjoy solving problems even when they require considerable effort.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 2,
+    "category": "Problem-solving and critical thinking",
+    "topic": "Problem-solving and critical thinking",
+    "question": "I usually try to understand the reason behind something rather than simply memorising it.",
+    "statement": "I usually try to understand the reason behind something rather than simply memorising it.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 3,
+    "category": "Problem-solving and critical thinking",
+    "topic": "Problem-solving and critical thinking",
+    "question": "When I face a difficult task, I try different approaches until I find a solution.",
+    "statement": "When I face a difficult task, I try different approaches until I find a solution.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 4,
+    "category": "Problem-solving and critical thinking",
+    "topic": "Problem-solving and critical thinking",
+    "question": "I enjoy analysing information before making an important decision.",
+    "statement": "I enjoy analysing information before making an important decision.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 5,
+    "category": "Problem-solving and critical thinking",
+    "topic": "Problem-solving and critical thinking",
+    "question": "I feel motivated when I encounter a challenging problem.",
+    "statement": "I feel motivated when I encounter a challenging problem.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 6,
+    "category": "Creativity and curiosity",
+    "topic": "Creativity and curiosity",
+    "question": "I often think of different ways to approach the same problem.",
+    "statement": "I often think of different ways to approach the same problem.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 7,
+    "category": "Creativity and curiosity",
+    "topic": "Creativity and curiosity",
+    "question": "I enjoy learning about topics that I have never explored before.",
+    "statement": "I enjoy learning about topics that I have never explored before.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 8,
+    "category": "Creativity and curiosity",
+    "topic": "Creativity and curiosity",
+    "question": "I like experimenting with new ideas, even when the outcome is uncertain.",
+    "statement": "I like experimenting with new ideas, even when the outcome is uncertain.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 9,
+    "category": "Creativity and curiosity",
+    "topic": "Creativity and curiosity",
+    "question": "I often ask questions when something interests me.",
+    "statement": "I often ask questions when something interests me.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 10,
+    "category": "Creativity and curiosity",
+    "topic": "Creativity and curiosity",
+    "question": "I enjoy activities that allow me to express my creativity.",
+    "statement": "I enjoy activities that allow me to express my creativity.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 11,
+    "category": "Teamwork and communication",
+    "topic": "Teamwork and communication",
+    "question": "I enjoy working with other people to achieve a common goal.",
+    "statement": "I enjoy working with other people to achieve a common goal.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 12,
+    "category": "Teamwork and communication",
+    "topic": "Teamwork and communication",
+    "question": "I feel comfortable sharing my ideas in a group.",
+    "statement": "I feel comfortable sharing my ideas in a group.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 13,
+    "category": "Teamwork and communication",
+    "topic": "Teamwork and communication",
+    "question": "I listen carefully to other people's opinions, even when they differ from mine.",
+    "statement": "I listen carefully to other people's opinions, even when they differ from mine.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 14,
+    "category": "Teamwork and communication",
+    "topic": "Teamwork and communication",
+    "question": "I prefer discussing problems with others rather than handling everything alone.",
+    "statement": "I prefer discussing problems with others rather than handling everything alone.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 15,
+    "category": "Teamwork and communication",
+    "topic": "Teamwork and communication",
+    "question": "I enjoy helping others understand something that I know well.",
+    "statement": "I enjoy helping others understand something that I know well.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 16,
+    "category": "Independence and initiative",
+    "topic": "Independence and initiative",
+    "question": "I prefer taking responsibility for completing my tasks independently.",
+    "statement": "I prefer taking responsibility for completing my tasks independently.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 17,
+    "category": "Independence and initiative",
+    "topic": "Independence and initiative",
+    "question": "I usually start working on a task without waiting for someone to remind me.",
+    "statement": "I usually start working on a task without waiting for someone to remind me.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 18,
+    "category": "Independence and initiative",
+    "topic": "Independence and initiative",
+    "question": "I feel confident making decisions when I have enough information.",
+    "statement": "I feel confident making decisions when I have enough information.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 19,
+    "category": "Independence and initiative",
+    "topic": "Independence and initiative",
+    "question": "I like taking the lead when working on group activities.",
+    "statement": "I like taking the lead when working on group activities.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 20,
+    "category": "Independence and initiative",
+    "topic": "Independence and initiative",
+    "question": "I take responsibility for my mistakes and try to learn from them.",
+    "statement": "I take responsibility for my mistakes and try to learn from them.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 21,
+    "category": "Adaptability and resilience",
+    "topic": "Adaptability and resilience",
+    "question": "I can adjust easily when plans change unexpectedly.",
+    "statement": "I can adjust easily when plans change unexpectedly.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 22,
+    "category": "Adaptability and resilience",
+    "topic": "Adaptability and resilience",
+    "question": "I remain motivated even when I do not succeed on my first attempt.",
+    "statement": "I remain motivated even when I do not succeed on my first attempt.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 23,
+    "category": "Adaptability and resilience",
+    "topic": "Adaptability and resilience",
+    "question": "I am comfortable learning new skills when a situation requires them.",
+    "statement": "I am comfortable learning new skills when a situation requires them.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 24,
+    "category": "Adaptability and resilience",
+    "topic": "Adaptability and resilience",
+    "question": "I can work effectively even when I have limited guidance.",
+    "statement": "I can work effectively even when I have limited guidance.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 25,
+    "category": "Adaptability and resilience",
+    "topic": "Adaptability and resilience",
+    "question": "I treat constructive criticism as an opportunity to improve.",
+    "statement": "I treat constructive criticism as an opportunity to improve.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 26,
+    "category": "Learning and work preferences",
+    "topic": "Learning and work preferences",
+    "question": "I prefer practical activities where I can apply what I learn.",
+    "statement": "I prefer practical activities where I can apply what I learn.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 27,
+    "category": "Learning and work preferences",
+    "topic": "Learning and work preferences",
+    "question": "I enjoy understanding theoretical concepts in depth.",
+    "statement": "I enjoy understanding theoretical concepts in depth.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 28,
+    "category": "Learning and work preferences",
+    "topic": "Learning and work preferences",
+    "question": "I like organising my work before starting a task.",
+    "statement": "I like organising my work before starting a task.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 29,
+    "category": "Learning and work preferences",
+    "topic": "Learning and work preferences",
+    "question": "I feel motivated when I have clear goals to work towards.",
+    "statement": "I feel motivated when I have clear goals to work towards.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  },
+  {
+    "id": 30,
+    "category": "Learning and work preferences",
+    "topic": "Learning and work preferences",
+    "question": "I enjoy working on tasks that require patience and attention to detail.",
+    "statement": "I enjoy working on tasks that require patience and attention to detail.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Neither Agree nor Disagree",
+      "Agree",
+      "Strongly Agree"
+    ],
+    "scale": [
+      { "score": 1, "response": "Strongly Disagree" },
+      { "score": 2, "response": "Disagree" },
+      { "score": 3, "response": "Neither Agree nor Disagree" },
+      { "score": 4, "response": "Agree" },
+      { "score": 5, "response": "Strongly Agree" }
+    ]
+  }
+]

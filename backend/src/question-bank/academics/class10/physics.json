@@ -1,0 +1,272 @@
+[
+  {
+    "id": 1,
+    "subject": "Physics",
+    "topic": "Units and Measurement",
+    "difficulty": "Easy",
+    "question": "What is the SI unit of force?",
+    "options": ["Joule", "Pascal", "Watt", "Newton"],
+    "answer": "Newton"
+  },
+  {
+    "id": 2,
+    "subject": "Physics",
+    "topic": "Gravitation",
+    "difficulty": "Easy",
+    "question": "What is the approximate value of acceleration due to gravity on Earth's surface?",
+    "options": ["9.8 m/s^2", "1.6 m/s^2", "10.8 m/s^2", "98 m/s^2"],
+    "answer": "9.8 m/s^2"
+  },
+  {
+    "id": 3,
+    "subject": "Physics",
+    "topic": "Current Electricity",
+    "difficulty": "Easy",
+    "question": "A 6 V battery is connected across a 3 ohm resistor. What current flows through it?",
+    "options": ["18 A", "0.5 A", "9 A", "2 A"],
+    "answer": "2 A"
+  },
+  {
+    "id": 4,
+    "subject": "Physics",
+    "topic": "Work, Energy and Power",
+    "difficulty": "Moderate",
+    "question": "What is the kinetic energy of a 2 kg object moving at 3 m/s?",
+    "options": ["6 J", "12 J", "9 J", "18 J"],
+    "answer": "9 J"
+  },
+  {
+    "id": 5,
+    "subject": "Physics",
+    "topic": "Optics",
+    "difficulty": "Easy",
+    "question": "What is the approximate speed of light in vacuum?",
+    "options": ["3 x 10^6 m/s", "3 x 10^8 m/s", "3 x 10^10 m/s", "3 x 10^5 m/s"],
+    "answer": "3 x 10^8 m/s"
+  },
+  {
+    "id": 6,
+    "subject": "Physics",
+    "topic": "Electrostatics",
+    "difficulty": "Easy",
+    "question": "What is the SI unit of capacitance?",
+    "options": ["Henry", "Tesla", "Farad", "Weber"],
+    "answer": "Farad"
+  },
+  {
+    "id": 7,
+    "subject": "Physics",
+    "topic": "Laws of Motion",
+    "difficulty": "Easy",
+    "question": "What is the momentum of a 5 kg object moving at 4 m/s?",
+    "options": ["9 kg m/s", "20 kg m/s", "1.25 kg m/s", "80 kg m/s"],
+    "answer": "20 kg m/s"
+  },
+  {
+    "id": 8,
+    "subject": "Physics",
+    "topic": "Optics",
+    "difficulty": "Moderate",
+    "question": "A concave mirror has a radius of curvature of 20 cm. What is its focal length?",
+    "options": ["10 cm", "20 cm", "40 cm", "5 cm"],
+    "answer": "10 cm"
+  },
+  {
+    "id": 9,
+    "subject": "Physics",
+    "topic": "Optics",
+    "difficulty": "Moderate",
+    "question": "What is the power of a lens whose focal length is 50 cm?",
+    "options": ["0.5 D", "5 D", "2 D", "20 D"],
+    "answer": "2 D"
+  },
+  {
+    "id": 10,
+    "subject": "Physics",
+    "topic": "Laws of Motion",
+    "difficulty": "Easy",
+    "question": "According to Newton's third law, the action and reaction forces are:",
+    "options": ["Equal and opposite, acting on different bodies", "Equal and in the same direction", "Unequal and opposite", "Equal and opposite, acting on the same body"],
+    "answer": "Equal and opposite, acting on different bodies"
+  },
+  {
+    "id": 11,
+    "subject": "Physics",
+    "topic": "Kinematics",
+    "difficulty": "Moderate",
+    "question": "For a given speed of projection, at what angle of projection is the horizontal range of a projectile maximum?",
+    "options": ["30 degrees", "90 degrees", "60 degrees", "45 degrees"],
+    "answer": "45 degrees"
+  },
+  {
+    "id": 12,
+    "subject": "Physics",
+    "topic": "Current Electricity",
+    "difficulty": "Moderate",
+    "question": "Two 4 ohm resistors are connected in parallel. What is the equivalent resistance?",
+    "options": ["8 ohm", "2 ohm", "4 ohm", "1 ohm"],
+    "answer": "2 ohm"
+  },
+  {
+    "id": 13,
+    "subject": "Physics",
+    "topic": "Circular Motion",
+    "difficulty": "Moderate",
+    "question": "What is the work done by the centripetal force on an object in uniform circular motion?",
+    "options": ["Maximum", "Zero", "Negative", "Equal to the kinetic energy"],
+    "answer": "Zero"
+  },
+  {
+    "id": 14,
+    "subject": "Physics",
+    "topic": "Gravitation",
+    "difficulty": "Moderate",
+    "question": "What is the approximate escape velocity from the surface of the Earth?",
+    "options": ["7.9 km/s", "3.0 km/s", "11.2 km/s", "25 km/s"],
+    "answer": "11.2 km/s"
+  },
+  {
+    "id": 15,
+    "subject": "Physics",
+    "topic": "Waves",
+    "difficulty": "Moderate",
+    "question": "A wave has a time period of 0.02 s. What is its frequency?",
+    "options": ["50 Hz", "0.02 Hz", "20 Hz", "200 Hz"],
+    "answer": "50 Hz"
+  },
+  {
+    "id": 16,
+    "subject": "Physics",
+    "topic": "Kinematics",
+    "difficulty": "Moderate",
+    "question": "An object is dropped from a height of 45 m. How long does it take to reach the ground? (Take g = 10 m/s^2)",
+    "options": ["4 s", "9 s", "2 s", "3 s"],
+    "answer": "3 s"
+  },
+  {
+    "id": 17,
+    "subject": "Physics",
+    "topic": "Electromagnetic Induction",
+    "difficulty": "Moderate",
+    "question": "Lenz's law is a consequence of the conservation of:",
+    "options": ["Charge", "Momentum", "Energy", "Mass"],
+    "answer": "Energy"
+  },
+  {
+    "id": 18,
+    "subject": "Physics",
+    "topic": "Dual Nature of Matter",
+    "difficulty": "Moderate",
+    "question": "The photoelectric effect supports which nature of light?",
+    "options": ["Wave nature", "Particle nature", "Polarisation", "Diffraction"],
+    "answer": "Particle nature"
+  },
+  {
+    "id": 19,
+    "subject": "Physics",
+    "topic": "Nuclei",
+    "difficulty": "Moderate",
+    "question": "What fraction of a radioactive sample remains after 3 half-lives?",
+    "options": ["1/3", "1/6", "1/8", "1/4"],
+    "answer": "1/8"
+  },
+  {
+    "id": 20,
+    "subject": "Physics",
+    "topic": "Units and Measurement",
+    "difficulty": "Moderate",
+    "question": "What is the dimensional formula of work?",
+    "options": ["M L T^-2", "M L^2 T^-2", "M L^2 T^-3", "M L^-1 T^-2"],
+    "answer": "M L^2 T^-2"
+  },
+  {
+    "id": 21,
+    "subject": "Physics",
+    "topic": "Thermal Properties",
+    "difficulty": "Easy",
+    "question": "Which mode of heat transfer does not require a material medium?",
+    "options": ["Conduction", "Convection", "Radiation", "Both conduction and convection"],
+    "answer": "Radiation"
+  },
+  {
+    "id": 22,
+    "subject": "Physics",
+    "topic": "Current Electricity",
+    "difficulty": "Easy",
+    "question": "How much electrical energy does a 100 W bulb consume in 5 hours?",
+    "options": ["0.5 kWh", "5 kWh", "50 kWh", "0.05 kWh"],
+    "answer": "0.5 kWh"
+  },
+  {
+    "id": 23,
+    "subject": "Physics",
+    "topic": "Electrostatics",
+    "difficulty": "Moderate",
+    "question": "If the distance between two point charges is doubled, the electrostatic force between them becomes:",
+    "options": ["Double", "Half", "One fourth", "Four times"],
+    "answer": "One fourth"
+  },
+  {
+    "id": 24,
+    "subject": "Physics",
+    "topic": "Optics",
+    "difficulty": "Moderate",
+    "question": "Total internal reflection can occur when light travels from:",
+    "options": ["A rarer to a denser medium", "A denser to a rarer medium", "Air to vacuum only", "Any medium to any medium"],
+    "answer": "A denser to a rarer medium"
+  },
+  {
+    "id": 25,
+    "subject": "Physics",
+    "topic": "Magnetism",
+    "difficulty": "Moderate",
+    "question": "The magnetic field inside a long, ideal solenoid is:",
+    "options": ["Zero", "Non-uniform and weak", "Uniform and parallel to the axis", "Circular around the axis"],
+    "answer": "Uniform and parallel to the axis"
+  },
+  {
+    "id": 26,
+    "subject": "Physics",
+    "topic": "Dual Nature of Matter",
+    "difficulty": "Difficult",
+    "question": "The de Broglie wavelength of a particle is inversely proportional to its:",
+    "options": ["Charge", "Mass only", "Momentum", "Volume"],
+    "answer": "Momentum"
+  },
+  {
+    "id": 27,
+    "subject": "Physics",
+    "topic": "Thermodynamics",
+    "difficulty": "Difficult",
+    "question": "What is the efficiency of a Carnot engine working between 600 K and 300 K?",
+    "options": ["25%", "75%", "100%", "50%"],
+    "answer": "50%"
+  },
+  {
+    "id": 28,
+    "subject": "Physics",
+    "topic": "Oscillations",
+    "difficulty": "Moderate",
+    "question": "The time period of a simple pendulum depends on:",
+    "options": ["The mass of the bob", "The amplitude only", "The length of the pendulum and g", "The material of the bob"],
+    "answer": "The length of the pendulum and g"
+  },
+  {
+    "id": 29,
+    "subject": "Physics",
+    "topic": "Alternating Current",
+    "difficulty": "Easy",
+    "question": "A transformer works on the principle of:",
+    "options": ["Self induction", "Mutual induction", "Electrolysis", "Photoelectric effect"],
+    "answer": "Mutual induction"
+  },
+  {
+    "id": 30,
+    "subject": "Physics",
+    "topic": "Atoms",
+    "difficulty": "Difficult",
+    "question": "In the Bohr model of the hydrogen atom, the radius of the nth orbit is proportional to:",
+    "options": ["n", "1/n", "n^2", "1/n^2"],
+    "answer": "n^2"
+  }
+]

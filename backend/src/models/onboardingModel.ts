@@ -1,5 +1,5 @@
 import { pool, query } from '../config/db';
-import { ValidatedOnboardingInput } from '../validators/onboardingValidator';
+import { ValidatedOnboardingInput, ValidatedStage1Input } from '../validators/onboardingValidator';
 import { StudentProfile, FamilyProfile, AcademicRecord, AcademicSubject } from '../types';
 
 export interface FullOnboardingResult {
@@ -265,6 +265,85 @@ export async function updateParentDetails(
       data.father_occupation || null,
       data.mother_name,
       data.mother_occupation || null,
+    ]);
+
+    await client.query('COMMIT');
+
+    return {
+      studentProfile,
+      familyProfiles: familyRes.rows,
+    };
+  } catch (error) {
+    await client.query('ROLLBACK');
+    throw error;
+  } finally {
+    client.release();
+  }
+}
+
+/**
+ * Saves Stage 1 personal & family details (Student Details and Parent/Guardian Details).
+ */
+export async function savePersonalDetails(
+  userId: string | number,
+  data: ValidatedStage1Input
+): Promise<{ studentProfile: StudentProfile; familyProfiles: FamilyProfile[] }> {
+  const client = await pool.connect();
+
+  try {
+    await client.query('BEGIN');
+
+    const studentProfileSql = `
+      INSERT INTO student_profiles (
+        user_id, student_name, current_class, phone_number, contact_email,
+        father_name, father_occupation, mother_name, mother_occupation, is_completed
+      )
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, false)
+      ON CONFLICT (user_id) DO UPDATE SET
+        student_name = EXCLUDED.student_name,
+        current_class = EXCLUDED.current_class,
+        phone_number = EXCLUDED.phone_number,
+        contact_email = EXCLUDED.contact_email,
+        father_name = EXCLUDED.father_name,
+        father_occupation = EXCLUDED.father_occupation,
+        mother_name = EXCLUDED.mother_name,
+        mother_occupation = EXCLUDED.mother_occupation,
+        updated_at = CURRENT_TIMESTAMP
+      RETURNING *;
+    `;
+
+    const studentRes = await client.query(studentProfileSql, [
+      userId,
+      data.student_name,
+      data.current_class,
+      data.phone_number || null,
+      data.contact_email || null,
+      data.parent_1_name,
+      data.parent_1_occupation || null,
+      data.parent_2_name,
+      data.parent_2_occupation || null,
+    ]);
+    const studentProfile: StudentProfile = studentRes.rows[0];
+
+    // Resync family_profiles
+    await client.query(
+      `DELETE FROM family_profiles WHERE student_profile_id = $1;`,
+      [studentProfile.id]
+    );
+
+    const familyInsertSql = `
+      INSERT INTO family_profiles (student_profile_id, relationship, name, occupation)
+      VALUES 
+        ($1, 'PARENT_1', $2, $3),
+        ($1, 'PARENT_2', $4, $5)
+      RETURNING *;
+    `;
+    const familyRes = await client.query(familyInsertSql, [
+      studentProfile.id,
+      data.parent_1_name,
+      data.parent_1_occupation || null,
+      data.parent_2_name,
+      data.parent_2_occupation || null,
     ]);
 
     await client.query('COMMIT');

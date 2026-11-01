@@ -24,6 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 // API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/onboarding', onboardingRoutes);
+app.use('/api/v1/profile/onboarding', onboardingRoutes);
 
 // Health Check Endpoint with PostgreSQL test query
 app.get('/api/health', async (req: Request, res: Response) => {

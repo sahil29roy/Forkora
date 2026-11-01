@@ -135,3 +135,72 @@ export const onboardingSchema = z.preprocess((val: any) => {
 }));
 
 export type ValidatedOnboardingInput = z.infer<typeof onboardingSchema>;
+
+// Stage 1 Schema: Student and Parent/Guardian Details
+export const stage1Schema = z.preprocess((val: any) => {
+  if (!val || typeof val !== 'object') return val;
+
+  const student = val.studentDetails || val.student_details || {};
+  const parent = val.parentDetails || val.parent_details || val.familyDetails || val.family_details || {};
+  const parent1 = parent.parent1 || parent.parent_1 || {};
+  const parent2 = parent.parent2 || parent.parent_2 || {};
+
+  const student_name = val.student_name ?? val.studentName ?? student.student_name ?? student.studentName;
+  const current_class = val.current_class ?? val.currentClass ?? student.current_class ?? student.currentClass;
+  const phone_number = val.phone_number ?? val.phoneNumber ?? student.phone_number ?? student.phoneNumber;
+  const contact_email = val.contact_email ?? val.contactEmail ?? student.contact_email ?? student.contactEmail;
+
+  const parent_1_name = val.parent_1_name ?? val.parent1Name ?? parent.parent_1_name ?? parent.parent1Name ?? parent1.name ?? val.father_name ?? val.fatherName ?? parent.father_name ?? parent.fatherName;
+  const parent_1_occupation = val.parent_1_occupation ?? val.parent1Occupation ?? parent.parent_1_occupation ?? parent.parent1Occupation ?? parent1.occupation ?? val.father_occupation ?? val.fatherOccupation ?? parent.father_occupation ?? parent.fatherOccupation;
+
+  const parent_2_name = val.parent_2_name ?? val.parent2Name ?? parent.parent_2_name ?? parent.parent2Name ?? parent2.name ?? val.mother_name ?? val.motherName ?? parent.mother_name ?? parent.motherName;
+  const parent_2_occupation = val.parent_2_occupation ?? val.parent2Occupation ?? parent.parent_2_occupation ?? parent.parent2Occupation ?? parent2.occupation ?? val.mother_occupation ?? val.motherOccupation ?? parent.mother_occupation ?? parent.motherOccupation;
+
+  return {
+    student_name,
+    current_class: Number(current_class),
+    phone_number: phone_number ? String(phone_number).trim() : null,
+    contact_email: contact_email ? String(contact_email).trim() : null,
+    parent_1_name,
+    parent_1_occupation: parent_1_occupation ? String(parent_1_occupation).trim() : null,
+    parent_2_name,
+    parent_2_occupation: parent_2_occupation ? String(parent_2_occupation).trim() : null,
+  };
+}, z.object({
+  student_name: z
+    .string({ message: 'Student name is required' })
+    .trim()
+    .min(2, 'Student name must be at least 2 characters'),
+  current_class: z
+    .number({ message: 'Current class is required' })
+    .int('Current class must be an integer')
+    .min(1, 'Current class must be between 1 and 12')
+    .max(12, 'Current class must be between 1 and 12'),
+  phone_number: z
+    .string()
+    .trim()
+    .min(5, 'Phone number must be at least 5 characters')
+    .optional()
+    .nullable()
+    .or(z.literal('')),
+  contact_email: z
+    .string()
+    .trim()
+    .email('Invalid contact email format')
+    .optional()
+    .nullable()
+    .or(z.literal('')),
+  parent_1_name: z
+    .string({ message: 'Parent 1 name is required' })
+    .trim()
+    .min(2, 'Parent 1 name must be at least 2 characters'),
+  parent_1_occupation: z.string().trim().optional().nullable().or(z.literal('')),
+  parent_2_name: z
+    .string({ message: 'Parent 2 name is required' })
+    .trim()
+    .min(2, 'Parent 2 name must be at least 2 characters'),
+  parent_2_occupation: z.string().trim().optional().nullable().or(z.literal('')),
+}));
+
+export type ValidatedStage1Input = z.infer<typeof stage1Schema>;
+

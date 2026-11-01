@@ -1,11 +1,12 @@
 import { Request, Response, NextFunction } from 'express';
 import { z } from 'zod';
 import { AuthenticatedRequest } from '../types';
-import { onboardingSchema, VALID_BOARDS, VALID_STREAMS } from '../validators/onboardingValidator';
+import { onboardingSchema, stage1Schema, VALID_BOARDS, VALID_STREAMS } from '../validators/onboardingValidator';
 import {
   saveOnboardingProfile,
   getOnboardingProfileByUserId,
   updateParentDetails,
+  savePersonalDetails,
 } from '../models/onboardingModel';
 
 const updateParentsSchema = z.object({
@@ -196,4 +197,41 @@ export function getAcademicCatalog(req: Request, res: Response): void {
     status: 'success',
     data: catalog,
   });
+}
+
+/**
+ * Saves Stage 1 (Student and Parent/Guardian Details) independently.
+ */
+export async function savePersonalStage1(
+  req: AuthenticatedRequest,
+  res: Response,
+  next: NextFunction
+): Promise<void> {
+  try {
+    const userId = req.user?.id;
+    if (!userId) {
+      res.status(401).json({ status: 'error', message: 'Authentication required.' });
+      return;
+    }
+
+    const parseResult = stage1Schema.safeParse(req.body);
+    if (!parseResult.success) {
+      res.status(400).json({
+        status: 'error',
+        message: 'Validation failed for student and parent details.',
+        errors: parseResult.error.flatten(),
+      });
+      return;
+    }
+
+    const saved = await savePersonalDetails(userId, parseResult.data);
+
+    res.status(200).json({
+      status: 'success',
+      message: 'Personal and family details saved successfully!',
+      data: saved,
+    });
+  } catch (error) {
+    next(error);
+  }
 }

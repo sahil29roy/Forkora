@@ -11,6 +11,10 @@ import { Terms } from '@/pages/Terms'
 import { Privacy } from '@/pages/Privacy'
 import { AssessmentOverviewPage } from '@/pages/assessment/AssessmentOverviewPage'
 import { AssessmentIntro } from '@/pages/assessment/AssessmentIntro'
+import { AssessmentInstructionsPage } from '@/pages/assessment/AssessmentInstructionsPage'
+import { AssessmentSessionPage } from '@/pages/assessment/AssessmentSessionPage'
+import { AssessmentReviewPage } from '@/pages/assessment/AssessmentReviewPage'
+import { AssessmentResultsPage } from '@/pages/assessment/AssessmentResultsPage'
 
 function App() {
   return (
@@ -27,6 +31,10 @@ function App() {
             <Route path="/assessments" element={<AssessmentOverviewPage />} />
             <Route path="/assessment" element={<AssessmentOverviewPage />} />
             <Route path="/assessment/intro" element={<AssessmentIntro />} />
+            <Route path="/assessments/:moduleId/instructions" element={<AssessmentInstructionsPage />} />
+            <Route path="/assessments/:moduleId/:attemptId" element={<AssessmentSessionPage />} />
+            <Route path="/assessments/:moduleId/:attemptId/review" element={<AssessmentReviewPage />} />
+            <Route path="/assessments/:moduleId/:attemptId/results" element={<AssessmentResultsPage />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="*" element={<Navigate to="/" replace />} />

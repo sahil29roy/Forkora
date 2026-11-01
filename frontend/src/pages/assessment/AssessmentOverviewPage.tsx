@@ -1,17 +1,37 @@
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
+import { AlertCircle, RefreshCw } from 'lucide-react'
 import { AppLayout } from '@/components/layout/AppLayout'
 import { AssessmentHero } from '@/components/assessment/AssessmentHero'
-import { AssessmentModulesGrid } from '@/components/assessment/AssessmentModulesGrid'
-import { AssessmentStatusCard } from '@/components/assessment/AssessmentStatusCard'
+import { AssessmentModuleCard } from '@/components/assessment/AssessmentModuleCard'
+import { AssessmentOverallProgress } from '@/components/assessment/AssessmentOverallProgress'
 import { BeforeYouStartCard } from '@/components/assessment/BeforeYouStartCard'
-import type { AssessmentModule } from '@/types/assessment.types'
+import { Button } from '@/components/ui/button'
+import { useAuth } from '@/context/AuthContext'
+import { assessmentService } from '@/services/assessment.service'
+import type { ModuleProgressDTO } from '@/types/assessment.types'
 
 export function AssessmentOverviewPage() {
-  const [selectedModule, setSelectedModule] = useState<AssessmentModule | null>(null)
+  const { token } = useAuth()
+  const [modules, setModules] = useState<ModuleProgressDTO[]>([])
+  const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [error, setError] = useState<string | null>(null)
 
-  const handleSelectModule = (mod: AssessmentModule) => {
-    setSelectedModule(mod)
-  }
+  const fetchModules = useCallback(async () => {
+    setIsLoading(true)
+    setError(null)
+    try {
+      const data = await assessmentService.getModules(token)
+      setModules(data)
+    } catch (err: any) {
+      setError(err?.message || 'Failed to load assessment modules. Please check your connection.')
+    } finally {
+      setIsLoading(false)
+    }
+  }, [token])
+
+  useEffect(() => {
+    fetchModules()
+  }, [fetchModules])
 
   return (
     <AppLayout
@@ -21,79 +41,93 @@ export function AssessmentOverviewPage() {
       ]}
     >
       <div className="space-y-6 sm:space-y-8 animate-fade-in text-left">
-        {/* Page Top Heading & Subtitle */}
+        {/* Page Heading & Subtitle matching specifications */}
         <div className="space-y-1.5">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground">
-            Career Assessment Overview
+            Your Assessments
           </h1>
           <p className="text-xs sm:text-sm lg:text-base text-muted max-w-2xl leading-relaxed">
-            Understand your interests, strengths, learning preferences, and work preferences through a set of guided assessments.
+            Explore your academic strengths, aptitude, behavioural tendencies and decision-making approach.
           </p>
         </div>
 
+        {/* Error State */}
+        {error && (
+          <div className="p-4 rounded-2xl bg-destructive/10 border border-destructive/25 flex items-center justify-between text-xs sm:text-sm text-destructive">
+            <div className="flex items-center gap-2.5">
+              <AlertCircle className="h-4 w-4 shrink-0" />
+              <span>{error}</span>
+            </div>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={fetchModules}
+              className="h-8 gap-1.5 text-xs border-destructive/30 hover:bg-destructive/10 text-destructive"
+            >
+              <RefreshCw className="h-3.5 w-3.5" />
+              <span>Retry</span>
+            </Button>
+          </div>
+        )}
+
         {/* Two-Column Responsive Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
-          {/* Left Column (Hero & Modules Grid: ~68% on Desktop) */}
+          {/* Left Column (Hero & 2x2 Modules Grid) */}
           <div className="lg:col-span-8 space-y-6 sm:space-y-8">
-            {/* Hero Banner Section */}
             <AssessmentHero />
 
-            {/* Assessment Modules Grid */}
-            <AssessmentModulesGrid onSelectModule={handleSelectModule} />
+            <section className="space-y-4">
+              <div className="space-y-1">
+                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">
+                  Assessment Modules
+                </h2>
+                <p className="text-xs sm:text-sm text-muted">
+                  Each module evaluates a distinct facet of your abilities. You can complete them individually at your own pace.
+                </p>
+              </div>
+
+              {isLoading ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                  {[1, 2, 3, 4].map((i) => (
+                    <div
+                      key={i}
+                      className="rounded-2xl border border-border/70 bg-card p-6 space-y-4 animate-pulse h-60 flex flex-col justify-between"
+                    >
+                      <div className="space-y-3">
+                        <div className="h-10 w-10 bg-muted/20 rounded-xl" />
+                        <div className="h-4 w-2/3 bg-muted/20 rounded-md" />
+                        <div className="h-3 w-5/6 bg-muted/15 rounded-md" />
+                      </div>
+                      <div className="h-8 bg-muted/20 rounded-xl" />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                  {modules.map((mod) => (
+                    <AssessmentModuleCard
+                      key={mod.module_id}
+                      module={mod}
+                      onRetry={fetchModules}
+                    />
+                  ))}
+                </div>
+              )}
+            </section>
+
+            {/* Bottom Overall Progress Component */}
+            {!isLoading && modules.length > 0 && (
+              <AssessmentOverallProgress modules={modules} />
+            )}
           </div>
 
-          {/* Right Column (Status & Before You Start: ~32% on Desktop) */}
+          {/* Right Column (Informational & Guidance) */}
           <div className="lg:col-span-4 space-y-5 sm:space-y-6">
-            {/* Assessment Status Panel */}
-            <AssessmentStatusCard />
-
-            {/* Before You Start Informational Card */}
             <BeforeYouStartCard />
           </div>
         </div>
       </div>
-
-      {/* Selected Module Detail / Notice Modal if user clicks Start Module */}
-      {selectedModule && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 animate-fade-in select-none">
-          <div
-            className="fixed inset-0 bg-black/60 backdrop-blur-xs"
-            onClick={() => setSelectedModule(null)}
-            aria-hidden="true"
-          />
-          <div className="relative z-10 w-full max-w-md rounded-2xl border border-border bg-card p-6 shadow-xl space-y-4 text-left">
-            <div className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                <selectedModule.icon className="h-5 w-5" />
-              </div>
-              <div>
-                <h3 className="text-base font-bold text-foreground">
-                  {selectedModule.title}
-                </h3>
-                <p className="text-xs text-muted">Module selected</p>
-              </div>
-            </div>
-
-            <p className="text-xs sm:text-sm text-muted leading-relaxed">
-              {selectedModule.description}
-            </p>
-
-            <div className="p-3.5 rounded-xl border border-border/60 bg-muted/20 text-xs text-muted-foreground leading-relaxed">
-              Assessment questions and response collection for this module will be connected once the backend assessment engine is configured.
-            </div>
-
-            <div className="pt-2 flex justify-end">
-              <button
-                type="button"
-                onClick={() => setSelectedModule(null)}
-                className="h-9 px-4 rounded-xl bg-primary hover:bg-primary-hover text-primary-foreground font-semibold text-xs cursor-pointer transition-colors"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </AppLayout>
   )
 }

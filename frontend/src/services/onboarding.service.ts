@@ -78,4 +78,79 @@ export const onboardingService = {
       return null
     }
   },
+
+  /**
+   * Submits Stage 2 Class 10th academic details to the backend API.
+   */
+  async submitStage2Academic(
+    payload: any,
+    token: string | null
+  ): Promise<{ status: string; message: string; data?: any }> {
+    try {
+      const res = await fetch(ONBOARDING_API_BASE, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+        body: JSON.stringify(payload),
+      })
+
+      const isJson = res.headers.get('content-type')?.includes('application/json')
+      const responseData = isJson ? await res.json() : null
+
+      if (!res.ok) {
+        let errorMsg = responseData?.message || 'Failed to save academic details. Please try again.'
+        if (responseData?.errors?.fieldErrors) {
+          const firstField = Object.values(responseData.errors.fieldErrors)[0]
+          if (Array.isArray(firstField) && firstField[0]) {
+            errorMsg = firstField[0]
+          }
+        }
+        throw new OnboardingApiError(errorMsg, res.status, responseData?.errors)
+      }
+
+      return responseData || { status: 'success', message: 'Academic details saved successfully' }
+    } catch (err: any) {
+      if (err instanceof OnboardingApiError) throw err
+      throw new OnboardingApiError(
+        err.message || 'Network error occurred while submitting academic data. Please check your connection.',
+        0
+      )
+    }
+  },
+
+  /**
+   * Caches Class 10 academic draft to ensure state is never lost on navigation.
+   */
+  saveAcademicDraft(draft: any): void {
+    try {
+      sessionStorage.setItem('forkora_class10_academic_draft', JSON.stringify(draft))
+    } catch {
+      // Ignore storage errors in restricted browser contexts
+    }
+  },
+
+  /**
+   * Retrieves cached Class 10 academic draft.
+   */
+  getAcademicDraft(): any | null {
+    try {
+      const saved = sessionStorage.getItem('forkora_class10_academic_draft')
+      return saved ? JSON.parse(saved) : null
+    } catch {
+      return null
+    }
+  },
+
+  /**
+   * Clears cached Class 10 academic draft upon final onboarding submission.
+   */
+  clearAcademicDraft(): void {
+    try {
+      sessionStorage.removeItem('forkora_class10_academic_draft')
+    } catch {
+      // Ignore
+    }
+  },
 }

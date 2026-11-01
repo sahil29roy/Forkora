@@ -1,5 +1,6 @@
 import app from './app';
 import { testConnection } from './config/db';
+import { seedQuestionBank } from './db/seedQuestionBank';
 
 const PORT = process.env.PORT || 5000;
 
@@ -7,6 +8,9 @@ async function startServer(): Promise<void> {
   try {
     // Verify Database connection on startup
     await testConnection();
+
+    // Ensure Question Bank is populated
+    await seedQuestionBank();
 
     app.listen(PORT, () => {
       console.log(`\n==================================================`);

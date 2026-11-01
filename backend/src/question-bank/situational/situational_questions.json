@@ -1,0 +1,317 @@
+[
+  {
+    "id": 1,
+    "topic": "Conflict Resolution",
+    "difficulty": "Moderate",
+    "scenario": "Your project team has a major deadline in two days. Two key team members are strongly disagreeing on how to format the final presentation, causing work to stall completely.",
+    "question": "How would you handle this situation?",
+    "options": [
+      "Intervene immediately, listen to both viewpoints objectively, and propose a compromise combining the strengths of both formats.",
+      "Call a quick team vote and move forward with the format preferred by the majority to avoid wasting time.",
+      "Take charge, select the format you believe is most practical, and assign clear completion tasks to both members.",
+      "Let the two members debate and work it out themselves so that ownership and team trust remain intact."
+    ],
+    "rubric": {
+      "option_scores": [
+        { "collaboration": 5, "decision_making": 4, "leadership": 4, "resilience": 4 },
+        { "collaboration": 3, "decision_making": 5, "leadership": 3, "resilience": 3 },
+        { "collaboration": 2, "decision_making": 4, "leadership": 5, "resilience": 3 },
+        { "collaboration": 3, "decision_making": 2, "leadership": 2, "resilience": 3 }
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "topic": "Ethical Judgment",
+    "difficulty": "Moderate",
+    "scenario": "During an academic competition or group assignment, you discover that a member of your group unintentionally included uncredited, plagiarised content from an online source.",
+    "question": "What is your immediate response?",
+    "options": [
+      "Privately inform the group member, explain the severe academic risk, and help them rewrite the content with proper citations before submission.",
+      "Report the incident directly to the instructor or evaluator to ensure your own integrity is not questioned.",
+      "Remove the plagiarised section yourself immediately without telling the member to protect the group deadline.",
+      "Leave it as it is since it was unintentional, but ensure future submissions are thoroughly reviewed."
+    ],
+    "rubric": {
+      "option_scores": [
+        { "ethics": 5, "collaboration": 5, "decision_making": 5, "leadership": 4 },
+        { "ethics": 4, "collaboration": 2, "decision_making": 3, "leadership": 2 },
+        { "ethics": 3, "collaboration": 3, "decision_making": 4, "leadership": 3 },
+        { "ethics": 1, "collaboration": 2, "decision_making": 1, "leadership": 1 }
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "topic": "Time & Priority Management",
+    "difficulty": "Moderate",
+    "scenario": "You have an important exam tomorrow morning and a group project submission due tonight. A teammate who was supposed to compile the final slides falls ill and cannot finish.",
+    "question": "How do you prioritize your remaining hours?",
+    "options": [
+      "Communicate with the other healthy teammates to distribute the remaining slides equitably, finish them swiftly, and preserve study time for the exam.",
+      "Stay up late and complete the entire presentation by yourself, accepting lower preparation time for your exam.",
+      "Contact the teacher or professor immediately, explain the medical emergency, and request a brief extension for the project.",
+      "Submit the presentation in its current unfinished state with a note explaining the teammate's sudden illness."
+    ],
+    "rubric": {
+      "option_scores": [
+        { "problem_solving": 5, "adaptability": 5, "leadership": 4, "decision_making": 5 },
+        { "problem_solving": 3, "adaptability": 2, "leadership": 3, "decision_making": 2 },
+        { "problem_solving": 4, "adaptability": 4, "leadership": 3, "decision_making": 4 },
+        { "problem_solving": 2, "adaptability": 2, "leadership": 1, "decision_making": 2 }
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "topic": "Handling Critical Feedback",
+    "difficulty": "Easy",
+    "scenario": "A mentor or senior reviewer thoroughly critiques your recent project submission, pointing out several analytical flaws and recommending substantial structural changes.",
+    "question": "How do you approach their critique?",
+    "options": [
+      "Acknowledge their feedback with appreciation, ask clarifying questions to understand their perspective, and draft a structured revision plan.",
+      "Defend your original approach by presenting detailed arguments for why your initial decisions were valid.",
+      "Accept all changes passively without discussion and blindly implement whatever they recommended.",
+      "Feel demotivated and ask to be reassigned to a different project or mentor."
+    ],
+    "rubric": {
+      "option_scores": [
+        { "adaptability": 5, "resilience": 5, "growth_mindset": 5, "collaboration": 4 },
+        { "adaptability": 2, "resilience": 3, "growth_mindset": 2, "collaboration": 2 },
+        { "adaptability": 3, "resilience": 3, "growth_mindset": 3, "collaboration": 2 },
+        { "adaptability": 1, "resilience": 1, "growth_mindset": 1, "collaboration": 1 }
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "topic": "Ambiguity and Initiative",
+    "difficulty": "Moderate",
+    "scenario": "You are given a research assignment with very broad and ambiguous guidelines: 'Explore modern renewable energy transitions in developing nations' with no further rubric.",
+    "question": "What is your best initial course of action?",
+    "options": [
+      "Define a specific, manageable problem statement (e.g. solar microgrids in rural communities), outline your research methodology, and confirm it with the instructor.",
+      "Wait until the instructor provides more detailed criteria and specific questions before starting.",
+      "Look at what other students are doing and replicate their topics and structure closely.",
+      "Write a very general and high-level overview without focusing deeply on any specific aspect."
+    ],
+    "rubric": {
+      "option_scores": [
+        { "initiative": 5, "problem_solving": 5, "decision_making": 5, "leadership": 4 },
+        { "initiative": 1, "problem_solving": 2, "decision_making": 2, "leadership": 1 },
+        { "initiative": 2, "problem_solving": 3, "decision_making": 2, "leadership": 2 },
+        { "initiative": 2, "problem_solving": 2, "decision_making": 2, "leadership": 2 }
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "topic": "Career Crossroads",
+    "difficulty": "Moderate",
+    "scenario": "You have high aptitude and strong marks in Computer Science and Mathematics, but your family strongly encourages you to pursue Medicine, a field you feel less intrinsically drawn to.",
+    "question": "How do you navigate this career decision?",
+    "options": [
+      "Gather objective information on career pathways in CS/Tech, bioinformatics, and healthcare technology, and have an open, structured discussion with your family.",
+      "Immediately acquiesce to family expectations to avoid family conflict, setting aside your own interests.",
+      "Flatly refuse their recommendation and cut off communication regarding your career choices.",
+      "Postpone making any decision until the final day of college admission and let circumstances decide."
+    ],
+    "rubric": {
+      "option_scores": [
+        { "decision_making": 5, "communication": 5, "resilience": 4, "problem_solving": 5 },
+        { "decision_making": 2, "communication": 2, "resilience": 2, "problem_solving": 2 },
+        { "decision_making": 2, "communication": 1, "resilience": 2, "problem_solving": 2 },
+        { "decision_making": 1, "communication": 1, "resilience": 1, "problem_solving": 1 }
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "topic": "Collaboration with Free-Riders",
+    "difficulty": "Moderate",
+    "scenario": "In a 4-person team project, one member consistently misses meetings and fails to contribute their assigned deliverables, putting the group grade at risk.",
+    "question": "What is the most constructive response?",
+    "options": [
+      "Have a private, direct conversation with the member to understand if they are facing personal hurdles, reiterate project expectations, and set mini-deadlines.",
+      "Immediately report them to the supervisor and request that their name be removed from the project.",
+      "Ignore the teammate, quietly absorb their workload among the remaining three, and harbor silent resentment.",
+      "Confront the member aggressively in front of the entire group during the next meeting to force accountability."
+    ],
+    "rubric": {
+      "option_scores": [
+        { "leadership": 5, "collaboration": 5, "communication": 5, "problem_solving": 4 },
+        { "leadership": 3, "collaboration": 2, "communication": 3, "problem_solving": 3 },
+        { "leadership": 2, "collaboration": 3, "communication": 1, "problem_solving": 2 },
+        { "leadership": 2, "collaboration": 1, "communication": 1, "problem_solving": 1 }
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "topic": "Dealing with Unexpected Failure",
+    "difficulty": "Moderate",
+    "scenario": "You prepared diligently for a prestigious scholarship exam or entrance competition for six months, but the final result falls just short of the cutoff score.",
+    "question": "How do you recover from this setback?",
+    "options": [
+      "Allow yourself a short time to process the disappointment, perform an honest analysis of weak areas, and identify alternative pathways with your existing preparation.",
+      "Decide that you lack academic talent and abandon all competitive career aspirations.",
+      "Blame the test format, evaluating authorities, and test conditions rather than reviewing your answers.",
+      "Immediately retake the exact same preparation routine without altering any strategies or study methods."
+    ],
+    "rubric": {
+      "option_scores": [
+        { "resilience": 5, "growth_mindset": 5, "problem_solving": 5, "adaptability": 5 },
+        { "resilience": 1, "growth_mindset": 1, "problem_solving": 1, "adaptability": 1 },
+        { "resilience": 1, "growth_mindset": 2, "problem_solving": 1, "adaptability": 1 },
+        { "resilience": 3, "growth_mindset": 2, "problem_solving": 2, "adaptability": 2 }
+      ]
+    }
+  },
+  {
+    "id": 9,
+    "topic": "Workplace Ethics & Honesty",
+    "difficulty": "Difficult",
+    "scenario": "You are interning at a lab or company and realize you made an erroneous calculation in a client report that was already sent to senior management yesterday.",
+    "question": "What step do you take?",
+    "options": [
+      "Promptly notify your supervisor, present the corrected figures alongside a brief explanation of how the error occurred, and apologize professionally.",
+      "Wait and see if anyone notices; only address the error if a senior manager brings it up.",
+      "Quietly alter the master data file and pretend the original calculation was correct from the start.",
+      "Blame the calculation template provided by a colleague to deflect personal fault."
+    ],
+    "rubric": {
+      "option_scores": [
+        { "ethics": 5, "responsibility": 5, "courage": 5, "leadership": 4 },
+        { "ethics": 2, "responsibility": 2, "courage": 1, "leadership": 1 },
+        { "ethics": 1, "responsibility": 1, "courage": 1, "leadership": 1 },
+        { "ethics": 1, "responsibility": 1, "courage": 1, "leadership": 1 }
+      ]
+    }
+  },
+  {
+    "id": 10,
+    "topic": "Adapting to Sudden Technological Change",
+    "difficulty": "Moderate",
+    "scenario": "Halfway through a semester or project, the institution transitions from traditional software to a completely new digital collaboration platform that you have never used.",
+    "question": "How do you approach the change?",
+    "options": [
+      "Invest time over the weekend to explore documentation and video tutorials, test key features, and share helpful shortcuts with peers.",
+      "Complain to the administration that changing tools mid-project is disruptive and demand a rollback.",
+      "Use only the bare minimum features required and avoid learning the system's collaborative capabilities.",
+      "Ask a tech-savvy peer to complete your tasks on the new platform on your behalf."
+    ],
+    "rubric": {
+      "option_scores": [
+        { "adaptability": 5, "initiative": 5, "learning_orientation": 5, "collaboration": 4 },
+        { "adaptability": 1, "initiative": 2, "learning_orientation": 1, "collaboration": 1 },
+        { "adaptability": 2, "initiative": 2, "learning_orientation": 2, "collaboration": 2 },
+        { "adaptability": 1, "initiative": 1, "learning_orientation": 1, "collaboration": 2 }
+      ]
+    }
+  },
+  {
+    "id": 11,
+    "topic": "Mentorship and Knowledge Sharing",
+    "difficulty": "Easy",
+    "scenario": "A junior student or newcomer to your study club approaches you struggling with a fundamental concept you mastered months ago.",
+    "question": "How do you respond to their request?",
+    "options": [
+      "Spend 15–20 minutes walking them through an intuitive real-world example, then recommend a great resource for independent practice.",
+      "Send them your old notes without explanation and tell them to figure it out on their own.",
+      "Solve their homework problems directly for them so they finish quickly.",
+      "Politely tell them you are too busy and advise them to search the internet."
+    ],
+    "rubric": {
+      "option_scores": [
+        { "empathy": 5, "communication": 5, "leadership": 5, "collaboration": 4 },
+        { "empathy": 3, "communication": 2, "leadership": 2, "collaboration": 3 },
+        { "empathy": 2, "communication": 2, "leadership": 2, "collaboration": 2 },
+        { "empathy": 1, "communication": 2, "leadership": 1, "collaboration": 1 }
+      ]
+    }
+  },
+  {
+    "id": 12,
+    "topic": "Resource Constraints",
+    "difficulty": "Moderate",
+    "scenario": "Your team's science exhibition project budget is suddenly cut in half, making the originally ordered mechanical parts unaffordable.",
+    "question": "How do you adapt the project plan?",
+    "options": [
+      "Hold a brainstorming session to redesign the prototype using recycled or low-cost materials without compromising core functionality.",
+      "Insist on continuing with the expensive design and ask team members to pay out of their personal pockets.",
+      "Abandon the project completely, arguing that high-quality science cannot be done with half a budget.",
+      "Reduce the project scope to a poster presentation without any working prototype."
+    ],
+    "rubric": {
+      "option_scores": [
+        { "creativity": 5, "problem_solving": 5, "resilience": 5, "leadership": 4 },
+        { "creativity": 2, "problem_solving": 2, "resilience": 3, "leadership": 2 },
+        { "creativity": 1, "problem_solving": 1, "resilience": 1, "leadership": 1 },
+        { "creativity": 2, "problem_solving": 2, "resilience": 2, "leadership": 2 }
+      ]
+    }
+  },
+  {
+    "id": 13,
+    "topic": "Public Speaking & Anxiety",
+    "difficulty": "Moderate",
+    "scenario": "You are selected to deliver the keynote presentation on behalf of your class at an inter-school conference, but public speaking makes you anxious.",
+    "question": "How do you prepare for the event?",
+    "options": [
+      "Prepare thoroughly, practice repeatedly in front of trusted friends and record yourself to build confidence and polish delivery.",
+      "Decline the invitation immediately and pass the opportunity to an extroverted classmate.",
+      "Show up on the day of the conference without rehearsal, hoping natural adrenaline will carry you through.",
+      "Read directly from a densely written manuscript without looking at the audience."
+    ],
+    "rubric": {
+      "option_scores": [
+        { "courage": 5, "growth_mindset": 5, "communication": 5, "resilience": 4 },
+        { "courage": 1, "growth_mindset": 1, "communication": 1, "resilience": 1 },
+        { "courage": 2, "growth_mindset": 2, "communication": 2, "resilience": 2 },
+        { "courage": 2, "growth_mindset": 2, "communication": 2, "resilience": 2 }
+      ]
+    }
+  },
+  {
+    "id": 14,
+    "topic": "Balancing Quality and Speed",
+    "difficulty": "Moderate",
+    "scenario": "You are building a software prototype or design mock-up. You can either deliver an 80% polished product on time, or delay delivery by a week to make it 100% perfect.",
+    "question": "What strategy do you choose?",
+    "options": [
+      "Deliver the solid 80% version on schedule, clearly document known edge-cases, and outline a planned update roadmap.",
+      "Delay delivery by a week without consulting stakeholders, believing quality justifies missed deadlines.",
+      "Rush through the remaining 20% carelessly in the final two hours, introducing unvetted bugs.",
+      "Hand over only what you finished and refuse to work on the remaining features."
+    ],
+    "rubric": {
+      "option_scores": [
+        { "decision_making": 5, "communication": 5, "pragmatism": 5, "leadership": 4 },
+        { "decision_making": 2, "communication": 2, "pragmatism": 2, "leadership": 2 },
+        { "decision_making": 2, "communication": 2, "pragmatism": 1, "leadership": 1 },
+        { "decision_making": 1, "communication": 1, "pragmatism": 1, "leadership": 1 }
+      ]
+    }
+  },
+  {
+    "id": 15,
+    "topic": "Navigating Disagreements with Authority",
+    "difficulty": "Difficult",
+    "scenario": "You notice an objective factual error in the project specifications provided by your senior professor or supervisor.",
+    "question": "How do you address the discrepancy?",
+    "options": [
+      "Request a brief one-on-one conversation, politely present the evidence or source data, and inquire about their thoughts on the discrepancy.",
+      "Point out the mistake publicly in front of the entire class or department to show your analytical sharpness.",
+      "Stay silent, follow the erroneous instruction, and let the project fail to prove the supervisor wrong.",
+      "Complain about the supervisor's competence to fellow students behind their back."
+    ],
+    "rubric": {
+      "option_scores": [
+        { "communication": 5, "diplomacy": 5, "courage": 5, "ethics": 5 },
+        { "communication": 2, "diplomacy": 1, "courage": 3, "ethics": 3 },
+        { "communication": 1, "diplomacy": 1, "courage": 1, "ethics": 1 },
+        { "communication": 1, "diplomacy": 1, "courage": 1, "ethics": 1 }
+      ]
+    }
+  }
+]

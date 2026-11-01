@@ -139,3 +139,4 @@ export interface OnboardingData {
   subjects: SubjectInput[];
 }
 
+export * from './assessmentTypes';

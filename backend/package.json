@@ -11,7 +11,8 @@
     "test:unit": "tsx src/testUnitOnboarding.ts",
     "test:auth": "tsx src/testAuthFlow.ts",
     "test:onboarding": "tsx src/testOnboardingFlow.ts",
-    "test": "npm run test:unit && npm run test:auth && npm run test:onboarding"
+    "test:assessment": "tsx src/testAssessmentFlow.ts",
+    "test": "npm run test:unit && npm run test:auth && npm run test:onboarding && npm run test:assessment"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",

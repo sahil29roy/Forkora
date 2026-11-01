@@ -29,14 +29,19 @@ export function StudentDetailsPage() {
         studentName: location.state.studentName || user?.display_name || '',
         currentClass: location.state.currentClass || '',
         phoneNumber: location.state.phoneNumber || '',
-        contactEmail: location.state.contactEmail || '',
+        contactEmail: location.state.contactEmail || user?.email || '',
       }
     }
     try {
       const saved = sessionStorage.getItem(STAGE1_DRAFT_KEY)
       if (saved) {
         const parsed = JSON.parse(saved)
-        if (parsed?.studentDetails) return parsed.studentDetails
+        if (parsed?.studentDetails) {
+          return {
+            ...parsed.studentDetails,
+            contactEmail: parsed.studentDetails.contactEmail || user?.email || '',
+          }
+        }
       }
     } catch {
       // Ignore
@@ -45,7 +50,7 @@ export function StudentDetailsPage() {
       studentName: user?.display_name || '',
       currentClass: '',
       phoneNumber: '',
-      contactEmail: '',
+      contactEmail: user?.email || '',
     }
   })
 
@@ -110,7 +115,7 @@ export function StudentDetailsPage() {
             studentName: sp.student_name || prev.studentName,
             currentClass: sp.current_class ?? prev.currentClass,
             phoneNumber: sp.phone_number || prev.phoneNumber,
-            contactEmail: sp.contact_email || prev.contactEmail,
+            contactEmail: sp.contact_email || user?.email || prev.contactEmail,
           }))
 
           if (existing.familyProfiles && Array.isArray(existing.familyProfiles)) {
@@ -140,7 +145,18 @@ export function StudentDetailsPage() {
     return () => {
       isMounted = false
     }
-  }, [token])
+  }, [token, user?.email])
+
+  // Automatically populate student details with auth account data when available
+  useEffect(() => {
+    if (user?.email) {
+      setStudentDetails((prev) => ({
+        ...prev,
+        contactEmail: prev.contactEmail || user.email,
+        studentName: prev.studentName || user.display_name || '',
+      }))
+    }
+  }, [user?.email, user?.display_name])
 
   // Clear specific field errors when user edits
   const handleStudentChange = (updated: StudentDetails) => {

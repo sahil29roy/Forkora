@@ -83,6 +83,7 @@ export function ReviewAndConfirm() {
         contactEmail:
           navStudent?.contactEmail ??
           sessionStage1?.studentDetails?.contactEmail ??
+          user?.email ??
           null,
         studyStatus: academicSource?.studyStatus || 'CURRENTLY_STUDYING',
         passingYear:

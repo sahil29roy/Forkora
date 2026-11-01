@@ -168,11 +168,10 @@ export function StudentDetailsForm({
           </div>
         </div>
 
-        {/* Field 4: Contact Email (Full width, optional) */}
+        {/* Field 4: Contact Email (Full width, required) */}
         <div className="space-y-1.5">
-          <Label htmlFor="student-contact-email" className="text-xs font-semibold text-foreground flex items-center justify-between">
-            <span>Email Address</span>
-            <span className="text-[11px] font-normal text-muted">Optional</span>
+          <Label htmlFor="student-contact-email" className="text-xs font-semibold text-foreground">
+            Email Address <span className="text-primary">*</span>
           </Label>
           <div className="relative flex items-center">
             <div className="pointer-events-none absolute left-3.5 flex items-center justify-center text-muted">
@@ -181,7 +180,7 @@ export function StudentDetailsForm({
             <Input
               id="student-contact-email"
               type="email"
-              placeholder="Enter email address"
+              placeholder="Enter your email address"
               value={studentDetails.contactEmail}
               onChange={(e) => updateField('contactEmail', e.target.value)}
               disabled={disabled}
@@ -194,7 +193,7 @@ export function StudentDetailsForm({
             />
           </div>
           <p className="text-[11px] text-muted">
-            Secondary contact email. Kept separate from your authenticated login account.
+            The primary email address associated with your account.
           </p>
           {errors.contactEmail && (
             <p className="text-xs text-destructive font-medium mt-1 animate-fade-in">

@@ -274,7 +274,7 @@ export function Class10AcademicInfo() {
           </h1>
 
           <p className="text-sm sm:text-base text-muted max-w-xl">
-            Tell us about your Class 10th studies and interests so we can suggest the best career paths for you.
+            Tell us about your Class 10th studies and academic stream preferences so we can suggest the best pathways for you.
           </p>
         </div>
 
@@ -338,7 +338,7 @@ export function Class10AcademicInfo() {
               <span>Your Journey After Class 10th</span>
             </h4>
             <p className="text-xs text-muted leading-relaxed">
-              Based on your academic performance and interests, Forkora will suggest streams (Science, Commerce, Arts), explore future careers, and check eligibility requirements.
+              Based on your academic performance and stream preferences, Forkora will suggest streams (Science, Commerce, Arts), explore future options, and check eligibility requirements.
             </p>
           </div>
 

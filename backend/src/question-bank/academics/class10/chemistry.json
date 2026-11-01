@@ -1,0 +1,272 @@
+[
+  {
+    "id": 1,
+    "subject": "Chemistry",
+    "topic": "Atomic Structure",
+    "difficulty": "Easy",
+    "question": "What is the atomic number of iron (Fe)?",
+    "options": ["24", "28", "26", "30"],
+    "answer": "26"
+  },
+  {
+    "id": 2,
+    "subject": "Chemistry",
+    "topic": "Chemical Bonding",
+    "difficulty": "Easy",
+    "question": "What is the hybridisation of carbon in methane (CH4)?",
+    "options": ["sp", "sp2", "sp3", "sp3d"],
+    "answer": "sp3"
+  },
+  {
+    "id": 3,
+    "subject": "Chemistry",
+    "topic": "Ionic Equilibrium",
+    "difficulty": "Moderate",
+    "question": "What is the pH of a 0.001 M HCl solution?",
+    "options": ["1", "3", "11", "2"],
+    "answer": "3"
+  },
+  {
+    "id": 4,
+    "subject": "Chemistry",
+    "topic": "Periodic Table",
+    "difficulty": "Easy",
+    "question": "Which element has the highest electronegativity?",
+    "options": ["Oxygen", "Chlorine", "Nitrogen", "Fluorine"],
+    "answer": "Fluorine"
+  },
+  {
+    "id": 5,
+    "subject": "Chemistry",
+    "topic": "Mole Concept",
+    "difficulty": "Easy",
+    "question": "What is the molar mass of H2SO4 (H = 1, S = 32, O = 16)?",
+    "options": ["96 g/mol", "98 g/mol", "100 g/mol", "64 g/mol"],
+    "answer": "98 g/mol"
+  },
+  {
+    "id": 6,
+    "subject": "Chemistry",
+    "topic": "Chemical Bonding",
+    "difficulty": "Moderate",
+    "question": "What is the shape of the ammonia (NH3) molecule?",
+    "options": ["Trigonal pyramidal", "Tetrahedral", "Linear", "Trigonal planar"],
+    "answer": "Trigonal pyramidal"
+  },
+  {
+    "id": 7,
+    "subject": "Chemistry",
+    "topic": "Organic Chemistry",
+    "difficulty": "Easy",
+    "question": "What is the IUPAC name of CH3CH2OH?",
+    "options": ["Methanol", "Ethanal", "Propanol", "Ethanol"],
+    "answer": "Ethanol"
+  },
+  {
+    "id": 8,
+    "subject": "Chemistry",
+    "topic": "Mole Concept",
+    "difficulty": "Easy",
+    "question": "What is the value of Avogadro's number?",
+    "options": ["6.022 x 10^23", "6.022 x 10^22", "3.011 x 10^23", "6.626 x 10^23"],
+    "answer": "6.022 x 10^23"
+  },
+  {
+    "id": 9,
+    "subject": "Chemistry",
+    "topic": "Redox Reactions",
+    "difficulty": "Moderate",
+    "question": "What is the oxidation state of manganese in KMnO4?",
+    "options": ["+2", "+4", "+6", "+7"],
+    "answer": "+7"
+  },
+  {
+    "id": 10,
+    "subject": "Chemistry",
+    "topic": "Equilibrium",
+    "difficulty": "Moderate",
+    "question": "For N2 + 3H2 <=> 2NH3, what is the effect of increasing the pressure on the equilibrium?",
+    "options": ["Shifts towards reactants", "Shifts towards products", "No change", "Reaction stops"],
+    "answer": "Shifts towards products"
+  },
+  {
+    "id": 11,
+    "subject": "Chemistry",
+    "topic": "Atomic Structure",
+    "difficulty": "Moderate",
+    "question": "The Na+ ion has the same electronic configuration as which noble gas?",
+    "options": ["Helium", "Argon", "Neon", "Krypton"],
+    "answer": "Neon"
+  },
+  {
+    "id": 12,
+    "subject": "Chemistry",
+    "topic": "Organic Chemistry",
+    "difficulty": "Easy",
+    "question": "Which of these compounds is an alkyne?",
+    "options": ["C2H6", "C2H4", "C6H6", "C2H2"],
+    "answer": "C2H2"
+  },
+  {
+    "id": 13,
+    "subject": "Chemistry",
+    "topic": "Chemical Bonding",
+    "difficulty": "Difficult",
+    "question": "What is the bond order of the O2 molecule according to molecular orbital theory?",
+    "options": ["1", "2", "3", "2.5"],
+    "answer": "2"
+  },
+  {
+    "id": 14,
+    "subject": "Chemistry",
+    "topic": "Industrial Chemistry",
+    "difficulty": "Moderate",
+    "question": "Which catalyst is used in the Haber process for ammonia?",
+    "options": ["Platinum", "Vanadium pentoxide", "Nickel", "Finely divided iron"],
+    "answer": "Finely divided iron"
+  },
+  {
+    "id": 15,
+    "subject": "Chemistry",
+    "topic": "Organic Chemistry",
+    "difficulty": "Moderate",
+    "question": "How many sigma bonds are present in an ethene (C2H4) molecule?",
+    "options": ["4", "5", "6", "3"],
+    "answer": "5"
+  },
+  {
+    "id": 16,
+    "subject": "Chemistry",
+    "topic": "Chemical Kinetics",
+    "difficulty": "Moderate",
+    "question": "What is the unit of the rate constant for a first-order reaction?",
+    "options": ["mol L^-1 s^-1", "L mol^-1 s^-1", "s^-1", "mol^2 L^-2 s^-1"],
+    "answer": "s^-1"
+  },
+  {
+    "id": 17,
+    "subject": "Chemistry",
+    "topic": "Organic Chemistry",
+    "difficulty": "Moderate",
+    "question": "The addition of HBr to propene gives mainly which product?",
+    "options": ["1-bromopropane", "2-bromopropane", "1,2-dibromopropane", "Propanol"],
+    "answer": "2-bromopropane"
+  },
+  {
+    "id": 18,
+    "subject": "Chemistry",
+    "topic": "Acids and Bases",
+    "difficulty": "Moderate",
+    "question": "Which of these is the strongest acid?",
+    "options": ["HClO4", "HNO3", "H2SO3", "HCl"],
+    "answer": "HClO4"
+  },
+  {
+    "id": 19,
+    "subject": "Chemistry",
+    "topic": "Solutions",
+    "difficulty": "Moderate",
+    "question": "What is the molarity of a solution made by dissolving 4 g of NaOH (molar mass 40 g/mol) in 500 mL of solution?",
+    "options": ["0.1 M", "0.4 M", "0.2 M", "0.8 M"],
+    "answer": "0.2 M"
+  },
+  {
+    "id": 20,
+    "subject": "Chemistry",
+    "topic": "Atomic Structure",
+    "difficulty": "Easy",
+    "question": "What is the maximum number of electrons that the d subshell can hold?",
+    "options": ["6", "10", "14", "2"],
+    "answer": "10"
+  },
+  {
+    "id": 21,
+    "subject": "Chemistry",
+    "topic": "Electrochemistry",
+    "difficulty": "Moderate",
+    "question": "In an electrochemical cell, oxidation takes place at the:",
+    "options": ["Cathode", "Salt bridge", "Anode", "Electrolyte only"],
+    "answer": "Anode"
+  },
+  {
+    "id": 22,
+    "subject": "Chemistry",
+    "topic": "Organic Chemistry",
+    "difficulty": "Easy",
+    "question": "Which of these compounds is aromatic?",
+    "options": ["Cyclohexane", "Benzene", "Hexane", "Ethene"],
+    "answer": "Benzene"
+  },
+  {
+    "id": 23,
+    "subject": "Chemistry",
+    "topic": "States of Matter",
+    "difficulty": "Easy",
+    "question": "What is the molar volume of an ideal gas at STP?",
+    "options": ["11.2 L", "24.0 L", "44.8 L", "22.4 L"],
+    "answer": "22.4 L"
+  },
+  {
+    "id": 24,
+    "subject": "Chemistry",
+    "topic": "Organic Chemistry",
+    "difficulty": "Moderate",
+    "question": "Ethanol and dimethyl ether are an example of which type of isomerism?",
+    "options": ["Chain isomerism", "Position isomerism", "Functional group isomerism", "Optical isomerism"],
+    "answer": "Functional group isomerism"
+  },
+  {
+    "id": 25,
+    "subject": "Chemistry",
+    "topic": "Atomic Structure",
+    "difficulty": "Moderate",
+    "question": "What is the maximum number of electrons that can be accommodated in the n = 3 shell?",
+    "options": ["8", "32", "10", "18"],
+    "answer": "18"
+  },
+  {
+    "id": 26,
+    "subject": "Chemistry",
+    "topic": "Solutions",
+    "difficulty": "Moderate",
+    "question": "Which law relates the partial vapour pressure of a component to its mole fraction in a solution?",
+    "options": ["Henry's law", "Raoult's law", "Boyle's law", "Dalton's law"],
+    "answer": "Raoult's law"
+  },
+  {
+    "id": 27,
+    "subject": "Chemistry",
+    "topic": "Thermodynamics",
+    "difficulty": "Moderate",
+    "question": "A negative value of Gibbs free energy change (delta G) at constant temperature and pressure indicates that the process is:",
+    "options": ["Non-spontaneous", "At equilibrium", "Spontaneous", "Endothermic only"],
+    "answer": "Spontaneous"
+  },
+  {
+    "id": 28,
+    "subject": "Chemistry",
+    "topic": "Organic Chemistry",
+    "difficulty": "Easy",
+    "question": "Which functional group is present in carboxylic acids?",
+    "options": ["-OH", "-COOH", "-CHO", "-NH2"],
+    "answer": "-COOH"
+  },
+  {
+    "id": 29,
+    "subject": "Chemistry",
+    "topic": "Mole Concept",
+    "difficulty": "Moderate",
+    "question": "How many moles are present in 36 g of water (molar mass 18 g/mol)?",
+    "options": ["2", "3", "0.5", "4"],
+    "answer": "2"
+  },
+  {
+    "id": 30,
+    "subject": "Chemistry",
+    "topic": "Organic Chemistry",
+    "difficulty": "Difficult",
+    "question": "Aspirin is prepared by the acetylation of which compound?",
+    "options": ["Phenol", "Salicylic acid", "Benzoic acid", "Acetic acid"],
+    "answer": "Salicylic acid"
+  }
+]

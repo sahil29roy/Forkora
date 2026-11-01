@@ -575,7 +575,9 @@ export function AcademicInformation() {
               <span>Your Journey After School</span>
             </h4>
             <p className="text-xs text-muted leading-relaxed">
-              Based on your academic performance and interests, Forkora will help you explore suitable streams, top courses (Engineering, CS, AI/ML, Business, Arts), and entrance requirements.
+              {formData.currentClass <= 10
+                ? 'Based on your academic performance and stream preferences, Forkora will suggest streams (Science, Commerce, Arts), explore subject combinations, and check eligibility requirements.'
+                : 'Based on your academic performance and interests, Forkora will help you explore suitable streams, top courses (Engineering, CS, AI/ML, Business, Arts), and entrance requirements.'}
             </p>
           </div>
 

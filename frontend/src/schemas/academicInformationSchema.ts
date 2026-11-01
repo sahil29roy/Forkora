@@ -131,8 +131,8 @@ export function validateAcademicInformation(
     }
   }
 
-  // 6. Areas of Interest Validation
-  if (data.interests.includes('Other')) {
+  // 6. Areas of Interest Validation (For Class 11/12 when 'Other' broad interest is selected)
+  if (data.currentClass > 10 && data.interests.includes('Other')) {
     const trimmedCustomInterest = (data.customInterest || '').trim()
     if (!trimmedCustomInterest) {
       errors.customInterest = 'Please describe your specific interest.'

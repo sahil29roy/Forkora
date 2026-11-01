@@ -1,0 +1,1718 @@
+[
+    {
+        "id": 1,
+        "topic": "Advanced Number Series",
+        "difficulty": "Moderate",
+        "question": "Find the next number: 2, 3, 5, 9, 17, 33, ?",
+        "options": [
+            "63",
+            "65",
+            "64",
+            "67"
+        ],
+        "answer": "65"
+    },
+    {
+        "id": 2,
+        "topic": "Advanced Number Series",
+        "difficulty": "Moderate",
+        "question": "Find the next number: 4, 9, 25, 49, 121, ?",
+        "options": [
+            "144",
+            "196",
+            "169",
+            "225"
+        ],
+        "answer": "169"
+    },
+    {
+        "id": 3,
+        "topic": "Advanced Number Series",
+        "difficulty": "Moderate",
+        "question": "Find the next number: 6, 11, 21, 36, 56, ?",
+        "options": [
+            "77",
+            "86",
+            "91",
+            "81"
+        ],
+        "answer": "81"
+    },
+    {
+        "id": 4,
+        "topic": "Advanced Number Series",
+        "difficulty": "Moderate",
+        "question": "Find the next number: 1, 2, 6, 24, 120, ?",
+        "options": [
+            "720",
+            "600",
+            "840",
+            "480"
+        ],
+        "answer": "720"
+    },
+    {
+        "id": 5,
+        "topic": "Advanced Number Series",
+        "difficulty": "Difficult",
+        "question": "Find the next number: 3, 7, 16, 35, 74, ?",
+        "options": [
+            "148",
+            "152",
+            "160",
+            "153"
+        ],
+        "answer": "153"
+    },
+    {
+        "id": 6,
+        "topic": "Advanced Number Series",
+        "difficulty": "Difficult",
+        "question": "Find the next number: 2, 12, 36, 80, 150, ?",
+        "options": [
+            "242",
+            "216",
+            "252",
+            "262"
+        ],
+        "answer": "252"
+    },
+    {
+        "id": 7,
+        "topic": "Advanced Number Series",
+        "difficulty": "Moderate",
+        "question": "Find the next number: 5, 6, 8, 12, 20, ?",
+        "options": [
+            "32",
+            "40",
+            "34",
+            "36"
+        ],
+        "answer": "36"
+    },
+    {
+        "id": 8,
+        "topic": "Advanced Number Series",
+        "difficulty": "Moderate",
+        "question": "Find the next number: 7, 10, 16, 28, 52, ?",
+        "options": [
+            "96",
+            "100",
+            "104",
+            "108"
+        ],
+        "answer": "100"
+    },
+    {
+        "id": 9,
+        "topic": "Advanced Number Series",
+        "difficulty": "Difficult",
+        "question": "Find the next number: 0, 6, 24, 60, 120, ?",
+        "options": [
+            "210",
+            "180",
+            "196",
+            "216"
+        ],
+        "answer": "210"
+    },
+    {
+        "id": 10,
+        "topic": "Advanced Number Series",
+        "difficulty": "Moderate",
+        "question": "Find the next number: 2, 5, 11, 23, 47, ?",
+        "options": [
+            "93",
+            "94",
+            "97",
+            "95"
+        ],
+        "answer": "95"
+    },
+    {
+        "id": 11,
+        "topic": "Advanced Coding-Decoding",
+        "difficulty": "Moderate",
+        "question": "If WORD is coded as XQUH, how is CODE coded?",
+        "options": [
+            "DPGI",
+            "DQHI",
+            "DQGI",
+            "EQGI"
+        ],
+        "answer": "DQGI"
+    },
+    {
+        "id": 12,
+        "topic": "Advanced Coding-Decoding",
+        "difficulty": "Moderate",
+        "question": "In a code, 'pen ink rod' is 'ka ma ta', 'ink sun' is 'ma pa', and 'rod gun pen' is 'ta ra ka'. What is the code for 'ink'?",
+        "options": [
+            "ka",
+            "ta",
+            "pa",
+            "ma"
+        ],
+        "answer": "ma"
+    },
+    {
+        "id": 13,
+        "topic": "Advanced Coding-Decoding",
+        "difficulty": "Moderate",
+        "question": "If DOG = 26 (using A=1, B=2 and so on, sum of letter values), what is the value of HEN?",
+        "options": [
+            "25",
+            "29",
+            "27",
+            "28"
+        ],
+        "answer": "27"
+    },
+    {
+        "id": 14,
+        "topic": "Advanced Coding-Decoding",
+        "difficulty": "Moderate",
+        "question": "If MOUSE is written as PRXVH, how is CLOCK written?",
+        "options": [
+            "FNQFN",
+            "FORFM",
+            "ENQEM",
+            "FORFN"
+        ],
+        "answer": "FORFN"
+    },
+    {
+        "id": 15,
+        "topic": "Advanced Coding-Decoding",
+        "difficulty": "Moderate",
+        "question": "If LOGIC is coded as OLIGC, how is BRAIN coded?",
+        "options": [
+            "BRIAN",
+            "RBIAN",
+            "RBAIN",
+            "RBINA"
+        ],
+        "answer": "RBIAN"
+    },
+    {
+        "id": 16,
+        "topic": "Advanced Coding-Decoding",
+        "difficulty": "Difficult",
+        "question": "If SCHOOL is coded as TEKSTR, how is BRIGHT coded?",
+        "options": [
+            "CTLKMZ",
+            "CTLKMY",
+            "CSLKMZ",
+            "DTLKMZ"
+        ],
+        "answer": "CTLKMZ"
+    },
+    {
+        "id": 17,
+        "topic": "Advanced Coding-Decoding",
+        "difficulty": "Difficult",
+        "question": "If '+' means 'x', '-' means '+', 'x' means '÷' and '÷' means '-', what is the value of 12 + 3 - 8 x 4 ÷ 5?",
+        "options": [
+            "31",
+            "29",
+            "35",
+            "33"
+        ],
+        "answer": "33"
+    },
+    {
+        "id": 18,
+        "topic": "Advanced Coding-Decoding",
+        "difficulty": "Moderate",
+        "question": "If REASON is coded as 5 and BELIEVED is coded as 7, how is GOVERNMENT coded?",
+        "options": [
+            "6",
+            "10",
+            "9",
+            "11"
+        ],
+        "answer": "9"
+    },
+    {
+        "id": 19,
+        "topic": "Complex Analogies",
+        "difficulty": "Moderate",
+        "question": "Barometer : Pressure :: Hygrometer : ?",
+        "options": [
+            "Temperature",
+            "Humidity",
+            "Wind speed",
+            "Rainfall"
+        ],
+        "answer": "Humidity"
+    },
+    {
+        "id": 20,
+        "topic": "Complex Analogies",
+        "difficulty": "Moderate",
+        "question": "7 : 343 :: 6 : ?",
+        "options": [
+            "36",
+            "196",
+            "252",
+            "216"
+        ],
+        "answer": "216"
+    },
+    {
+        "id": 21,
+        "topic": "Complex Analogies",
+        "difficulty": "Moderate",
+        "question": "Ornithology : Birds :: Entomology : ?",
+        "options": [
+            "Fossils",
+            "Reptiles",
+            "Insects",
+            "Rocks"
+        ],
+        "answer": "Insects"
+    },
+    {
+        "id": 22,
+        "topic": "Complex Analogies",
+        "difficulty": "Moderate",
+        "question": "Cacophony : Harmony :: Turbulence : ?",
+        "options": [
+            "Storm",
+            "Calm",
+            "Wind",
+            "Noise"
+        ],
+        "answer": "Calm"
+    },
+    {
+        "id": 23,
+        "topic": "Complex Analogies",
+        "difficulty": "Difficult",
+        "question": "Ostracize : Include :: Obfuscate : ?",
+        "options": [
+            "Confuse",
+            "Hide",
+            "Cloud",
+            "Clarify"
+        ],
+        "answer": "Clarify"
+    },
+    {
+        "id": 24,
+        "topic": "Complex Analogies",
+        "difficulty": "Moderate",
+        "question": "ECG : Heart :: EEG : ?",
+        "options": [
+            "Lungs",
+            "Kidney",
+            "Brain",
+            "Muscle"
+        ],
+        "answer": "Brain"
+    },
+    {
+        "id": 25,
+        "topic": "Complex Analogies",
+        "difficulty": "Moderate",
+        "question": "Sculptor : Chisel :: Surgeon : ?",
+        "options": [
+            "Hospital",
+            "Scalpel",
+            "Operation",
+            "Mask"
+        ],
+        "answer": "Scalpel"
+    },
+    {
+        "id": 26,
+        "topic": "Complex Analogies",
+        "difficulty": "Difficult",
+        "question": "Erosion : Land :: Corrosion : ?",
+        "options": [
+            "Metal",
+            "Water",
+            "Rain",
+            "Paint"
+        ],
+        "answer": "Metal"
+    },
+    {
+        "id": 27,
+        "topic": "Syllogisms",
+        "difficulty": "Moderate",
+        "question": "Statements: All pens are books. All books are cups. Conclusions: I. All pens are cups. II. Some cups are books.",
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "Neither I nor II follows",
+            "Both I and II follow"
+        ],
+        "answer": "Both I and II follow"
+    },
+    {
+        "id": 28,
+        "topic": "Syllogisms",
+        "difficulty": "Moderate",
+        "question": "Statements: Some dogs are cats. All cats are rats. Conclusions: I. Some dogs are rats. II. All rats are cats.",
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "Both I and II follow",
+            "Neither I nor II follows"
+        ],
+        "answer": "Only I follows"
+    },
+    {
+        "id": 29,
+        "topic": "Syllogisms",
+        "difficulty": "Difficult",
+        "question": "Statements: No bat is a ball. Some balls are wickets. Conclusions: I. Some wickets are not bats. II. No wicket is a bat.",
+        "options": [
+            "Only II follows",
+            "Both I and II follow",
+            "Only I follows",
+            "Neither I nor II follows"
+        ],
+        "answer": "Only I follows"
+    },
+    {
+        "id": 30,
+        "topic": "Syllogisms",
+        "difficulty": "Moderate",
+        "question": "Statements: No cat is a rat. No rat is a dog. Conclusions: I. No cat is a dog. II. Some cats are not rats.",
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "Both I and II follow",
+            "Neither I nor II follows"
+        ],
+        "answer": "Only II follows"
+    },
+    {
+        "id": 31,
+        "topic": "Syllogisms",
+        "difficulty": "Moderate",
+        "question": "Statements: Some A are B. Some B are C. Conclusions: I. Some A are C. II. Some C are A.",
+        "options": [
+            "Neither I nor II follows",
+            "Only I follows",
+            "Both I and II follow",
+            "Only II follows"
+        ],
+        "answer": "Neither I nor II follows"
+    },
+    {
+        "id": 32,
+        "topic": "Syllogisms",
+        "difficulty": "Difficult",
+        "question": "Statements: All stars are planets. No planet is a moon. Conclusions: I. No star is a moon. II. No moon is a star.",
+        "options": [
+            "Only I follows",
+            "Both I and II follow",
+            "Only II follows",
+            "Neither I nor II follows"
+        ],
+        "answer": "Both I and II follow"
+    },
+    {
+        "id": 33,
+        "topic": "Syllogisms",
+        "difficulty": "Moderate",
+        "question": "Statements: All mangoes are fruits. Some fruits are sweet. Conclusions: I. All mangoes are sweet. II. Some sweet things are fruits.",
+        "options": [
+            "Only I follows",
+            "Neither I nor II follows",
+            "Only II follows",
+            "Both I and II follow"
+        ],
+        "answer": "Only II follows"
+    },
+    {
+        "id": 34,
+        "topic": "Syllogisms",
+        "difficulty": "Moderate",
+        "question": "Statements: All roses are flowers. All flowers are plants. Conclusions: I. Some plants are roses. II. All roses are plants.",
+        "options": [
+            "Both I and II follow",
+            "Only I follows",
+            "Only II follows",
+            "Neither I nor II follows"
+        ],
+        "answer": "Both I and II follow"
+    },
+    {
+        "id": 35,
+        "topic": "Seating Arrangement",
+        "difficulty": "Moderate",
+        "question": "Five friends A, B, C, D and E sit in a row facing north. C sits in the middle. A sits immediately to the left of C. E sits at the extreme right. B does not sit next to C. Who sits at the extreme left?",
+        "options": [
+            "A",
+            "D",
+            "B",
+            "E"
+        ],
+        "answer": "B"
+    },
+    {
+        "id": 36,
+        "topic": "Seating Arrangement",
+        "difficulty": "Difficult",
+        "question": "Six people A, B, C, D, E and F sit around a circular table facing the centre. A sits opposite D. B sits next to A. C sits next to D but is not next to B. F sits next to B. Who sits opposite F?",
+        "options": [
+            "B",
+            "C",
+            "A",
+            "E"
+        ],
+        "answer": "E"
+    },
+    {
+        "id": 37,
+        "topic": "Seating Arrangement",
+        "difficulty": "Difficult",
+        "question": "Seven people M, N, O, P, Q, R and S sit in a row facing north. O is third from the left end. P sits immediately to the right of O. S sits at the extreme right. Q sits immediately to the left of S. M sits second to the left of O. N sits next to M. Who sits between P and Q?",
+        "options": [
+            "N",
+            "R",
+            "M",
+            "S"
+        ],
+        "answer": "R"
+    },
+    {
+        "id": 38,
+        "topic": "Seating Arrangement",
+        "difficulty": "Moderate",
+        "question": "Five people K, L, M, N and O sit in a row facing north. L sits at one end and M sits second to the right of L. O sits at the extreme right. N sits next to M. K does not sit next to L. Who sits next to L?",
+        "options": [
+            "K",
+            "M",
+            "O",
+            "N"
+        ],
+        "answer": "N"
+    },
+    {
+        "id": 39,
+        "topic": "Seating Arrangement",
+        "difficulty": "Moderate",
+        "question": "Five people sit in a row. A sits to the left of B but to the right of C. D sits to the right of B but to the left of E. Who sits second from the right?",
+        "options": [
+            "B",
+            "E",
+            "C",
+            "D"
+        ],
+        "answer": "D"
+    },
+    {
+        "id": 40,
+        "topic": "Seating Arrangement",
+        "difficulty": "Moderate",
+        "question": "In a row of 12 people, A is 5th from the left and B is 4th from the right. C sits exactly midway between A and B. What is C's position from the left?",
+        "options": [
+            "6",
+            "7",
+            "8",
+            "9"
+        ],
+        "answer": "7"
+    },
+    {
+        "id": 41,
+        "topic": "Seating Arrangement",
+        "difficulty": "Difficult",
+        "question": "Six friends A, B, C, D, E and F sit around a circular table facing the centre. A sits between B and C. D sits opposite A. E sits between D and C. Who sits opposite E?",
+        "options": [
+            "F",
+            "C",
+            "B",
+            "A"
+        ],
+        "answer": "B"
+    },
+    {
+        "id": 42,
+        "topic": "Seating Arrangement",
+        "difficulty": "Difficult",
+        "question": "Seven people A, B, C, D, E, F and G sit in a row facing north. B is third from the right end. A sits immediately to the right of B. D sits at the extreme right. C sits second from the left end. E sits immediately to the right of C. G does not sit at either end. Who sits at the extreme left?",
+        "options": [
+            "C",
+            "E",
+            "G",
+            "F"
+        ],
+        "answer": "F"
+    },
+    {
+        "id": 43,
+        "topic": "Seating Arrangement",
+        "difficulty": "Moderate",
+        "question": "P, Q, R, S and T live on five floors numbered 1 (lowest) to 5 (top). P lives above Q but below R. T lives on floor 2. S lives immediately above T. Who lives on floor 4?",
+        "options": [
+            "Q",
+            "R",
+            "S",
+            "P"
+        ],
+        "answer": "P"
+    },
+    {
+        "id": 44,
+        "topic": "Seating Arrangement",
+        "difficulty": "Moderate",
+        "question": "In a queue, B is ahead of A. C is behind A. D is between B and A. E is ahead of B. F is behind C. Who is fourth from the front?",
+        "options": [
+            "D",
+            "B",
+            "C",
+            "A"
+        ],
+        "answer": "A"
+    },
+    {
+        "id": 45,
+        "topic": "Blood Relations (complex)",
+        "difficulty": "Moderate",
+        "question": "Pointing to a man, a woman says, 'His mother is the only daughter of my mother.' How is the woman related to the man?",
+        "options": [
+            "Aunt",
+            "Sister",
+            "Mother",
+            "Grandmother"
+        ],
+        "answer": "Mother"
+    },
+    {
+        "id": 46,
+        "topic": "Blood Relations (complex)",
+        "difficulty": "Difficult",
+        "question": "A is the sister of B. C is the mother of B. D is the father of C. E is the mother of D. F is the only son of E. How is A related to F?",
+        "options": [
+            "Daughter",
+            "Niece",
+            "Great-granddaughter",
+            "Granddaughter"
+        ],
+        "answer": "Granddaughter"
+    },
+    {
+        "id": 47,
+        "topic": "Blood Relations (complex)",
+        "difficulty": "Moderate",
+        "question": "X is the father of Y. Y is the sister of Z. Z is the mother of W. How is X related to W?",
+        "options": [
+            "Paternal grandfather",
+            "Father",
+            "Maternal grandfather",
+            "Maternal uncle"
+        ],
+        "answer": "Maternal grandfather"
+    },
+    {
+        "id": 48,
+        "topic": "Blood Relations (complex)",
+        "difficulty": "Difficult",
+        "question": "Pointing to a lady, Arun says, 'She is the wife of the only son of my mother's father.' How is the lady related to Arun?",
+        "options": [
+            "Mother",
+            "Sister-in-law",
+            "Cousin",
+            "Maternal aunt"
+        ],
+        "answer": "Maternal aunt"
+    },
+    {
+        "id": 49,
+        "topic": "Blood Relations (complex)",
+        "difficulty": "Moderate",
+        "question": "In a code, 'A - B' means A is the brother of B, and 'A + B' means A is the mother of B. If P - Q + R, how is P related to R?",
+        "options": [
+            "Father",
+            "Grandfather",
+            "Cousin",
+            "Maternal uncle"
+        ],
+        "answer": "Maternal uncle"
+    },
+    {
+        "id": 50,
+        "topic": "Blood Relations (complex)",
+        "difficulty": "Moderate",
+        "question": "A is the brother of B. B is the sister of C. C is the father of D. How is A related to D?",
+        "options": [
+            "Father",
+            "Paternal uncle",
+            "Maternal uncle",
+            "Grandfather"
+        ],
+        "answer": "Paternal uncle"
+    },
+    {
+        "id": 51,
+        "topic": "Direction and Distance",
+        "difficulty": "Moderate",
+        "question": "A man walks 9 km north, turns right and walks 5 km, then turns left and walks 3 km. How far is he from the starting point?",
+        "options": [
+            "14 km",
+            "12 km",
+            "17 km",
+            "13 km"
+        ],
+        "answer": "13 km"
+    },
+    {
+        "id": 52,
+        "topic": "Direction and Distance",
+        "difficulty": "Difficult",
+        "question": "Ravi walks 4 m west, turns right and walks 3 m, turns right again and walks 4 m, then turns right and walks 8 m. How far and in which direction is he from the starting point?",
+        "options": [
+            "5 m north",
+            "8 m south",
+            "3 m north",
+            "5 m south"
+        ],
+        "answer": "5 m south"
+    },
+    {
+        "id": 53,
+        "topic": "Direction and Distance",
+        "difficulty": "Moderate",
+        "question": "One morning, Ria stood with her shadow falling to her right. Which direction was she facing?",
+        "options": [
+            "East",
+            "South",
+            "North",
+            "West"
+        ],
+        "answer": "North"
+    },
+    {
+        "id": 54,
+        "topic": "Direction and Distance",
+        "difficulty": "Moderate",
+        "question": "A is 15 m east of B. C is 20 m north of B. What is the distance between A and C?",
+        "options": [
+            "30 m",
+            "25 m",
+            "35 m",
+            "20 m"
+        ],
+        "answer": "25 m"
+    },
+    {
+        "id": 55,
+        "topic": "Direction and Distance",
+        "difficulty": "Difficult",
+        "question": "Kiran faces south. He turns 135 degrees anticlockwise and then 180 degrees clockwise. Which direction is he facing now?",
+        "options": [
+            "North-west",
+            "West",
+            "South-east",
+            "South-west"
+        ],
+        "answer": "South-west"
+    },
+    {
+        "id": 56,
+        "topic": "Direction and Distance",
+        "difficulty": "Moderate",
+        "question": "A person walks 10 m east, 10 m north, 20 m west and then 10 m south. How far and in which direction is he from the starting point?",
+        "options": [
+            "10 m east",
+            "20 m west",
+            "10 m west",
+            "10 m north-west"
+        ],
+        "answer": "10 m west"
+    },
+    {
+        "id": 57,
+        "topic": "Statement and Assumptions",
+        "difficulty": "Moderate",
+        "question": "Statement: 'Please do not use mobile phones inside the hospital,' reads a notice at the entrance. Assumptions: I. Mobile phones may disturb patients or equipment. II. Some visitors carry mobile phones.",
+        "options": [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Neither is implicit",
+            "Both are implicit"
+        ],
+        "answer": "Both are implicit"
+    },
+    {
+        "id": 58,
+        "topic": "Statement and Assumptions",
+        "difficulty": "Moderate",
+        "question": "Statement: A school has decided to hold online classes during heavy monsoon. Assumptions: I. Students have access to the internet. II. Online classes are always more effective than classroom classes.",
+        "options": [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Both are implicit",
+            "Neither is implicit"
+        ],
+        "answer": "Only I is implicit"
+    },
+    {
+        "id": 59,
+        "topic": "Statement and Assumptions",
+        "difficulty": "Difficult",
+        "question": "Statement: 'Advertise in Newspaper X, since it has the largest circulation in the city.' Assumptions: I. Newspaper X is the cheapest option. II. A larger circulation means a wider reach.",
+        "options": [
+            "Both are implicit",
+            "Only I is implicit",
+            "Neither is implicit",
+            "Only II is implicit"
+        ],
+        "answer": "Only II is implicit"
+    },
+    {
+        "id": 60,
+        "topic": "Statement and Assumptions",
+        "difficulty": "Moderate",
+        "question": "Statement: The government has banned plastic bags in the city. Assumptions: I. Plastic bags are the only cause of pollution. II. All citizens will stop using plastic bags immediately.",
+        "options": [
+            "Neither is implicit",
+            "Only I is implicit",
+            "Only II is implicit",
+            "Both are implicit"
+        ],
+        "answer": "Neither is implicit"
+    },
+    {
+        "id": 61,
+        "topic": "Statement and Assumptions",
+        "difficulty": "Moderate",
+        "question": "Statement: 'Carry your ID card at all times,' the company told its employees. Assumptions: I. Employees have ID cards. II. ID cards help verify identity.",
+        "options": [
+            "Only I is implicit",
+            "Both are implicit",
+            "Neither is implicit",
+            "Only II is implicit"
+        ],
+        "answer": "Both are implicit"
+    },
+    {
+        "id": 62,
+        "topic": "Statement and Assumptions",
+        "difficulty": "Moderate",
+        "question": "Statement: 'Join our gym for a healthy life,' says an advertisement. Assumptions: I. Exercise improves health. II. Only gym members can be healthy.",
+        "options": [
+            "Only II is implicit",
+            "Neither is implicit",
+            "Both are implicit",
+            "Only I is implicit"
+        ],
+        "answer": "Only I is implicit"
+    },
+    {
+        "id": 63,
+        "topic": "Statement and Assumptions",
+        "difficulty": "Difficult",
+        "question": "Statement: The mayor said the new flyover will reduce traffic jams in the city. Assumptions: I. The flyover will be completed within a month. II. Traffic jams are partly caused by a lack of such roads.",
+        "options": [
+            "Only I is implicit",
+            "Both are implicit",
+            "Only II is implicit",
+            "Neither is implicit"
+        ],
+        "answer": "Only II is implicit"
+    },
+    {
+        "id": 64,
+        "topic": "Statement and Assumptions",
+        "difficulty": "Difficult",
+        "question": "Statement: 'Our new phone has the best camera in the world,' says an advertisement. Assumptions: I. People buy phones mainly for the camera. II. The camera is the only feature people consider.",
+        "options": [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Both are implicit",
+            "Neither is implicit"
+        ],
+        "answer": "Neither is implicit"
+    },
+    {
+        "id": 65,
+        "topic": "Statement and Conclusions",
+        "difficulty": "Moderate",
+        "question": "Statement: All metals expand on heating. Copper is a metal. Conclusions: I. Copper expands on heating. II. All things that expand on heating are metals.",
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "Both follow",
+            "Neither follows"
+        ],
+        "answer": "Only I follows"
+    },
+    {
+        "id": 66,
+        "topic": "Statement and Conclusions",
+        "difficulty": "Moderate",
+        "question": "Statement: The price of vegetables rose by 20% last month. Conclusions: I. People will stop buying vegetables. II. Farmers earned more last month.",
+        "options": [
+            "Both follow",
+            "Only I follows",
+            "Neither follows",
+            "Only II follows"
+        ],
+        "answer": "Neither follows"
+    },
+    {
+        "id": 67,
+        "topic": "Statement and Conclusions",
+        "difficulty": "Moderate",
+        "question": "Statement: All sparrows are birds. All birds lay eggs. Conclusions: I. All sparrows lay eggs. II. Some birds are sparrows.",
+        "options": [
+            "Only II follows",
+            "Neither follows",
+            "Only I follows",
+            "Both follow"
+        ],
+        "answer": "Both follow"
+    },
+    {
+        "id": 68,
+        "topic": "Statement and Conclusions",
+        "difficulty": "Difficult",
+        "question": "Statement: Some teachers are writers. No writer is a singer. Conclusions: I. No teacher is a singer. II. Some teachers are not singers.",
+        "options": [
+            "Only I follows",
+            "Neither follows",
+            "Only II follows",
+            "Both follow"
+        ],
+        "answer": "Only II follows"
+    },
+    {
+        "id": 69,
+        "topic": "Statement and Conclusions",
+        "difficulty": "Difficult",
+        "question": "Statement: In a school, 60% of the students play cricket and 70% play football. Conclusions: I. At least 30% of the students play both games. II. No student plays both games.",
+        "options": [
+            "Neither follows",
+            "Only II follows",
+            "Only I follows",
+            "Both follow"
+        ],
+        "answer": "Only I follows"
+    },
+    {
+        "id": 70,
+        "topic": "Statement and Conclusions",
+        "difficulty": "Moderate",
+        "question": "Statement: Road accidents decreased after the new traffic law came into force. Conclusions: I. The law was the only reason for the decrease. II. Everyone follows the new law.",
+        "options": [
+            "Only I follows",
+            "Both follow",
+            "Neither follows",
+            "Only II follows"
+        ],
+        "answer": "Neither follows"
+    },
+    {
+        "id": 71,
+        "topic": "Statement and Conclusions",
+        "difficulty": "Moderate",
+        "question": "Statement: All employees of firm A are insured. Rohit is an employee of firm A. Conclusions: I. Rohit is insured. II. At least one insured person exists.",
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "Neither follows",
+            "Both follow"
+        ],
+        "answer": "Both follow"
+    },
+    {
+        "id": 72,
+        "topic": "Statement and Conclusions",
+        "difficulty": "Moderate",
+        "question": "Statement: Only those who score above 90% get the scholarship. Sanya got the scholarship. Conclusions: I. Sanya scored below 90%. II. Sanya scored above 90%.",
+        "options": [
+            "Only I follows",
+            "Both follow",
+            "Only II follows",
+            "Neither follows"
+        ],
+        "answer": "Only II follows"
+    },
+    {
+        "id": 73,
+        "topic": "Data Interpretation",
+        "difficulty": "Moderate",
+        "question": "A shop's daily sales (units) from Monday to Friday were 40, 55, 35, 70 and 50. What was the average daily sale?",
+        "options": [
+            "48",
+            "52",
+            "55",
+            "50"
+        ],
+        "answer": "50"
+    },
+    {
+        "id": 74,
+        "topic": "Data Interpretation",
+        "difficulty": "Moderate",
+        "question": "Using the same sales data (Mon 40, Tue 55, Wed 35, Thu 70, Fri 50), what was the percentage increase in sales from Wednesday to Thursday?",
+        "options": [
+            "50%",
+            "75%",
+            "100%",
+            "200%"
+        ],
+        "answer": "100%"
+    },
+    {
+        "id": 75,
+        "topic": "Data Interpretation",
+        "difficulty": "Moderate",
+        "question": "Using the same sales data (Mon 40, Tue 55, Wed 35, Thu 70, Fri 50), what percentage of the week's total sales happened on Tuesday and Friday together?",
+        "options": [
+            "40%",
+            "42%",
+            "44%",
+            "45%"
+        ],
+        "answer": "42%"
+    },
+    {
+        "id": 76,
+        "topic": "Data Interpretation",
+        "difficulty": "Moderate",
+        "question": "Four classes have the following number of students: A = 30, B = 45, C = 25, D = 50. What percentage of all students are in class B?",
+        "options": [
+            "25%",
+            "35%",
+            "30%",
+            "40%"
+        ],
+        "answer": "30%"
+    },
+    {
+        "id": 77,
+        "topic": "Data Interpretation",
+        "difficulty": "Moderate",
+        "question": "A company's revenue (in lakh Rs) was 200 in 2021, 250 in 2022, 300 in 2023 and 420 in 2024. Which year-on-year growth was the highest in percentage terms?",
+        "options": [
+            "2021 to 2022",
+            "2022 to 2023",
+            "All were equal",
+            "2023 to 2024"
+        ],
+        "answer": "2023 to 2024"
+    },
+    {
+        "id": 78,
+        "topic": "Data Interpretation",
+        "difficulty": "Moderate",
+        "question": "A family earns Rs 40,000 a month. Its spending is: Food 30%, Rent 25%, Education 15%, Savings 20%, Others 10%. How much do they spend on rent and education together?",
+        "options": [
+            "Rs 12,000",
+            "Rs 14,000",
+            "Rs 18,000",
+            "Rs 16,000"
+        ],
+        "answer": "Rs 16,000"
+    },
+    {
+        "id": 79,
+        "topic": "Data Interpretation",
+        "difficulty": "Moderate",
+        "question": "A student scored 80, 72, 64 and 84 out of 100 in four subjects. What is the average percentage?",
+        "options": [
+            "72%",
+            "76%",
+            "75%",
+            "78%"
+        ],
+        "answer": "75%"
+    },
+    {
+        "id": 80,
+        "topic": "Data Interpretation",
+        "difficulty": "Moderate",
+        "question": "A factory produced 1200 cars at Plant A, 1800 at Plant B and 3000 at Plant C. What is the ratio of Plant A's production to Plant C's production?",
+        "options": [
+            "2 : 3",
+            "3 : 5",
+            "1 : 2",
+            "2 : 5"
+        ],
+        "answer": "2 : 5"
+    },
+    {
+        "id": 81,
+        "topic": "Data Interpretation",
+        "difficulty": "Difficult",
+        "question": "The population of a town was 50,000 in 2010 and 62,500 in 2020. Assuming a uniform yearly increase, what was the average yearly increase?",
+        "options": [
+            "1000",
+            "1250",
+            "1500",
+            "1200"
+        ],
+        "answer": "1250"
+    },
+    {
+        "id": 82,
+        "topic": "Data Interpretation",
+        "difficulty": "Moderate",
+        "question": "Rainfall (mm) in four months was: June 120, July 280, August 240, September 160. What percentage of the total rainfall fell in July?",
+        "options": [
+            "30%",
+            "40%",
+            "28%",
+            "35%"
+        ],
+        "answer": "35%"
+    },
+    {
+        "id": 83,
+        "topic": "Probability",
+        "difficulty": "Moderate",
+        "question": "Two fair dice are rolled. What is the probability that the sum is 8?",
+        "options": [
+            "1/6",
+            "5/36",
+            "1/9",
+            "7/36"
+        ],
+        "answer": "5/36"
+    },
+    {
+        "id": 84,
+        "topic": "Probability",
+        "difficulty": "Moderate",
+        "question": "A bag has 4 red, 5 blue and 3 green balls. One ball is drawn at random. What is the probability that it is not blue?",
+        "options": [
+            "5/12",
+            "3/4",
+            "7/12",
+            "1/3"
+        ],
+        "answer": "7/12"
+    },
+    {
+        "id": 85,
+        "topic": "Probability",
+        "difficulty": "Moderate",
+        "question": "Three fair coins are tossed. What is the probability of getting at least one head?",
+        "options": [
+            "3/4",
+            "1/2",
+            "5/8",
+            "7/8"
+        ],
+        "answer": "7/8"
+    },
+    {
+        "id": 86,
+        "topic": "Probability",
+        "difficulty": "Difficult",
+        "question": "One card is drawn from a standard deck of 52 cards. What is the probability that it is a king or a heart?",
+        "options": [
+            "17/52",
+            "3/13",
+            "4/13",
+            "1/2"
+        ],
+        "answer": "4/13"
+    },
+    {
+        "id": 87,
+        "topic": "Probability",
+        "difficulty": "Difficult",
+        "question": "A bag has 5 red and 3 black balls. Two balls are drawn one after another without replacement. What is the probability that both are red?",
+        "options": [
+            "25/64",
+            "5/14",
+            "5/8",
+            "3/7"
+        ],
+        "answer": "5/14"
+    },
+    {
+        "id": 88,
+        "topic": "Probability",
+        "difficulty": "Moderate",
+        "question": "Three fair coins are tossed. What is the probability of getting exactly two heads?",
+        "options": [
+            "1/4",
+            "1/2",
+            "1/8",
+            "3/8"
+        ],
+        "answer": "3/8"
+    },
+    {
+        "id": 89,
+        "topic": "Probability",
+        "difficulty": "Moderate",
+        "question": "A number is chosen at random from 1 to 20. What is the probability that it is a prime number?",
+        "options": [
+            "7/20",
+            "9/20",
+            "2/5",
+            "1/2"
+        ],
+        "answer": "2/5"
+    },
+    {
+        "id": 90,
+        "topic": "Probability",
+        "difficulty": "Moderate",
+        "question": "Two fair dice are rolled. What is the probability that the product of the numbers is even?",
+        "options": [
+            "1/2",
+            "2/3",
+            "5/6",
+            "3/4"
+        ],
+        "answer": "3/4"
+    },
+    {
+        "id": 91,
+        "topic": "Permutation and Combination",
+        "difficulty": "Moderate",
+        "question": "In how many distinct ways can the letters of the word LEVEL be arranged?",
+        "options": [
+            "60",
+            "30",
+            "120",
+            "15"
+        ],
+        "answer": "30"
+    },
+    {
+        "id": 92,
+        "topic": "Permutation and Combination",
+        "difficulty": "Difficult",
+        "question": "A committee of 3 is to be chosen from 5 men and 4 women, with at least one woman. In how many ways can this be done?",
+        "options": [
+            "84",
+            "64",
+            "74",
+            "70"
+        ],
+        "answer": "74"
+    },
+    {
+        "id": 93,
+        "topic": "Permutation and Combination",
+        "difficulty": "Moderate",
+        "question": "How many 4-digit numbers can be formed using the digits 1, 2, 3, 4, 5 without repeating any digit?",
+        "options": [
+            "625",
+            "120",
+            "24",
+            "60"
+        ],
+        "answer": "120"
+    },
+    {
+        "id": 94,
+        "topic": "Permutation and Combination",
+        "difficulty": "Moderate",
+        "question": "How many 3-digit even numbers can be formed using the digits 1, 2, 3, 4, 5 without repetition?",
+        "options": [
+            "30",
+            "36",
+            "24",
+            "20"
+        ],
+        "answer": "24"
+    },
+    {
+        "id": 95,
+        "topic": "Permutation and Combination",
+        "difficulty": "Moderate",
+        "question": "In how many ways can 6 people sit around a circular table?",
+        "options": [
+            "720",
+            "60",
+            "24",
+            "120"
+        ],
+        "answer": "120"
+    },
+    {
+        "id": 96,
+        "topic": "Permutation and Combination",
+        "difficulty": "Moderate",
+        "question": "In how many ways can 2 boys and 2 girls be chosen from 5 boys and 4 girls?",
+        "options": [
+            "54",
+            "60",
+            "72",
+            "40"
+        ],
+        "answer": "60"
+    },
+    {
+        "id": 97,
+        "topic": "Permutation and Combination",
+        "difficulty": "Moderate",
+        "question": "How many diagonals does a polygon with 8 sides have?",
+        "options": [
+            "28",
+            "24",
+            "20",
+            "16"
+        ],
+        "answer": "20"
+    },
+    {
+        "id": 98,
+        "topic": "Permutation and Combination",
+        "difficulty": "Difficult",
+        "question": "In how many ways can the letters of the word NUMBER be arranged so that the vowels always stay together?",
+        "options": [
+            "120",
+            "720",
+            "360",
+            "240"
+        ],
+        "answer": "240"
+    },
+    {
+        "id": 99,
+        "topic": "Time, Speed and Distance",
+        "difficulty": "Moderate",
+        "question": "A train 150 m long passes a pole in 10 seconds. What is its speed in km/h?",
+        "options": [
+            "48 km/h",
+            "54 km/h",
+            "60 km/h",
+            "45 km/h"
+        ],
+        "answer": "54 km/h"
+    },
+    {
+        "id": 100,
+        "topic": "Time, Speed and Distance",
+        "difficulty": "Moderate",
+        "question": "A car travels 60 km at 30 km/h and returns the same distance at 20 km/h. What is its average speed for the whole trip?",
+        "options": [
+            "25 km/h",
+            "22.5 km/h",
+            "26 km/h",
+            "24 km/h"
+        ],
+        "answer": "24 km/h"
+    },
+    {
+        "id": 101,
+        "topic": "Time, Speed and Distance",
+        "difficulty": "Difficult",
+        "question": "Two trains of length 100 m and 150 m run in opposite directions at 40 km/h and 60 km/h. How long do they take to cross each other?",
+        "options": [
+            "8 seconds",
+            "10 seconds",
+            "9 seconds",
+            "12 seconds"
+        ],
+        "answer": "9 seconds"
+    },
+    {
+        "id": 102,
+        "topic": "Time, Speed and Distance",
+        "difficulty": "Moderate",
+        "question": "A boat's speed in still water is 10 km/h and the stream flows at 2 km/h. How long does it take to go 24 km downstream and return 24 km upstream?",
+        "options": [
+            "4.5 hours",
+            "5.5 hours",
+            "5 hours",
+            "6 hours"
+        ],
+        "answer": "5 hours"
+    },
+    {
+        "id": 103,
+        "topic": "Time, Speed and Distance",
+        "difficulty": "Moderate",
+        "question": "A walks at 5 km/h. Two hours later, B starts from the same place in the same direction at 7 km/h. After how many hours of B's walking does B catch A?",
+        "options": [
+            "4 hours",
+            "6 hours",
+            "7 hours",
+            "5 hours"
+        ],
+        "answer": "5 hours"
+    },
+    {
+        "id": 104,
+        "topic": "Time, Speed and Distance",
+        "difficulty": "Difficult",
+        "question": "A 120 km journey takes 1 hour less when the speed is increased by 10 km/h. What was the original speed?",
+        "options": [
+            "25 km/h",
+            "40 km/h",
+            "30 km/h",
+            "20 km/h"
+        ],
+        "answer": "30 km/h"
+    },
+    {
+        "id": 105,
+        "topic": "Time, Speed and Distance",
+        "difficulty": "Moderate",
+        "question": "A train running at 72 km/h crosses a 200 m platform in 20 seconds. What is the length of the train?",
+        "options": [
+            "150 m",
+            "250 m",
+            "300 m",
+            "200 m"
+        ],
+        "answer": "200 m"
+    },
+    {
+        "id": 106,
+        "topic": "Time, Speed and Distance",
+        "difficulty": "Moderate",
+        "question": "A man covers a distance in 6 hours at 4 km/h. At what speed must he travel to cover it in 4 hours?",
+        "options": [
+            "5 km/h",
+            "7 km/h",
+            "6 km/h",
+            "8 km/h"
+        ],
+        "answer": "6 km/h"
+    },
+    {
+        "id": 107,
+        "topic": "Work and Efficiency",
+        "difficulty": "Moderate",
+        "question": "A can finish a job in 12 days and B in 18 days. How long will they take working together?",
+        "options": [
+            "6 days",
+            "7.2 days",
+            "8 days",
+            "7.5 days"
+        ],
+        "answer": "7.2 days"
+    },
+    {
+        "id": 108,
+        "topic": "Work and Efficiency",
+        "difficulty": "Moderate",
+        "question": "A is twice as efficient as B. Together they finish a job in 12 days. How long will A take alone?",
+        "options": [
+            "24 days",
+            "36 days",
+            "18 days",
+            "20 days"
+        ],
+        "answer": "18 days"
+    },
+    {
+        "id": 109,
+        "topic": "Work and Efficiency",
+        "difficulty": "Difficult",
+        "question": "A and B can do a work in 10 days, B and C in 15 days, and A and C in 12 days. How long will all three take together?",
+        "options": [
+            "9 days",
+            "8 days",
+            "7.5 days",
+            "6 days"
+        ],
+        "answer": "8 days"
+    },
+    {
+        "id": 110,
+        "topic": "Work and Efficiency",
+        "difficulty": "Moderate",
+        "question": "12 men complete a work in 15 days. How many men are needed to complete it in 9 days?",
+        "options": [
+            "18",
+            "24",
+            "20",
+            "25"
+        ],
+        "answer": "20"
+    },
+    {
+        "id": 111,
+        "topic": "Work and Efficiency",
+        "difficulty": "Difficult",
+        "question": "A can do a work in 20 days and B in 30 days. They work together for 6 days and then A leaves. How many more days will B take to finish the work?",
+        "options": [
+            "12 days",
+            "18 days",
+            "10 days",
+            "15 days"
+        ],
+        "answer": "15 days"
+    },
+    {
+        "id": 112,
+        "topic": "Work and Efficiency",
+        "difficulty": "Difficult",
+        "question": "Pipe A fills a tank in 6 hours, pipe B in 9 hours, and pipe C empties it in 18 hours. If all three are open, how long does it take to fill the tank?",
+        "options": [
+            "5 hours",
+            "4.5 hours",
+            "6 hours",
+            "3.6 hours"
+        ],
+        "answer": "4.5 hours"
+    },
+    {
+        "id": 113,
+        "topic": "Work and Efficiency",
+        "difficulty": "Moderate",
+        "question": "A is 25% more efficient than B. If B takes 20 days to finish a job, how many days does A take?",
+        "options": [
+            "15 days",
+            "18 days",
+            "12 days",
+            "16 days"
+        ],
+        "answer": "16 days"
+    },
+    {
+        "id": 114,
+        "topic": "Work and Efficiency",
+        "difficulty": "Difficult",
+        "question": "8 workers build a wall in 10 days working 6 hours a day. How many days will 10 workers take if they work 8 hours a day?",
+        "options": [
+            "6 days",
+            "5 days",
+            "7 days",
+            "8 days"
+        ],
+        "answer": "6 days"
+    },
+    {
+        "id": 115,
+        "topic": "Logical and Analytical Puzzles",
+        "difficulty": "Moderate",
+        "question": "A is older than B. C is younger than B. D is older than A. E is older than D. Who is the third oldest?",
+        "options": [
+            "B",
+            "D",
+            "A",
+            "C"
+        ],
+        "answer": "A"
+    },
+    {
+        "id": 116,
+        "topic": "Logical and Analytical Puzzles",
+        "difficulty": "Moderate",
+        "question": "What is the angle between the hour hand and the minute hand of a clock at 4:30?",
+        "options": [
+            "30 degrees",
+            "45 degrees",
+            "60 degrees",
+            "75 degrees"
+        ],
+        "answer": "45 degrees"
+    },
+    {
+        "id": 117,
+        "topic": "Logical and Analytical Puzzles",
+        "difficulty": "Moderate",
+        "question": "A father is 3 times as old as his son. After 12 years he will be twice as old as his son. What is the son's present age?",
+        "options": [
+            "10 years",
+            "14 years",
+            "12 years",
+            "15 years"
+        ],
+        "answer": "12 years"
+    },
+    {
+        "id": 118,
+        "topic": "Logical and Analytical Puzzles",
+        "difficulty": "Difficult",
+        "question": "On an island, knights always tell the truth and knaves always lie. A says, 'We are both knaves.' What are A and B?",
+        "options": [
+            "Both are knights",
+            "A is a knave and B is a knight",
+            "A is a knight and B is a knave",
+            "Both are knaves"
+        ],
+        "answer": "A is a knave and B is a knight"
+    },
+    {
+        "id": 119,
+        "topic": "Logical and Analytical Puzzles",
+        "difficulty": "Moderate",
+        "question": "If the day before yesterday was Thursday, what day will it be the day after tomorrow?",
+        "options": [
+            "Sunday",
+            "Tuesday",
+            "Monday",
+            "Saturday"
+        ],
+        "answer": "Monday"
+    },
+    {
+        "id": 120,
+        "topic": "Logical and Analytical Puzzles",
+        "difficulty": "Moderate",
+        "question": "A number is doubled and 9 is added. The result equals 3 times the number minus 4. What is the number?",
+        "options": [
+            "11",
+            "13",
+            "15",
+            "17"
+        ],
+        "answer": "13"
+    },
+    {
+        "id": 121,
+        "topic": "Logical and Analytical Puzzles",
+        "difficulty": "Moderate",
+        "question": "In a group of 60 students, 35 like tea, 30 like coffee and 10 like neither. How many like both?",
+        "options": [
+            "10",
+            "20",
+            "15",
+            "25"
+        ],
+        "answer": "15"
+    },
+    {
+        "id": 122,
+        "topic": "Logical and Analytical Puzzles",
+        "difficulty": "Moderate",
+        "question": "A clock gains 5 minutes every hour. It is set right at 6 AM. What time will it show at the real time of 2 PM?",
+        "options": [
+            "2:30 PM",
+            "2:45 PM",
+            "3:00 PM",
+            "2:40 PM"
+        ],
+        "answer": "2:40 PM"
+    },
+    {
+        "id": 123,
+        "topic": "Logical and Analytical Puzzles",
+        "difficulty": "Difficult",
+        "question": "Three boxes are labelled 'Apples', 'Oranges' and 'Mixed', and every label is wrong. You pick one fruit from the box labelled 'Mixed' and it is an apple. What does the box labelled 'Oranges' contain?",
+        "options": [
+            "Apples",
+            "Oranges",
+            "Mixed",
+            "Cannot be determined"
+        ],
+        "answer": "Mixed"
+    },
+    {
+        "id": 124,
+        "topic": "Logical and Analytical Puzzles",
+        "difficulty": "Moderate",
+        "question": "Rahul is taller than Sam. Tina is shorter than Sam. Uma is taller than Rahul. Vik is shorter than Tina. Who is the second shortest?",
+        "options": [
+            "Sam",
+            "Vik",
+            "Tina",
+            "Rahul"
+        ],
+        "answer": "Tina"
+    },
+    {
+        "id": 125,
+        "topic": "Critical Reasoning",
+        "difficulty": "Moderate",
+        "question": "Argument: A city banned private vehicles on Sundays and air quality on Sundays improved, so the ban caused the improvement. Which statement most weakens this argument?",
+        "options": [
+            "Air quality is measured at the same stations every day",
+            "Factories in the city also remain closed on Sundays",
+            "Many people enjoy walking on Sundays",
+            "The ban was announced a month in advance"
+        ],
+        "answer": "Factories in the city also remain closed on Sundays"
+    },
+    {
+        "id": 126,
+        "topic": "Critical Reasoning",
+        "difficulty": "Moderate",
+        "question": "Argument: Students who sleep 8 hours score higher, so sleep improves performance. Which statement most strengthens this argument?",
+        "options": [
+            "Students who sleep more also eat healthier food",
+            "Students randomly asked to sleep more showed higher scores",
+            "Some toppers sleep only 6 hours",
+            "Sleep needs differ from person to person"
+        ],
+        "answer": "Students randomly asked to sleep more showed higher scores"
+    },
+    {
+        "id": 127,
+        "topic": "Critical Reasoning",
+        "difficulty": "Moderate",
+        "question": "A shop owner says, 'Since we cut the price by 10%, our sales will increase.' What is the underlying assumption?",
+        "options": [
+            "Customers are sensitive to price changes",
+            "All competitors will cut prices too",
+            "The shop will earn a higher profit per item",
+            "The shop sells only one product"
+        ],
+        "answer": "Customers are sensitive to price changes"
+    },
+    {
+        "id": 128,
+        "topic": "Critical Reasoning",
+        "difficulty": "Moderate",
+        "question": "Passage: Many cities face water shortages. Rainwater harvesting stores water during the monsoon. Therefore, cities should make rainwater harvesting compulsory. What is the main conclusion?",
+        "options": [
+            "Many cities face water shortages",
+            "Rainwater is available only in the monsoon",
+            "Rainwater harvesting stores water",
+            "Cities should make rainwater harvesting compulsory"
+        ],
+        "answer": "Cities should make rainwater harvesting compulsory"
+    },
+    {
+        "id": 129,
+        "topic": "Critical Reasoning",
+        "difficulty": "Moderate",
+        "question": "Argument: 'Every successful entrepreneur I know wakes up at 5 AM, so waking up at 5 AM leads to success.' What is the flaw in this reasoning?",
+        "options": [
+            "It uses a sample that is too large",
+            "It mistakes a correlation for a cause",
+            "It relies on an expert's opinion",
+            "It contradicts a known fact"
+        ],
+        "answer": "It mistakes a correlation for a cause"
+    },
+    {
+        "id": 130,
+        "topic": "Critical Reasoning",
+        "difficulty": "Moderate",
+        "question": "Argument: A company will launch a mobile app to improve customer service because most of its customers own smartphones. Which statement most weakens this plan?",
+        "options": [
+            "Smartphones are getting cheaper every year",
+            "The app will be free to download",
+            "Most customers prefer to speak to a person on the phone",
+            "The company has a large technical team"
+        ],
+        "answer": "Most customers prefer to speak to a person on the phone"
+    },
+    {
+        "id": 131,
+        "topic": "Critical Reasoning",
+        "difficulty": "Difficult",
+        "question": "All athletes at a training camp must be below 25 years of age. Some of the coaches at the camp are above 25. Which conclusion must be true?",
+        "options": [
+            "No coach is an athlete at the camp",
+            "At least one coach is not an athlete at the camp",
+            "All coaches are above 25",
+            "Some athletes are above 25"
+        ],
+        "answer": "At least one coach is not an athlete at the camp"
+    },
+    {
+        "id": 132,
+        "topic": "Critical Reasoning",
+        "difficulty": "Difficult",
+        "question": "The number of ATMs in a city has risen sharply, yet visits to bank branches have not fallen. Which statement best explains this?",
+        "options": [
+            "ATMs often run out of cash on weekends",
+            "Branches provide services such as loans and account opening that ATMs cannot",
+            "Banks have reduced their staff in branches",
+            "Most people have never used an ATM"
+        ],
+        "answer": "Branches provide services such as loans and account opening that ATMs cannot"
+    }
+]

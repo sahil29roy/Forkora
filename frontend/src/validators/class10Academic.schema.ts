@@ -21,6 +21,8 @@ export const EDUCATION_BOARD_OPTIONS = [
   'NIOS',
   'Other',
 ] as const
+import { CLASS_10_STREAM_PREFERENCES } from '@/config/interestCategories'
+export { CLASS_10_STREAM_PREFERENCES }
 
 export const INTEREST_OPTIONS = [
   'Technology & Computers',

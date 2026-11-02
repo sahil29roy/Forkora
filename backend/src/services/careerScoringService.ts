@@ -1,5 +1,6 @@
 import { query } from '../config/db';
 import { CareerNode, CareerScoreBreakdown } from '../types/careerTypes';
+import { getOrComputeMLPredictions } from './mlPredictionService';
 
 export interface StudentAssessmentContext {
   userId: number | string;
@@ -535,6 +536,11 @@ export async function calculateCareerScores(
   userId: number | string
 ): Promise<CareerScoreResult[]> {
   const context = await loadStudentContext(userId);
+
+  // If ML predictions are not yet computed, dynamically query Python ML predictor
+  if (!context.mlPredictions || Object.keys(context.mlPredictions).length === 0) {
+    context.mlPredictions = await getOrComputeMLPredictions(context);
+  }
 
   // Load all published career nodes
   const nodesRes = await query<CareerNode>(

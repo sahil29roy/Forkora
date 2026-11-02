@@ -112,16 +112,23 @@ class AcademicPreprocessor(BaseEstimator, TransformerMixin):
 
         n_rows = len(df)
 
+        def _get_num_series(col_name: str, alt_name: str = "") -> pd.Series:
+            if col_name in df.columns:
+                return pd.to_numeric(df[col_name], errors="coerce")
+            if alt_name and alt_name in df.columns:
+                return pd.to_numeric(df[alt_name], errors="coerce")
+            return pd.Series(np.nan, index=df.index, dtype=float)
+
         # 1. Base Class 10 Numerical Features
-        c10_maths = pd.to_numeric(df.get("Class10_Maths", df.get("c10_maths", np.nan)), errors="coerce")
-        c10_science = pd.to_numeric(df.get("Class10_Science", df.get("c10_science", np.nan)), errors="coerce")
-        c10_sst = pd.to_numeric(df.get("Class10_SST", df.get("c10_sst", np.nan)), errors="coerce")
-        c10_english = pd.to_numeric(df.get("Class10_English", df.get("c10_english", np.nan)), errors="coerce")
-        c10_fifth_marks = pd.to_numeric(df.get("Class10_Fifth_Marks", df.get("c10_fifth_marks", np.nan)), errors="coerce")
-        c10_pct = pd.to_numeric(df.get("Class10_Percentage", df.get("c10_percentage", np.nan)), errors="coerce")
+        c10_maths = _get_num_series("Class10_Maths", "c10_maths")
+        c10_science = _get_num_series("Class10_Science", "c10_science")
+        c10_sst = _get_num_series("Class10_SST", "c10_sst")
+        c10_english = _get_num_series("Class10_English", "c10_english")
+        c10_fifth_marks = _get_num_series("Class10_Fifth_Marks", "c10_fifth_marks")
+        c10_pct = _get_num_series("Class10_Percentage", "c10_percentage")
 
         # 2. Base Class 12 Numerical Features
-        c12_pct = pd.to_numeric(df.get("Class12_Percentage", df.get("c12_percentage", np.nan)), errors="coerce")
+        c12_pct = _get_num_series("Class12_Percentage", "c12_percentage")
 
         # Fallback percentage calculation if missing but marks present
         c10_calc_pct = pd.concat([c10_maths, c10_science, c10_sst, c10_english, c10_fifth_marks], axis=1).mean(axis=1)

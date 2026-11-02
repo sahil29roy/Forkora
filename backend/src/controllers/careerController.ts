@@ -4,6 +4,7 @@ import { query } from '../config/db';
 import { calculateCareerScores, loadStudentContext } from '../services/careerScoringService';
 import { findPathwaysForCareer, getStartNodeCode } from '../services/careerPathwayService';
 import { evaluateEligibility } from '../services/eligibilityService';
+import { buildPredictionPayload, invokePythonPredictor } from '../services/mlPredictionService';
 import { CareerRecommendationDTO } from '../types/careerTypes';
 
 /**
@@ -275,3 +276,48 @@ export async function getCareerPreferences(
     next(error);
   }
 }
+
+/**
+ * Controller: Returns dynamic ML model predictions directly from trained Scikit-learn pipeline
+ * 
+ * Route: GET /api/careers/ml-predictions
+ */
+export async function getStudentMLPredictions(
+  req: AuthenticatedRequest,
+  res: Response,
+  next: NextFunction
+): Promise<void> {
+  try {
+    const userId = req.user?.id;
+    if (!userId) {
+      res.status(401).json({ status: 'error', message: 'Authentication required.' });
+      return;
+    }
+
+    const context = await loadStudentContext(userId);
+    const payload = buildPredictionPayload(context);
+    const mlResponse = await invokePythonPredictor(payload);
+
+    if (!mlResponse) {
+      res.status(200).json({
+        status: 'success',
+        data: {
+          model_version: 'heuristic_baseline',
+          predicted_career: 'General Higher Education',
+          top_predictions: [],
+          career_node_scores: context.mlPredictions || {},
+          disclaimer: 'Python ML service fallback active.',
+        },
+      });
+      return;
+    }
+
+    res.status(200).json({
+      status: 'success',
+      data: mlResponse,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+

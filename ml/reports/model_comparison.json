@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-11-02T22:00:59.390260",
+  "selected_model": "DecisionTreeClassifier",
+  "cv_results": {
+    "LogisticRegression": {
+      "cv_accuracy_mean": 0.200625,
+      "cv_accuracy_std": 0.006614378277661475,
+      "cv_macro_f1_mean": 0.19949067767701084,
+      "cv_macro_f1_std": 0.006248314326702973,
+      "cv_weighted_f1_mean": 0.14523248165068775,
+      "cv_macro_precision_mean": 0.23003485263965895,
+      "cv_macro_recall_mean": 0.28845431191868787
+    },
+    "DecisionTreeClassifier": {
+      "cv_accuracy_mean": 0.19837500000000002,
+      "cv_accuracy_std": 0.008173891362135905,
+      "cv_macro_f1_mean": 0.20560320644324337,
+      "cv_macro_f1_std": 0.007596520452900594,
+      "cv_weighted_f1_mean": 0.17123573922934304,
+      "cv_macro_precision_mean": 0.2025336862782141,
+      "cv_macro_recall_mean": 0.25917126232956555
+    },
+    "RandomForestClassifier": {
+      "cv_accuracy_mean": 0.20037500000000003,
+      "cv_accuracy_std": 0.0066918794071620874,
+      "cv_macro_f1_mean": 0.2016584501019914,
+      "cv_macro_f1_std": 0.009342813915495164,
+      "cv_weighted_f1_mean": 0.15556561099162836,
+      "cv_macro_precision_mean": 0.21132482033233493,
+      "cv_macro_recall_mean": 0.2744620331137001
+    },
+    "GradientBoostingClassifier": {
+      "cv_accuracy_mean": 0.19724999999999998,
+      "cv_accuracy_std": 0.010319883720275144,
+      "cv_macro_f1_mean": 0.1991412444197205,
+      "cv_macro_f1_std": 0.0184005710036591,
+      "cv_weighted_f1_mean": 0.19289912307429485,
+      "cv_macro_precision_mean": 0.19224731605176465,
+      "cv_macro_recall_mean": 0.21327763925655133
+    }
+  }
+}

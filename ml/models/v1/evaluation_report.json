@@ -1,0 +1,421 @@
+{
+  "accuracy": 0.2015,
+  "macro_precision": 0.2019,
+  "macro_recall": 0.2603,
+  "macro_f1": 0.2145,
+  "weighted_f1": 0.1773,
+  "class_labels": [
+    "Architecture / Design",
+    "Arts / Design",
+    "Biotechnology",
+    "Business / Finance",
+    "Chartered Accountancy",
+    "Computer Science / IT",
+    "Engineering",
+    "Government Services",
+    "Journalism / Media",
+    "Law",
+    "Management",
+    "Medical / Healthcare",
+    "Research",
+    "Teaching / Education"
+  ],
+  "per_class_metrics": {
+    "Architecture / Design": {
+      "precision": 0.1949,
+      "recall": 0.377,
+      "f1_score": 0.257
+    },
+    "Arts / Design": {
+      "precision": 0.1594,
+      "recall": 0.2292,
+      "f1_score": 0.188
+    },
+    "Biotechnology": {
+      "precision": 0.2113,
+      "recall": 0.2041,
+      "f1_score": 0.2076
+    },
+    "Business / Finance": {
+      "precision": 0.2264,
+      "recall": 0.0797,
+      "f1_score": 0.1179
+    },
+    "Chartered Accountancy": {
+      "precision": 0.202,
+      "recall": 0.3279,
+      "f1_score": 0.25
+    },
+    "Computer Science / IT": {
+      "precision": 0.172,
+      "recall": 0.2886,
+      "f1_score": 0.2155
+    },
+    "Engineering": {
+      "precision": 0.2128,
+      "recall": 0.1961,
+      "f1_score": 0.2041
+    },
+    "Government Services": {
+      "precision": 0.14,
+      "recall": 0.0179,
+      "f1_score": 0.0317
+    },
+    "Journalism / Media": {
+      "precision": 0.2208,
+      "recall": 0.3091,
+      "f1_score": 0.2576
+    },
+    "Law": {
+      "precision": 0.24,
+      "recall": 0.2239,
+      "f1_score": 0.2317
+    },
+    "Management": {
+      "precision": 0.1689,
+      "recall": 0.4032,
+      "f1_score": 0.2381
+    },
+    "Medical / Healthcare": {
+      "precision": 0.242,
+      "recall": 0.3312,
+      "f1_score": 0.2797
+    },
+    "Research": {
+      "precision": 0.1825,
+      "recall": 0.2909,
+      "f1_score": 0.2243
+    },
+    "Teaching / Education": {
+      "precision": 0.2533,
+      "recall": 0.3654,
+      "f1_score": 0.2992
+    }
+  },
+  "confusion_matrix": [
+    [
+      46,
+      0,
+      0,
+      12,
+      0,
+      41,
+      16,
+      7,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      11,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      17,
+      10,
+      0,
+      0,
+      0,
+      9
+    ],
+    [
+      0,
+      0,
+      30,
+      7,
+      0,
+      18,
+      4,
+      3,
+      0,
+      0,
+      0,
+      37,
+      48,
+      0
+    ],
+    [
+      54,
+      0,
+      26,
+      24,
+      17,
+      29,
+      23,
+      6,
+      0,
+      13,
+      30,
+      37,
+      42,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      2,
+      20,
+      0,
+      0,
+      0,
+      0,
+      10,
+      29,
+      0,
+      0,
+      0
+    ],
+    [
+      40,
+      0,
+      5,
+      10,
+      0,
+      43,
+      30,
+      7,
+      0,
+      0,
+      0,
+      8,
+      6,
+      0
+    ],
+    [
+      36,
+      0,
+      7,
+      8,
+      0,
+      54,
+      30,
+      4,
+      0,
+      0,
+      0,
+      8,
+      6,
+      0
+    ],
+    [
+      60,
+      15,
+      24,
+      25,
+      20,
+      34,
+      25,
+      7,
+      18,
+      28,
+      31,
+      29,
+      56,
+      19
+    ],
+    [
+      0,
+      18,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      17,
+      8,
+      0,
+      0,
+      0,
+      12
+    ],
+    [
+      0,
+      14,
+      0,
+      4,
+      24,
+      0,
+      0,
+      0,
+      13,
+      30,
+      33,
+      0,
+      0,
+      16
+    ],
+    [
+      0,
+      0,
+      0,
+      1,
+      18,
+      0,
+      0,
+      0,
+      0,
+      18,
+      25,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      23,
+      4,
+      0,
+      11,
+      8,
+      4,
+      0,
+      0,
+      0,
+      53,
+      57,
+      0
+    ],
+    [
+      0,
+      0,
+      27,
+      9,
+      0,
+      20,
+      5,
+      9,
+      0,
+      0,
+      0,
+      47,
+      48,
+      0
+    ],
+    [
+      0,
+      11,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      12,
+      8,
+      0,
+      0,
+      0,
+      19
+    ]
+  ],
+  "classification_report_str": "                       precision    recall  f1-score   support\n\nArchitecture / Design       0.19      0.38      0.26       122\n        Arts / Design       0.16      0.23      0.19        48\n        Biotechnology       0.21      0.20      0.21       147\n   Business / Finance       0.23      0.08      0.12       301\nChartered Accountancy       0.20      0.33      0.25        61\nComputer Science / IT       0.17      0.29      0.22       149\n          Engineering       0.21      0.20      0.20       153\n  Government Services       0.14      0.02      0.03       391\n   Journalism / Media       0.22      0.31      0.26        55\n                  Law       0.24      0.22      0.23       134\n           Management       0.17      0.40      0.24        62\n Medical / Healthcare       0.24      0.33      0.28       160\n             Research       0.18      0.29      0.22       165\n Teaching / Education       0.25      0.37      0.30        52\n\n             accuracy                           0.20      2000\n            macro avg       0.20      0.26      0.21      2000\n         weighted avg       0.20      0.20      0.18      2000\n",
+  "classification_report_dict": {
+    "Architecture / Design": {
+      "precision": 0.19491525423728814,
+      "recall": 0.3770491803278688,
+      "f1-score": 0.2569832402234637,
+      "support": 122.0
+    },
+    "Arts / Design": {
+      "precision": 0.15942028985507245,
+      "recall": 0.22916666666666666,
+      "f1-score": 0.18803418803418803,
+      "support": 48.0
+    },
+    "Biotechnology": {
+      "precision": 0.2112676056338028,
+      "recall": 0.20408163265306123,
+      "f1-score": 0.20761245674740483,
+      "support": 147.0
+    },
+    "Business / Finance": {
+      "precision": 0.22641509433962265,
+      "recall": 0.07973421926910298,
+      "f1-score": 0.11793611793611794,
+      "support": 301.0
+    },
+    "Chartered Accountancy": {
+      "precision": 0.20202020202020202,
+      "recall": 0.32786885245901637,
+      "f1-score": 0.25,
+      "support": 61.0
+    },
+    "Computer Science / IT": {
+      "precision": 0.172,
+      "recall": 0.28859060402684567,
+      "f1-score": 0.21553884711779447,
+      "support": 149.0
+    },
+    "Engineering": {
+      "precision": 0.2127659574468085,
+      "recall": 0.19607843137254902,
+      "f1-score": 0.20408163265306123,
+      "support": 153.0
+    },
+    "Government Services": {
+      "precision": 0.14,
+      "recall": 0.017902813299232736,
+      "f1-score": 0.031746031746031744,
+      "support": 391.0
+    },
+    "Journalism / Media": {
+      "precision": 0.22077922077922077,
+      "recall": 0.3090909090909091,
+      "f1-score": 0.25757575757575757,
+      "support": 55.0
+    },
+    "Law": {
+      "precision": 0.24,
+      "recall": 0.22388059701492538,
+      "f1-score": 0.23166023166023167,
+      "support": 134.0
+    },
+    "Management": {
+      "precision": 0.16891891891891891,
+      "recall": 0.4032258064516129,
+      "f1-score": 0.23809523809523808,
+      "support": 62.0
+    },
+    "Medical / Healthcare": {
+      "precision": 0.2420091324200913,
+      "recall": 0.33125,
+      "f1-score": 0.2796833773087071,
+      "support": 160.0
+    },
+    "Research": {
+      "precision": 0.18250950570342206,
+      "recall": 0.2909090909090909,
+      "f1-score": 0.22429906542056074,
+      "support": 165.0
+    },
+    "Teaching / Education": {
+      "precision": 0.25333333333333335,
+      "recall": 0.36538461538461536,
+      "f1-score": 0.2992125984251969,
+      "support": 52.0
+    },
+    "accuracy": 0.2015,
+    "macro avg": {
+      "precision": 0.20188246533484164,
+      "recall": 0.2603009584946784,
+      "f1-score": 0.2144613416388396,
+      "support": 2000.0
+    },
+    "weighted avg": {
+      "precision": 0.1963341166222124,
+      "recall": 0.2015,
+      "f1-score": 0.17734332957782503,
+      "support": 2000.0
+    }
+  }
+}

@@ -140,3 +140,4 @@ export interface OnboardingData {
 }
 
 export * from './assessmentTypes';
+export * from './careerTypes';

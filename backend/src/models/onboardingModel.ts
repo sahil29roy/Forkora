@@ -24,9 +24,11 @@ export async function saveOnboardingProfile(
     const studentProfileSql = `
       INSERT INTO student_profiles (
         user_id, student_name, current_class, phone_number, contact_email,
-        father_name, father_occupation, mother_name, mother_occupation, is_completed
+        father_name, father_occupation, mother_name, mother_occupation,
+        interests, preferred_careers, work_environment, career_type, preferred_location,
+        is_completed
       )
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, true)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, true)
       ON CONFLICT (user_id) DO UPDATE SET
         student_name = EXCLUDED.student_name,
         current_class = EXCLUDED.current_class,
@@ -36,6 +38,11 @@ export async function saveOnboardingProfile(
         father_occupation = EXCLUDED.father_occupation,
         mother_name = EXCLUDED.mother_name,
         mother_occupation = EXCLUDED.mother_occupation,
+        interests = EXCLUDED.interests,
+        preferred_careers = EXCLUDED.preferred_careers,
+        work_environment = EXCLUDED.work_environment,
+        career_type = EXCLUDED.career_type,
+        preferred_location = EXCLUDED.preferred_location,
         is_completed = true,
         updated_at = CURRENT_TIMESTAMP
       RETURNING *;
@@ -50,6 +57,11 @@ export async function saveOnboardingProfile(
       data.father_occupation || null,
       data.mother_name,
       data.mother_occupation || null,
+      data.interests || [],
+      data.preferred_careers || [],
+      data.work_environment || 'No preference',
+      data.career_type || 'No preference',
+      data.preferred_location || 'No preference',
     ]);
     const studentProfile: StudentProfile = studentRes.rows[0];
 

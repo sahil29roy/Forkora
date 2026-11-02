@@ -77,6 +77,15 @@ export const onboardingSchema = z.preprocess((val: any) => {
     education_board,
     stream: stream || null,
     subjects,
+    interests: Array.isArray(val.interests ?? val.areas_of_interest ?? val.areasOfInterest ?? academic.interests)
+      ? (val.interests ?? val.areas_of_interest ?? val.areasOfInterest ?? academic.interests)
+      : [],
+    preferred_careers: Array.isArray(val.preferred_careers ?? val.preferredCareers ?? val.career_preferences?.preferred_careers ?? val.careerPreferences?.preferredCareers)
+      ? (val.preferred_careers ?? val.preferredCareers ?? val.career_preferences?.preferred_careers ?? val.careerPreferences?.preferredCareers)
+      : [],
+    work_environment: String(val.work_environment ?? val.workEnvironment ?? val.career_preferences?.workEnvironment ?? val.careerPreferences?.workEnvironment ?? 'No preference'),
+    career_type: String(val.career_type ?? val.careerType ?? val.career_preferences?.careerType ?? val.careerPreferences?.careerType ?? 'No preference'),
+    preferred_location: String(val.preferred_location ?? val.preferredLocation ?? val.career_preferences?.preferredLocation ?? val.careerPreferences?.preferredLocation ?? 'No preference'),
   };
 }, z.object({
   student_name: z
@@ -119,6 +128,11 @@ export const onboardingSchema = z.preprocess((val: any) => {
   subjects: z
     .array(subjectSchema, { message: 'Subjects array is required' })
     .min(1, 'At least one subject must be provided'),
+  interests: z.array(z.string()).optional().default([]),
+  preferred_careers: z.array(z.string()).optional().default([]),
+  work_environment: z.string().optional().default('No preference'),
+  career_type: z.string().optional().default('No preference'),
+  preferred_location: z.string().optional().default('No preference'),
 }).superRefine((data, ctx) => {
   // Conditional Branch Logic:
   // Branch B: Class 11 or 12 requires stream

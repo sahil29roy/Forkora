@@ -6,6 +6,7 @@ import { query } from './config/db';
 import authRoutes from './routes/authRoutes';
 import onboardingRoutes from './routes/onboardingRoutes';
 import assessmentRoutes from './routes/assessmentRoutes';
+import careerRoutes from './routes/careerRoutes';
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/onboarding', onboardingRoutes);
 app.use('/api/v1/profile/onboarding', onboardingRoutes);
 app.use('/api/assessments', assessmentRoutes);
+app.use('/api/careers', careerRoutes);
 
 // Health Check Endpoint with PostgreSQL test query
 app.get('/api/health', async (req: Request, res: Response) => {

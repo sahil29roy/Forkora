@@ -21,6 +21,7 @@ export interface SubjectItem {
 }
 
 export interface CareerPreferences {
+  preferredCareers?: string[]
   workEnvironment: string
   careerType: string
   preferredLocation: string

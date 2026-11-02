@@ -46,9 +46,11 @@ export function validateStudentDetails(
     }
   }
 
-  // 4. Contact Email (Optional, validate format only if supplied)
+  // 4. Contact Email (Required, Trim, Valid Email)
   const trimmedEmail = student.contactEmail.trim()
-  if (trimmedEmail) {
+  if (!trimmedEmail) {
+    errors.contactEmail = 'Please enter your email address.'
+  } else {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(trimmedEmail)) {
       errors.contactEmail = 'Please enter a valid email address.'

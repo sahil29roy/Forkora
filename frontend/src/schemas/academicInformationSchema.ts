@@ -205,9 +205,10 @@ export function validateAcademicInformation(
       customInterest: data.interests.includes('Other') ? data.customInterest.trim() : null,
       technologyInterests: data.technologyInterests,
       careerPreferences: {
-        workEnvironment: data.careerPreferences.workEnvironment || 'No preference',
-        careerType: data.careerPreferences.careerType || 'No preference',
-        preferredLocation: data.careerPreferences.preferredLocation || 'No preference',
+        preferredCareers: data.careerPreferences?.preferredCareers || [],
+        workEnvironment: data.careerPreferences?.workEnvironment || 'No preference',
+        careerType: data.careerPreferences?.careerType || 'No preference',
+        preferredLocation: data.careerPreferences?.preferredLocation || 'No preference',
       },
     },
   }

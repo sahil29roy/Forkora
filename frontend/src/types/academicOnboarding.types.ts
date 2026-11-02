@@ -9,6 +9,7 @@ export interface SubjectMarkItem {
 }
 
 export interface CareerPreferences {
+  preferredCareers?: string[]
   workEnvironment: string
   careerType: string
   preferredLocation: string

@@ -83,6 +83,7 @@ export function ReviewAndConfirm() {
         contactEmail:
           navStudent?.contactEmail ??
           sessionStage1?.studentDetails?.contactEmail ??
+          user?.email ??
           null,
         studyStatus: academicSource?.studyStatus || 'CURRENTLY_STUDYING',
         passingYear:
@@ -133,6 +134,8 @@ export function ReviewAndConfirm() {
         technologyInterests: academicSource?.technologyInterests || [],
       },
       careerPreferences: {
+        preferredCareers:
+          academicSource?.careerPreferences?.preferredCareers || [],
         workEnvironment:
           academicSource?.careerPreferences?.workEnvironment || 'No preference',
         careerType:
@@ -226,6 +229,31 @@ export function ReviewAndConfirm() {
                   prev.academic.educationBoard || record?.education_board || '',
                 stream: prev.academic.stream || record?.stream || null,
                 subjects: resolvedSubjects,
+              },
+              interests: {
+                ...prev.interests,
+                selectedInterests:
+                  prev.interests.selectedInterests?.length > 0
+                    ? prev.interests.selectedInterests
+                    : sp?.interests || [],
+              },
+              careerPreferences: {
+                preferredCareers:
+                  prev.careerPreferences.preferredCareers?.length
+                    ? prev.careerPreferences.preferredCareers
+                    : sp?.preferred_careers || [],
+                workEnvironment:
+                  prev.careerPreferences.workEnvironment && prev.careerPreferences.workEnvironment !== 'No preference'
+                    ? prev.careerPreferences.workEnvironment
+                    : sp?.work_environment || 'No preference',
+                careerType:
+                  prev.careerPreferences.careerType && prev.careerPreferences.careerType !== 'No preference'
+                    ? prev.careerPreferences.careerType
+                    : sp?.career_type || 'No preference',
+                preferredLocation:
+                  prev.careerPreferences.preferredLocation && prev.careerPreferences.preferredLocation !== 'No preference'
+                    ? prev.careerPreferences.preferredLocation
+                    : sp?.preferred_location || 'No preference',
               },
             }
           })
@@ -421,6 +449,12 @@ export function ReviewAndConfirm() {
           grade: sub.grade || null,
         }
       }),
+      // Career preferences & interests for recommendation scoring
+      interests: reviewData.interests.selectedInterests || [],
+      preferred_careers: reviewData.careerPreferences.preferredCareers || [],
+      work_environment: reviewData.careerPreferences.workEnvironment || 'No preference',
+      career_type: reviewData.careerPreferences.careerType || 'No preference',
+      preferred_location: reviewData.careerPreferences.preferredLocation || 'No preference',
       // Additional rich academic fields preserved
       academicDetails: {
         educationBoard: resolvedBoard,

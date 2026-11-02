@@ -94,3 +94,91 @@ export async function sendVerificationEmail({
     };
   }
 }
+
+/**
+ * Sends a 6-digit password reset OTP code via Resend API.
+ */
+export async function sendPasswordResetEmail({
+  email,
+  name,
+  code,
+}: SendVerificationEmailOptions): Promise<any> {
+  const subject = `${code} is your Forkora password reset code`;
+
+  const htmlContent = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <style>
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f4f6f9; margin: 0; padding: 20px; color: #1e293b; }
+        .container { max-width: 520px; margin: 0 auto; background: #ffffff; border-radius: 12px; padding: 32px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); }
+        .logo { font-size: 24px; font-weight: 800; color: #4f46e5; text-decoration: none; display: inline-block; margin-bottom: 20px; }
+        h2 { font-size: 20px; font-weight: 700; color: #0f172a; margin-top: 0; }
+        p { font-size: 15px; line-height: 1.6; color: #475569; }
+        .otp-box { background: #fef2f2; border: 2px dashed #fca5a5; border-radius: 8px; padding: 18px; text-align: center; margin: 24px 0; }
+        .otp-code { font-size: 32px; font-weight: 800; letter-spacing: 6px; color: #dc2626; }
+        .footer { font-size: 12px; color: #94a3b8; margin-top: 30px; text-align: center; border-top: 1px solid #e2e8f0; padding-top: 16px; }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <a href="#" class="logo">Forkora</a>
+        <h2>Reset Your Password</h2>
+        <p>Hi ${name || 'there'},</p>
+        <p>We received a request to reset your Forkora account password. Please enter the following 6-digit code to set a new password:</p>
+        
+        <div class="otp-box">
+          <span class="otp-code">${code}</span>
+        </div>
+        
+        <p>This code will expire in <strong>15 minutes</strong>. If you did not request a password reset, you can safely ignore this email; your account remains secure.</p>
+        
+        <div class="footer">
+          &copy; ${new Date().getFullYear()} Forkora Career Platform. All rights reserved.
+        </div>
+      </div>
+    </body>
+    </html>
+  `;
+
+  console.log(`\n==================================================`);
+  console.log(`🔒 [EMAIL SERVICE] Sending Password Reset Code to: ${email}`);
+  console.log(`🔑 Password Reset Code (OTP): [ ${code} ]`);
+  console.log(`==================================================\n`);
+
+  if (!resend) {
+    console.log(`[Resend SDK] Operating in DEV/FALLBACK mode.`);
+    return {
+      success: true,
+      mode: 'development_log',
+      messageId: `dev-reset-${Date.now()}`,
+      code,
+    };
+  }
+
+  try {
+    const response = await resend.emails.send({
+      from: fromEmail,
+      to: [email],
+      subject: subject,
+      html: htmlContent,
+    });
+
+    console.log(`[Resend SDK] Password reset email sent via API:`, response);
+    return {
+      success: !response.error,
+      mode: 'resend_api',
+      data: response.data,
+      error: response.error?.message,
+    };
+  } catch (err: any) {
+    console.error(`[Resend SDK Error] Failed to send reset email:`, err.message);
+    return {
+      success: true,
+      mode: 'fallback_error_log',
+      error: err.message,
+      code,
+    };
+  }
+}

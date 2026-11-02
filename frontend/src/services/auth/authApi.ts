@@ -40,7 +40,15 @@ export interface SignUpData {
 export interface SignUpResponse {
   status: 'success'
   message: string
+  devOtp?: string
   user: AuthUser
+}
+
+export interface CheckEmailResponse {
+  status: 'success'
+  exists: boolean
+  is_email_verified?: boolean
+  message: string
 }
 
 export interface VerifyEmailData {
@@ -66,12 +74,14 @@ const API_BASE_URL = '/api/auth'
 export class AuthApiError extends Error {
   statusCode: number
   errorType?: string
+  data?: any
 
-  constructor(message: string, statusCode: number, errorType?: string) {
+  constructor(message: string, statusCode: number, errorType?: string, data?: any) {
     super(message)
     this.name = 'AuthApiError'
     this.statusCode = statusCode
     this.errorType = errorType
+    this.data = data
   }
 }
 
@@ -91,13 +101,31 @@ async function handleResponse<T>(res: Response): Promise<T> {
         ? 'Server error occurred. Please try again shortly.'
         : `Request failed with status ${res.status}`)
 
-    throw new AuthApiError(errorMessage, res.status, errorType)
+    throw new AuthApiError(errorMessage, res.status, errorType, data)
   }
 
   return data as T
 }
 
 export const authApi = {
+  /**
+   * Checks whether an account with the given email already exists.
+   */
+  async checkEmail(email: string): Promise<CheckEmailResponse> {
+    try {
+      const res = await fetch(`${API_BASE_URL}/check-email`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: email.trim() }),
+      })
+      return await handleResponse<CheckEmailResponse>(res)
+    } catch (err: any) {
+      if (err instanceof AuthApiError) throw err
+      throw new AuthApiError('Failed to check email availability.', 0, 'NetworkError')
+    }
+  },
   /**
    * Authenticates user credentials and returns JWT token & user object.
    */
@@ -184,7 +212,7 @@ export const authApi = {
   /**
    * Resends verification OTP code.
    */
-  async resendVerification(email: string): Promise<{ status: string; message: string }> {
+  async resendVerification(email: string): Promise<{ status: string; message: string; devOtp?: string }> {
     try {
       const res = await fetch(`${API_BASE_URL}/resend-verification`, {
         method: 'POST',
@@ -193,10 +221,56 @@ export const authApi = {
         },
         body: JSON.stringify({ email: email.trim() }),
       })
-      return await handleResponse<{ status: string; message: string }>(res)
+      return await handleResponse<{ status: string; message: string; devOtp?: string }>(res)
     } catch (err: any) {
       if (err instanceof AuthApiError) throw err
       throw new AuthApiError('Failed to resend verification code.', 0, 'NetworkError')
+    }
+  },
+
+  /**
+   * Requests a 6-digit password reset OTP sent to user's email.
+   */
+  async forgotPassword(email: string): Promise<{ status: string; message: string; devOtp?: string }> {
+    try {
+      const res = await fetch(`${API_BASE_URL}/forgot-password`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: email.trim() }),
+      })
+      return await handleResponse<{ status: string; message: string; devOtp?: string }>(res)
+    } catch (err: any) {
+      if (err instanceof AuthApiError) throw err
+      throw new AuthApiError('Failed to request password reset code.', 0, 'NetworkError')
+    }
+  },
+
+  /**
+   * Resets password using the 6-digit OTP code and new password.
+   */
+  async resetPassword(data: {
+    email: string
+    code: string
+    newPassword: string
+  }): Promise<{ status: string; message: string }> {
+    try {
+      const res = await fetch(`${API_BASE_URL}/reset-password`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: data.email.trim(),
+          code: data.code.trim(),
+          newPassword: data.newPassword,
+        }),
+      })
+      return await handleResponse<{ status: string; message: string }>(res)
+    } catch (err: any) {
+      if (err instanceof AuthApiError) throw err
+      throw new AuthApiError('Failed to reset password. Please check your code and try again.', 0, 'NetworkError')
     }
   },
 

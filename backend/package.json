@@ -13,7 +13,8 @@
     "test:onboarding": "tsx src/testOnboardingFlow.ts",
     "test:assessment": "tsx src/testAssessmentFlow.ts",
     "test:career": "tsx src/testCareerFlow.ts",
-    "test": "npm run test:unit && npm run test:auth && npm run test:onboarding && npm run test:assessment && npm run test:career"
+    "test:ml": "tsx src/testMLIntegration.ts",
+    "test": "npm run test:unit && npm run test:auth && npm run test:onboarding && npm run test:assessment && npm run test:career && npm run test:ml"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",

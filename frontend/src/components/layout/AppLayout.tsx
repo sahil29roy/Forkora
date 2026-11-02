@@ -13,10 +13,11 @@ interface BreadcrumbItem {
 
 interface AppLayoutProps {
   breadcrumbs?: BreadcrumbItem[]
+  headerRight?: React.ReactNode
   children: React.ReactNode
 }
 
-export function AppLayout({ breadcrumbs = [], children }: AppLayoutProps) {
+export function AppLayout({ breadcrumbs = [], headerRight, children }: AppLayoutProps) {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
@@ -89,7 +90,7 @@ export function AppLayout({ breadcrumbs = [], children }: AppLayoutProps) {
 
           {/* Top Right Actions */}
           <div className="flex items-center gap-2.5 sm:gap-3">
-            <ThemeSelector />
+            {headerRight}
           </div>
         </header>
 

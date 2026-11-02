@@ -15,6 +15,7 @@ import { AssessmentInstructionsPage } from '@/pages/assessment/AssessmentInstruc
 import { AssessmentSessionPage } from '@/pages/assessment/AssessmentSessionPage'
 import { AssessmentReviewPage } from '@/pages/assessment/AssessmentReviewPage'
 import { AssessmentResultsPage } from '@/pages/assessment/AssessmentResultsPage'
+import { CareerDiscoveryPage } from '@/pages/CareerDiscoveryPage'
 
 function App() {
   return (
@@ -28,6 +29,8 @@ function App() {
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/onboarding" element={<Onboarding />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/career-discovery" element={<CareerDiscoveryPage />} />
+            <Route path="/career-exploration" element={<CareerDiscoveryPage />} />
             <Route path="/assessments" element={<AssessmentOverviewPage />} />
             <Route path="/assessment" element={<AssessmentOverviewPage />} />
             <Route path="/assessment/intro" element={<AssessmentIntro />} />

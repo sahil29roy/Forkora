@@ -304,7 +304,6 @@ console.log('\nGroup 4: Deterministic Eligibility Engine (Rule Evaluator)');
       required_exam_node_id: null,
       description: 'Requires Class 12 Science with Physics, Chemistry, and Mathematics (PCM).',
       is_mandatory: true,
-      created_at: new Date().toISOString(),
     },
     {
       id: 2,
@@ -316,7 +315,6 @@ console.log('\nGroup 4: Deterministic Eligibility Engine (Rule Evaluator)');
       required_exam_node_id: null,
       description: 'Minimum 60% aggregate in Physics, Chemistry, and Mathematics.',
       is_mandatory: true,
-      created_at: new Date().toISOString(),
     },
     {
       id: 3,
@@ -328,32 +326,32 @@ console.log('\nGroup 4: Deterministic Eligibility Engine (Rule Evaluator)');
       required_exam_node_id: 5,
       description: 'Qualify JEE Main examination.',
       is_mandatory: true,
-      created_at: new Date().toISOString(),
     },
   ];
 
   // Case A: Science PCM Student with High Marks
   const eligibleContext: StudentAssessmentContext = {
+    userId: 1,
     currentClass: 12,
     stream: 'SCIENCE_PCM',
     interests: ['TECHNOLOGY'],
     preferredCareers: ['Software Engineer'],
+    workEnvironment: 'Office-based',
+    careerType: 'Private Sector',
+    preferredLocation: 'India',
+    mlPredictions: {},
     enrolledSubjects: [
       { subject_name: 'Mathematics', marks_obtained: 85, maximum_marks: 100 },
       { subject_name: 'Physics', marks_obtained: 80, maximum_marks: 100 },
       { subject_name: 'Chemistry', marks_obtained: 75, maximum_marks: 100 },
       { subject_name: 'English', marks_obtained: 70, maximum_marks: 100 },
     ],
-    assessmentScores: {
-      academic: 85,
-      aptitude: 80,
-      behavioural: 75,
-      situational: 70,
+    academicResult: {
+      score_percentage: 85,
     },
-    dimensionAverages: {},
-    situationalSignals: {},
-    academicSubjectScores: {},
-    aptitudeTopicScores: {},
+    aptitudeResult: {
+      score_percentage: 80,
+    },
   };
 
   const evalA = evaluateRules(btechRules, eligibleContext);
@@ -442,7 +440,6 @@ console.log('\nGroup 5: What-if Simulation Verification');
       required_exam_node_id: 12,
       description: 'Requires Class 12 Science with Biology (PCB)',
       is_mandatory: true,
-      created_at: new Date().toISOString(),
     },
     {
       id: 21,
@@ -454,21 +451,22 @@ console.log('\nGroup 5: What-if Simulation Verification');
       required_exam_node_id: 12,
       description: 'Mandatory qualifying rank in NEET UG medical entrance examination',
       is_mandatory: true,
-      created_at: new Date().toISOString(),
     },
   ];
 
   const actualStudentProfile: StudentAssessmentContext = {
+    userId: 2,
     currentClass: 12,
     stream: 'COMMERCE',
     interests: ['FINANCE'],
     preferredCareers: ['Chartered Accountant'],
+    workEnvironment: 'Office-based',
+    careerType: 'Private Sector',
+    preferredLocation: 'India',
+    mlPredictions: {},
     enrolledSubjects: [{ subject_name: 'Accountancy', marks_obtained: 88, maximum_marks: 100 }],
-    assessmentScores: { academic: 88, aptitude: 80, behavioural: 75, situational: 70 },
-    dimensionAverages: {},
-    situationalSignals: {},
-    academicSubjectScores: {},
-    aptitudeTopicScores: {},
+    academicResult: { score_percentage: 88 },
+    aptitudeResult: { score_percentage: 80 },
   };
 
   // Baseline evaluation for actual student profile

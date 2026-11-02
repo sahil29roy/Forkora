@@ -39,24 +39,24 @@ export const eligibilityStatusEnum = z.enum(VALID_ELIGIBILITY_STATUSES);
  */
 export const careerNodeSchema = z.object({
   code: z
-    .string({ required_error: 'Node code is required' })
+    .string({ message: 'Node code is required' })
     .trim()
     .min(2, 'Node code must be at least 2 characters')
     .max(100, 'Node code cannot exceed 100 characters')
     .regex(/^[A-Z0-9_]+$/, 'Node code must contain uppercase alphanumeric characters and underscores'),
   title: z
-    .string({ required_error: 'Node title is required' })
+    .string({ message: 'Node title is required' })
     .trim()
     .min(2, 'Node title must be at least 2 characters')
     .max(255, 'Node title cannot exceed 255 characters'),
   node_type: nodeTypeEnum,
   education_level: z
-    .string({ required_error: 'Education level is required' })
+    .string({ message: 'Education level is required' })
     .trim()
     .min(1, 'Education level cannot be empty'),
   stream: z.string().trim().default('ANY'),
   description: z
-    .string({ required_error: 'Description is required' })
+    .string({ message: 'Description is required' })
     .trim()
     .min(5, 'Description must be at least 5 characters'),
   typical_duration_months: z
@@ -82,11 +82,11 @@ export const careerNodeSchema = z.object({
 export const careerEdgeSchema = z
   .object({
     from_node_id: z
-      .number({ required_error: 'Source node ID is required' })
+      .number({ message: 'Source node ID is required' })
       .int('Source node ID must be an integer')
       .positive('Source node ID must be a positive integer'),
     to_node_id: z
-      .number({ required_error: 'Destination node ID is required' })
+      .number({ message: 'Destination node ID is required' })
       .int('Destination node ID must be an integer')
       .positive('Destination node ID must be a positive integer'),
     transition_type: transitionTypeEnum.default('ACADEMIC'),

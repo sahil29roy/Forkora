@@ -1,0 +1,29 @@
+{
+  "active_version": "v1",
+  "history": [
+    {
+      "action": "activate",
+      "version": "v1",
+      "timestamp": "2026-11-02T22:00:59.396632",
+      "reason": "Initial activation upon registration"
+    }
+  ],
+  "versions": {
+    "v1": {
+      "version": "v1",
+      "dataset_type": "synthetic",
+      "dataset_path": "datasets/synthetic/students.csv",
+      "artifact_path": "E:\\work projects\\capstone\\Forkora\\ml\\models\\v1\\career_pipeline.joblib",
+      "algorithm": "DecisionTreeClassifier",
+      "created_at": "2026-11-02T22:00:59.396632",
+      "metrics": {
+        "accuracy": 0.2015,
+        "macro_f1": 0.2145,
+        "weighted_f1": 0.1773,
+        "macro_precision": 0.2019,
+        "macro_recall": 0.2603
+      },
+      "is_active": true
+    }
+  }
+}

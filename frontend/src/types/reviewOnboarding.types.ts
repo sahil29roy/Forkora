@@ -45,6 +45,7 @@ export interface ReviewInterestsData {
 }
 
 export interface ReviewCareerPreferencesData {
+  preferredCareers?: string[]
   workEnvironment?: string | null
   careerType?: string | null
   preferredLocation?: string | null

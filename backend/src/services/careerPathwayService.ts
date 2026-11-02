@@ -1,20 +1,40 @@
 import { query } from '../config/db';
 import { CareerPathway, CareerPathwayNode } from '../types/careerTypes';
 
-interface GraphEdgeRow {
-  from_id: number;
-  from_code: string;
-  from_title: string;
-  from_type: string;
-  from_level: string;
-  to_id: number;
-  to_code: string;
-  to_title: string;
-  to_type: string;
-  to_level: string;
-  transition_type: string;
-  reversibility: string;
-  min_duration_months: number;
+export interface GraphTraversalOptions {
+  startNodeId?: number;
+  startCode?: string;
+  destinationNodeId?: number;
+  destinationCode?: string;
+  maxDepth?: number;
+  limit?: number;
+  transitionTypes?: string[];
+  reversibility?: string[];
+}
+
+export interface TraversalPathResult {
+  start_node: {
+    id: number;
+    code: string;
+    title: string;
+    node_type: string;
+  };
+  destination_node?: {
+    id: number;
+    code: string;
+    title: string;
+    node_type: string;
+  };
+  total_pathways: number;
+  pathways: Array<{
+    pathway_id: string;
+    title: string;
+    nodes: string[];
+    node_ids: number[];
+    node_codes: string[];
+    depth: number;
+    total_duration_months: number;
+  }>;
 }
 
 /**
@@ -38,27 +58,87 @@ export function getStartNodeCode(currentClass: number, stream: string | null): s
 }
 
 /**
- * Finds all connected pathways from a start node to a target career node using PostgreSQL recursive CTE
+ * Generalized Graph Traversal Engine using PostgreSQL recursive CTE
+ * Supports starting by node ID or code, optional destination node,
+ * configurable depth limits, result limits, and cycle prevention.
  */
-export async function findPathwaysForCareer(
-  startCode: string,
-  targetCareerId: number
-): Promise<CareerPathway[]> {
-  // Query recursive pathways using PostgreSQL CTE
+export async function traverseGraph(options: GraphTraversalOptions): Promise<TraversalPathResult> {
+  // 1. Resolve starting node
+  let startNode: any = null;
+  if (options.startNodeId !== undefined) {
+    if (!Number.isInteger(options.startNodeId) || options.startNodeId <= 0) {
+      throw new Error(`Invalid startNodeId: must be a positive integer.`);
+    }
+    const res = await query(
+      `SELECT id, code, title, node_type FROM career_nodes WHERE id = $1`,
+      [options.startNodeId]
+    );
+    if (res.rows.length === 0) {
+      throw new Error(`Starting node not found with ID ${options.startNodeId}.`);
+    }
+    startNode = res.rows[0];
+  } else if (options.startCode) {
+    const res = await query(
+      `SELECT id, code, title, node_type FROM career_nodes WHERE UPPER(code) = UPPER($1)`,
+      [options.startCode]
+    );
+    if (res.rows.length === 0) {
+      throw new Error(`Starting node not found with code "${options.startCode}".`);
+    }
+    startNode = res.rows[0];
+  } else {
+    throw new Error('Either startNodeId or startCode must be provided for graph traversal.');
+  }
+
+  // 2. Resolve optional destination node
+  let destNode: any = null;
+  if (options.destinationNodeId !== undefined) {
+    if (!Number.isInteger(options.destinationNodeId) || options.destinationNodeId <= 0) {
+      throw new Error(`Invalid destinationNodeId: must be a positive integer.`);
+    }
+    const res = await query(
+      `SELECT id, code, title, node_type FROM career_nodes WHERE id = $1`,
+      [options.destinationNodeId]
+    );
+    if (res.rows.length === 0) {
+      throw new Error(`Destination node not found with ID ${options.destinationNodeId}.`);
+    }
+    destNode = res.rows[0];
+  } else if (options.destinationCode) {
+    const res = await query(
+      `SELECT id, code, title, node_type FROM career_nodes WHERE UPPER(code) = UPPER($1)`,
+      [options.destinationCode]
+    );
+    if (res.rows.length === 0) {
+      throw new Error(`Destination node not found with code "${options.destinationCode}".`);
+    }
+    destNode = res.rows[0];
+  }
+
+  // 3. Configure parameters
+  const maxDepth = Math.min(Math.max(Number(options.maxDepth) || 5, 1), 8);
+  const limit = Math.min(Math.max(Number(options.limit) || 10, 1), 50);
+
+  // 4. Build SQL with filters
+  const queryParams: any[] = [startNode.id, maxDepth, limit];
+  let destClause = '';
+
+  if (destNode) {
+    queryParams.push(destNode.id);
+    destClause = `WHERE to_node_id = $${queryParams.length}`;
+  }
+
   const sql = `
     WITH RECURSIVE pathway_search AS (
-      -- Base Case: Edges starting from startCode node
       SELECT 
         e.from_node_id,
         fn.code AS from_code,
         fn.title AS from_title,
         fn.node_type AS from_type,
-        fn.education_level AS from_level,
         e.to_node_id,
         tn.code AS to_code,
         tn.title AS to_title,
         tn.node_type AS to_type,
-        tn.education_level AS to_level,
         ARRAY[fn.id, tn.id] AS path_ids,
         ARRAY[fn.title::text, tn.title::text] AS path_titles,
         ARRAY[fn.code::text, tn.code::text] AS path_codes,
@@ -67,22 +147,19 @@ export async function findPathwaysForCareer(
       FROM career_edges e
       JOIN career_nodes fn ON e.from_node_id = fn.id
       JOIN career_nodes tn ON e.to_node_id = tn.id
-      WHERE fn.code = $1 AND e.is_active = true
+      WHERE fn.id = $1 AND e.is_active = true
 
       UNION ALL
 
-      -- Recursive Step: Traverse next edges
       SELECT 
         e.from_node_id,
         fn.code AS from_code,
         fn.title AS from_title,
         fn.node_type AS from_type,
-        fn.education_level AS from_level,
         e.to_node_id,
         tn.code AS to_code,
         tn.title AS to_title,
         tn.node_type AS to_type,
-        tn.education_level AS to_level,
         ps.path_ids || tn.id,
         ps.path_titles || tn.title::text,
         ps.path_codes || tn.code::text,
@@ -93,36 +170,75 @@ export async function findPathwaysForCareer(
       JOIN career_nodes fn ON e.from_node_id = fn.id
       JOIN career_nodes tn ON e.to_node_id = tn.id
       WHERE e.is_active = true
-        AND NOT (tn.id = ANY(ps.path_ids)) -- Prevent cycles
-        AND ps.depth < 6                   -- Safety depth limit
+        AND NOT (tn.id = ANY(ps.path_ids))
+        AND ps.depth < $2
     )
     SELECT path_titles, path_codes, path_ids, total_duration, depth
     FROM pathway_search
-    WHERE to_node_id = $2
+    ${destClause}
     ORDER BY depth ASC, total_duration ASC
-    LIMIT 5;
+    LIMIT $3;
   `;
 
-  const res = await query(sql, [startCode, targetCareerId]);
+  const res = await query(sql, queryParams);
 
-  if (res.rows.length === 0) {
-    // If no direct pathway found from specific stream (e.g. Class 12 Commerce to Doctor),
-    // check if universal pathway exists from Class 10
-    if (startCode !== 'CLASS_10') {
-      const fallbackRes = await query(sql, ['CLASS_10', targetCareerId]);
-      return formatPathwayRows(fallbackRes.rows);
-    }
-    return [];
-  }
-
-  return formatPathwayRows(res.rows);
-}
-
-function formatPathwayRows(rows: any[]): CareerPathway[] {
-  return rows.map((r, idx) => ({
+  const pathways = res.rows.map((r, idx) => ({
     pathway_id: `pathway_${idx + 1}`,
     title: idx === 0 ? 'Primary Pathway' : `Alternative Pathway ${idx}`,
     nodes: r.path_titles,
+    node_ids: r.path_ids,
+    node_codes: r.path_codes,
+    depth: Number(r.depth),
     total_duration_months: Number(r.total_duration || 0),
   }));
+
+  return {
+    start_node: startNode,
+    ...(destNode ? { destination_node: destNode } : {}),
+    total_pathways: pathways.length,
+    pathways,
+  };
+}
+
+/**
+ * Finds all connected pathways from a start node to a target career node using PostgreSQL recursive CTE
+ */
+export async function findPathwaysForCareer(
+  startCode: string,
+  targetCareerId: number
+): Promise<CareerPathway[]> {
+  try {
+    const traversal = await traverseGraph({
+      startCode,
+      destinationNodeId: targetCareerId,
+      maxDepth: 5,
+      limit: 5,
+    });
+
+    if (traversal.pathways.length === 0 && startCode !== 'CLASS_10') {
+      // Check fallback from universal CLASS_10 origin
+      const fallback = await traverseGraph({
+        startCode: 'CLASS_10',
+        destinationNodeId: targetCareerId,
+        maxDepth: 5,
+        limit: 5,
+      });
+
+      return fallback.pathways.map((p) => ({
+        pathway_id: p.pathway_id,
+        title: p.title,
+        nodes: p.nodes,
+        total_duration_months: p.total_duration_months,
+      }));
+    }
+
+    return traversal.pathways.map((p) => ({
+      pathway_id: p.pathway_id,
+      title: p.title,
+      nodes: p.nodes,
+      total_duration_months: p.total_duration_months,
+    }));
+  } catch (err) {
+    return [];
+  }
 }

@@ -100,6 +100,7 @@ export function AcademicInformation() {
       customInterest: '',
       technologyInterests: [],
       careerPreferences: {
+        preferredCareers: [],
         workEnvironment: 'No preference',
         careerType: 'No preference',
         preferredLocation: 'No preference',

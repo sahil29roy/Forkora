@@ -130,3 +130,22 @@ export const EDUCATION_BOARD_OPTIONS = [
   'NIOS',
   'Other',
 ] as const
+
+export const POPULAR_TARGET_CAREERS = [
+  'Software Engineer',
+  'Doctor',
+  'Data Scientist',
+  'Chartered Accountant',
+  'Corporate Lawyer',
+  'Investment Banker',
+  'Clinical Psychologist',
+  'UI/UX Designer',
+  'Mechanical Engineer',
+  'Civil Services Officer',
+  'Product Manager',
+  'AI/ML Research Scientist',
+  'Biotechnology Researcher',
+  'Aerospace Engineer',
+  'Management Consultant',
+  'Architect',
+] as const

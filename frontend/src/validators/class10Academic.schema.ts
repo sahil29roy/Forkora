@@ -21,8 +21,8 @@ export const EDUCATION_BOARD_OPTIONS = [
   'NIOS',
   'Other',
 ] as const
-import { CLASS_10_STREAM_PREFERENCES } from '@/config/interestCategories'
-export { CLASS_10_STREAM_PREFERENCES }
+import { CLASS_10_STREAM_PREFERENCES, POPULAR_TARGET_CAREERS } from '@/config/interestCategories'
+export { CLASS_10_STREAM_PREFERENCES, POPULAR_TARGET_CAREERS }
 
 export const INTEREST_OPTIONS = [
   'Technology & Computers',
@@ -199,6 +199,7 @@ export function validateClass10AcademicData(
       interests: data.interests,
       customInterest: data.interests.includes('Other') ? data.customInterest.trim() : null,
       careerPreferences: {
+        preferredCareers: data.careerPreferences?.preferredCareers || [],
         workEnvironment: data.careerPreferences.workEnvironment || 'No preference',
         careerType: data.careerPreferences.careerType || 'No preference',
         preferredLocation: data.careerPreferences.preferredLocation || 'No preference',

@@ -8,7 +8,7 @@
     "start": "node dist/server.js",
     "dev": "tsx watch src/server.ts",
     "db:migrate": "tsx src/db/migrate.ts",
-    "test:unit": "tsx src/testUnitOnboarding.ts && tsx src/testUnitAssessment.ts",
+    "test:unit": "tsx src/testUnitOnboarding.ts && tsx src/testUnitAssessment.ts && tsx src/testUnitCareerGraph.ts",
     "test:auth": "tsx src/testAuthFlow.ts",
     "test:onboarding": "tsx src/testOnboardingFlow.ts",
     "test:assessment": "tsx src/testAssessmentFlow.ts",

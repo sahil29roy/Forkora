@@ -87,7 +87,8 @@ export async function getCareerPathways(
 ): Promise<void> {
   try {
     const userId = req.user?.id;
-    const careerCode = req.params.careerCode?.toUpperCase();
+    const rawCode = Array.isArray(req.params.careerCode) ? req.params.careerCode[0] : req.params.careerCode;
+    const careerCode = rawCode ? String(rawCode).toUpperCase() : undefined;
 
     if (!careerCode) {
       res.status(400).json({ status: 'error', message: 'Career code parameter is required.' });
@@ -105,8 +106,9 @@ export async function getCareerPathways(
     }
 
     const careerNode = careerNodeRes.rows[0];
+    const fromQuery = typeof req.query.from === 'string' ? req.query.from.trim().toUpperCase() : undefined;
     const context = userId ? await loadStudentContext(userId) : { currentClass: 10, stream: null };
-    const startCode = getStartNodeCode(context.currentClass, context.stream);
+    const startCode = fromQuery || getStartNodeCode(context.currentClass, context.stream);
 
     const pathways = await findPathwaysForCareer(startCode, careerNode.id);
 

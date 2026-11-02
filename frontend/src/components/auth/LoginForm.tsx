@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { Loader2, AlertCircle, Mail } from 'lucide-react'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { Loader2, AlertCircle, CheckCircle2, Mail } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -12,12 +12,16 @@ import { AuthApiError } from '@/services/auth/authApi'
 
 export function LoginForm() {
   const navigate = useNavigate()
+  const location = useLocation()
   const { signIn } = useAuth()
 
-  const [email, setEmail] = useState('')
+  const [email, setEmail] = useState<string>((location.state as any)?.email || '')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({})
   const [serverError, setServerError] = useState<string | null>(null)
+  const [infoMessage, setInfoMessage] = useState<string | null>(
+    (location.state as any)?.message || null
+  )
   const [isLoading, setIsLoading] = useState(false)
 
   const validateForm = (): boolean => {
@@ -46,7 +50,7 @@ export function LoginForm() {
     setIsLoading(true)
 
     try {
-      const { shouldOnboard } = await signIn({ email, password })
+      const { shouldOnboard } = await signIn({ email: email.trim(), password })
 
       if (shouldOnboard) {
         navigate('/onboarding')
@@ -57,7 +61,7 @@ export function LoginForm() {
       if (err instanceof AuthApiError) {
         setServerError(err.message)
       } else {
-        setServerError('Invalid email or password. Please try again.')
+        setServerError('Unable to connect to the authentication service. Please check your internet connection.')
       }
     } finally {
       setIsLoading(false)
@@ -75,6 +79,16 @@ export function LoginForm() {
           Log in to continue your journey and explore new possibilities.
         </p>
       </div>
+
+      {/* Success Notification Alert */}
+      {infoMessage && (
+        <Alert className="border-emerald-500/30 bg-emerald-500/10 text-emerald-800 dark:text-emerald-300">
+          <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
+          <AlertDescription className="text-xs sm:text-sm font-medium">
+            {infoMessage}
+          </AlertDescription>
+        </Alert>
+      )}
 
       {/* Server Error Alert */}
       {serverError && (

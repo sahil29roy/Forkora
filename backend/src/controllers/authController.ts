@@ -4,12 +4,18 @@ import {
   findUserByEmail,
   updateEmailVerified,
   updateLastActive,
+  updateUserPassword,
 } from '../models/userModel';
 import {
   createVerificationCode,
   getLatestVerificationCode,
   deleteUserVerificationCodes,
 } from '../models/verificationModel';
+import {
+  createPasswordResetCode,
+  getLatestPasswordResetCode,
+  deleteUserPasswordResetCodes,
+} from '../models/passwordResetModel';
 import { createSession, endSession } from '../models/sessionModel';
 import {
   hashPassword,
@@ -17,10 +23,46 @@ import {
   generateToken,
   generateOTP,
 } from '../utils/authUtils';
-import { sendVerificationEmail } from '../services/emailService';
+import {
+  sendVerificationEmail,
+  sendPasswordResetEmail,
+} from '../services/emailService';
 import { AuthenticatedRequest, UserRole } from '../types';
 
 const VALID_ROLES: UserRole[] = ['STUDENT', 'GUARDIAN', 'COUNSELLOR', 'ADMIN'];
+
+/**
+ * @route   POST /api/auth/check-email
+ * @desc    Checks whether an email account already exists in the system.
+ */
+export async function checkEmail(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
+  try {
+    const { email } = req.body;
+
+    if (!email || !email.trim()) {
+      return res.status(400).json({ error: 'Validation Error', message: 'Email address is required.' });
+    }
+
+    const existingUser = await findUserByEmail(email);
+    if (existingUser) {
+      return res.status(200).json({
+        status: 'success',
+        exists: true,
+        is_email_verified: existingUser.is_email_verified,
+        message: 'An account with this email address already exists. Please sign in instead.',
+      });
+    }
+
+    return res.status(200).json({
+      status: 'success',
+      exists: false,
+      is_email_verified: false,
+      message: 'Email is available.',
+    });
+  } catch (err) {
+    next(err);
+  }
+}
 
 /**
  * @route   POST /api/auth/signup
@@ -62,6 +104,7 @@ export async function signup(req: Request, res: Response, next: NextFunction): P
       return res.status(409).json({
         error: 'Conflict',
         message: 'An account with this email address already exists. Please sign in instead.',
+        is_email_verified: existingUser.is_email_verified,
       });
     }
 
@@ -90,9 +133,12 @@ export async function signup(req: Request, res: Response, next: NextFunction): P
       code: otpCode,
     });
 
+    const isDev = process.env.NODE_ENV !== 'production';
+
     return res.status(201).json({
       status: 'success',
       message: 'Registration successful! A 6-digit verification code has been sent to your email address.',
+      devOtp: isDev ? otpCode : undefined,
       user: {
         id: user.id,
         role: user.role,
@@ -228,9 +274,12 @@ export async function resendVerificationCode(req: Request, res: Response, next: 
       code: newOtpCode,
     });
 
+    const isDev = process.env.NODE_ENV !== 'production';
+
     return res.status(200).json({
       status: 'success',
       message: 'A new verification code has been sent to your email address.',
+      devOtp: isDev ? newOtpCode : undefined,
     });
   } catch (err) {
     next(err);
@@ -249,14 +298,26 @@ export async function signin(req: Request, res: Response, next: NextFunction): P
       return res.status(400).json({ error: 'Validation Error', message: 'Email and password are required.' });
     }
 
-    const user = await findUserByEmail(email);
+    const cleanEmail = (email as string).trim();
+    const user = await findUserByEmail(cleanEmail);
     if (!user || !user.password_hash) {
-      return res.status(401).json({ error: 'Authentication Failed', message: 'Invalid email or password.' });
+      return res.status(401).json({
+        error: 'Authentication Failed',
+        message: 'No account found with this email address. Please check your email or sign up.',
+      });
     }
 
-    const isMatch = await comparePassword(password, user.password_hash);
+    let isMatch = await comparePassword(password, user.password_hash);
+    // If not matched, try trimming whitespace in case user had an accidental leading/trailing space
+    if (!isMatch && password.trim() !== password) {
+      isMatch = await comparePassword(password.trim(), user.password_hash);
+    }
+
     if (!isMatch) {
-      return res.status(401).json({ error: 'Authentication Failed', message: 'Invalid email or password.' });
+      return res.status(401).json({
+        error: 'Authentication Failed',
+        message: 'Incorrect password. Please try again or use Forgot Password to reset it.',
+      });
     }
 
     // Update active timestamp & create session record
@@ -281,6 +342,126 @@ export async function signin(req: Request, res: Response, next: NextFunction): P
         school_id: user.school_id,
         preferred_language: user.preferred_language,
       },
+    });
+  } catch (err) {
+    next(err);
+  }
+}
+
+/**
+ * @route   POST /api/auth/forgot-password
+ * @desc    Sends a 6-digit password reset OTP code to the user's email.
+ */
+export async function forgotPassword(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
+  try {
+    const { email } = req.body;
+
+    if (!email || !(email as string).trim()) {
+      return res.status(400).json({ error: 'Validation Error', message: 'Email address is required.' });
+    }
+
+    const cleanEmail = (email as string).trim();
+    const user = await findUserByEmail(cleanEmail);
+
+    if (!user) {
+      return res.status(404).json({
+        error: 'Not Found',
+        message: 'No account found with this email address. Please check for typos or sign up.',
+      });
+    }
+
+    // Generate 6-digit reset OTP
+    const resetCode = generateOTP(6);
+    await createPasswordResetCode(user.id, resetCode, 15); // 15 mins expiry
+
+    // Send reset email via Resend
+    await sendPasswordResetEmail({
+      email: user.email,
+      name: user.display_name,
+      code: resetCode,
+    });
+
+    const isDev = process.env.NODE_ENV !== 'production';
+
+    return res.status(200).json({
+      status: 'success',
+      message: 'A 6-digit password reset code has been sent to your email address.',
+      devOtp: isDev ? resetCode : undefined,
+    });
+  } catch (err) {
+    next(err);
+  }
+}
+
+/**
+ * @route   POST /api/auth/reset-password
+ * @desc    Verifies 6-digit OTP code and updates user password.
+ */
+export async function resetPassword(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
+  try {
+    const { email, code, newPassword } = req.body;
+
+    if (!email || !code || !newPassword) {
+      return res.status(400).json({
+        error: 'Validation Error',
+        message: 'Email, verification code, and new password are required.',
+      });
+    }
+
+    if (newPassword.length < 8) {
+      return res.status(400).json({
+        error: 'Validation Error',
+        message: 'New password must be at least 8 characters long.',
+      });
+    }
+
+    if (!/[A-Za-z]/.test(newPassword) || !/\d/.test(newPassword)) {
+      return res.status(400).json({
+        error: 'Validation Error',
+        message: 'New password must contain both letters and numbers.',
+      });
+    }
+
+    const cleanEmail = (email as string).trim();
+    const user = await findUserByEmail(cleanEmail);
+
+    if (!user) {
+      return res.status(404).json({ error: 'Not Found', message: 'No account found with this email address.' });
+    }
+
+    // Retrieve latest password reset record
+    const resetRecord = await getLatestPasswordResetCode(user.id);
+    if (!resetRecord) {
+      return res.status(400).json({
+        error: 'Invalid Code',
+        message: 'No active password reset code found. Please request a new code.',
+      });
+    }
+
+    if (resetRecord.code !== (code as string).trim()) {
+      return res.status(400).json({
+        error: 'Invalid Code',
+        message: 'The reset code provided is incorrect. Please check your email and try again.',
+      });
+    }
+
+    if (new Date(resetRecord.expires_at) < new Date()) {
+      return res.status(400).json({
+        error: 'Code Expired',
+        message: 'The password reset code has expired. Please request a new code.',
+      });
+    }
+
+    // Hash new password and update user record
+    const newHash = await hashPassword(newPassword);
+    await updateUserPassword(user.id, newHash);
+
+    // Clean up reset codes
+    await deleteUserPasswordResetCodes(user.id);
+
+    return res.status(200).json({
+      status: 'success',
+      message: 'Password has been reset successfully! Please sign in with your new password.',
     });
   } catch (err) {
     next(err);

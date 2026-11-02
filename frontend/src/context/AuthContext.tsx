@@ -13,7 +13,7 @@ interface AuthContextType {
   isAuthenticated: boolean
   isLoading: boolean
   signIn: (credentials: SignInCredentials) => Promise<{ user: AuthUser; shouldOnboard: boolean }>
-  signUp: (data: SignUpData) => Promise<{ user: AuthUser }>
+  signUp: (data: SignUpData) => Promise<{ user: AuthUser; devOtp?: string }>
   signOut: () => Promise<void>
   checkProfile: () => Promise<boolean>
 }
@@ -97,8 +97,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const signUp = async (data: SignUpData) => {
     const res = await authApi.signUp(data)
-    setUser(res.user)
-    return { user: res.user }
+    return { user: res.user, devOtp: res.devOtp }
   }
 
   const signOut = async () => {

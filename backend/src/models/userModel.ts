@@ -78,3 +78,18 @@ export async function updateLastActive(userId: string): Promise<void> {
   const sql = `UPDATE users SET last_active_at = CURRENT_TIMESTAMP WHERE id = $1;`;
   await query(sql, [userId]);
 }
+
+/**
+ * Updates password hash for a user.
+ */
+export async function updateUserPassword(userId: string | number, password_hash: string): Promise<boolean> {
+  const sql = `
+    UPDATE users 
+    SET password_hash = $1,
+        updated_at = CURRENT_TIMESTAMP
+    WHERE id = $2
+    RETURNING id;
+  `;
+  const result = await query(sql, [password_hash, userId]);
+  return (result.rowCount ?? 0) > 0;
+}

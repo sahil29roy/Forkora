@@ -3,15 +3,18 @@ import {
   LayoutDashboard,
   BrainCircuit,
   Compass,
+  GitBranch,
   Bookmark,
   GitCompare,
   User,
-  Settings,
-  HelpCircle,
   LogOut,
+  Sun,
+  Moon,
+  Monitor,
 } from 'lucide-react'
 import { ForkoraLogo } from '@/components/brand/ForkoraLogo'
 import { useAuth } from '@/context/AuthContext'
+import { useTheme } from '@/components/theme/ThemeProvider'
 import { cn } from '@/lib/utils'
 
 interface AppSidebarProps {
@@ -23,6 +26,7 @@ export function AppSidebar({ onItemClick, className }: AppSidebarProps) {
   const location = useLocation()
   const navigate = useNavigate()
   const { user, signOut } = useAuth()
+  const { theme, setTheme } = useTheme()
 
   const mainNavItems = [
     {
@@ -40,10 +44,18 @@ export function AppSidebar({ onItemClick, className }: AppSidebarProps) {
         location.pathname.startsWith('/assessment'),
     },
     {
-      title: 'Career Exploration',
-      href: '/career-exploration',
+      title: 'Career Discovery',
+      href: '/career-discovery',
       icon: Compass,
-      isActive: location.pathname === '/career-exploration',
+      isActive:
+        location.pathname === '/career-discovery' ||
+        location.pathname === '/career-exploration',
+    },
+    {
+      title: 'Career Graph',
+      href: '/career-graph',
+      icon: GitBranch,
+      isActive: location.pathname === '/career-graph',
     },
     {
       title: 'Saved Paths',
@@ -52,31 +64,18 @@ export function AppSidebar({ onItemClick, className }: AppSidebarProps) {
       isActive: location.pathname === '/saved-paths',
     },
     {
-      title: 'Compare Paths',
-      href: '/compare-paths',
+      title: 'Compare',
+      href: '/compare',
       icon: GitCompare,
-      isActive: location.pathname === '/compare-paths',
+      isActive:
+        location.pathname === '/compare' ||
+        location.pathname === '/compare-paths',
     },
-  ]
-
-  const secondaryNavItems = [
     {
       title: 'Profile',
       href: '/profile',
       icon: User,
       isActive: location.pathname === '/profile',
-    },
-    {
-      title: 'Settings',
-      href: '/settings',
-      icon: Settings,
-      isActive: location.pathname === '/settings',
-    },
-    {
-      title: 'Help',
-      href: '/help',
-      icon: HelpCircle,
-      isActive: location.pathname === '/help',
     },
   ]
 
@@ -99,10 +98,10 @@ export function AppSidebar({ onItemClick, className }: AppSidebarProps) {
         </div>
 
         {/* Primary Navigation Links */}
-        <div className="p-4 space-y-6">
+        <div className="p-4 space-y-4">
           <div className="space-y-1">
             <span className="px-3 text-[10px] font-bold uppercase tracking-wider text-muted-foreground/70">
-              Overview
+              Navigation
             </span>
             <nav className="space-y-1 pt-1.5" aria-label="Main Navigation">
               {mainNavItems.map((item) => {
@@ -132,40 +131,12 @@ export function AppSidebar({ onItemClick, className }: AppSidebarProps) {
               })}
             </nav>
           </div>
-
-          {/* Secondary Navigation Links */}
-          <div className="space-y-1">
-            <span className="px-3 text-[10px] font-bold uppercase tracking-wider text-muted-foreground/70">
-              Account
-            </span>
-            <nav className="space-y-1 pt-1.5" aria-label="Account Navigation">
-              {secondaryNavItems.map((item) => {
-                const Icon = item.icon
-                return (
-                  <Link
-                    key={item.title}
-                    to={item.href}
-                    onClick={onItemClick}
-                    className={cn(
-                      'flex items-center gap-3 px-3 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all duration-150',
-                      item.isActive
-                        ? 'bg-primary/10 text-primary border border-primary/20'
-                        : 'text-muted hover:text-foreground hover:bg-muted/30 border border-transparent'
-                    )}
-                    aria-current={item.isActive ? 'page' : undefined}
-                  >
-                    <Icon className="h-4 w-4 shrink-0 text-muted" />
-                    <span>{item.title}</span>
-                  </Link>
-                )
-              })}
-            </nav>
-          </div>
         </div>
       </div>
 
-      {/* Bottom User Profile & Sign Out snippet */}
-      <div className="p-4 border-t border-border/60">
+      {/* Bottom Section: User Profile & Theme Switcher */}
+      <div className="p-4 border-t border-border/60 space-y-3">
+        {/* User Card */}
         <div className="flex items-center justify-between p-2.5 rounded-xl bg-muted/20 border border-border/50">
           <div className="flex items-center gap-2.5 min-w-0">
             <div className="h-8 w-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-bold text-xs shrink-0">
@@ -190,6 +161,49 @@ export function AppSidebar({ onItemClick, className }: AppSidebarProps) {
             aria-label="Sign Out"
           >
             <LogOut className="h-3.5 w-3.5" />
+          </button>
+        </div>
+
+        {/* Theme Switcher Segmented Control */}
+        <div className="flex items-center justify-between p-1 rounded-xl bg-muted/30 border border-border/60 text-xs">
+          <button
+            onClick={() => setTheme('light')}
+            className={cn(
+              'flex-1 flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg font-medium transition-all duration-150 cursor-pointer',
+              theme === 'light'
+                ? 'bg-card text-foreground shadow-xs border border-border/60 font-semibold'
+                : 'text-muted hover:text-foreground'
+            )}
+            title="Light Theme"
+          >
+            <Sun className="h-3.5 w-3.5 text-amber-500" />
+            <span className="text-[11px]">Light</span>
+          </button>
+          <button
+            onClick={() => setTheme('dark')}
+            className={cn(
+              'flex-1 flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg font-medium transition-all duration-150 cursor-pointer',
+              theme === 'dark'
+                ? 'bg-card text-foreground shadow-xs border border-border/60 font-semibold'
+                : 'text-muted hover:text-foreground'
+            )}
+            title="Dark Theme"
+          >
+            <Moon className="h-3.5 w-3.5 text-indigo-400" />
+            <span className="text-[11px]">Dark</span>
+          </button>
+          <button
+            onClick={() => setTheme('system')}
+            className={cn(
+              'flex-1 flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg font-medium transition-all duration-150 cursor-pointer',
+              theme === 'system'
+                ? 'bg-card text-foreground shadow-xs border border-border/60 font-semibold'
+                : 'text-muted hover:text-foreground'
+            )}
+            title="System Theme"
+          >
+            <Monitor className="h-3.5 w-3.5 text-muted" />
+            <span className="text-[11px]">Auto</span>
           </button>
         </div>
       </div>

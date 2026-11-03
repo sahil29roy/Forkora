@@ -192,24 +192,66 @@ export async function loadStudentContext(userId: number | string): Promise<Stude
   let situationalResult: any = null;
 
   for (const row of resultsRes.rows) {
+    const s = row.summary || {};
     if (row.module_id === 'academic') {
       academicResult = {
         score_percentage: Number(row.score_percentage),
-        subject_performance: row.summary?.subject_performance || {},
+        subject_performance: s.subject_performance || s.subjectPerformance || {},
       };
     } else if (row.module_id === 'aptitude') {
       aptitudeResult = {
         score_percentage: Number(row.score_percentage),
-        topic_performance: row.summary?.topic_performance || {},
+        topic_performance: s.topic_performance || s.topicPerformance || {},
       };
     } else if (row.module_id === 'behavioural') {
       behaviouralResult = {
-        dimension_averages: row.summary?.dimension_averages || {},
+        score_percentage: Number(row.score_percentage),
+        dimension_averages: s.dimension_averages || s.dimensionAverages || {},
       };
     } else if (row.module_id === 'situational') {
       situationalResult = {
-        behavioural_signals: row.summary?.behavioural_signals || {},
+        score_percentage: Number(row.score_percentage),
+        behavioural_signals: s.behavioural_signals || s.behaviouralSignals || {},
       };
+    }
+  }
+
+  // Backup check: load directly from completed assessment_attempts if any result was missing
+  if (!academicResult || !aptitudeResult || !behaviouralResult || !situationalResult) {
+    const attemptsRes = await query(
+      `SELECT module_id, score, score_breakdown
+       FROM assessment_attempts
+       WHERE user_id = $1 AND status = 'COMPLETED'
+       ORDER BY id DESC`,
+      [userId]
+    );
+
+    for (const att of attemptsRes.rows) {
+      const mid = att.module_id.toLowerCase();
+      const scoreVal = Number(att.score);
+      const b = att.score_breakdown || {};
+
+      if (mid === 'academic' && !academicResult) {
+        academicResult = {
+          score_percentage: scoreVal,
+          subject_performance: b.subjectPerformance || b.subject_performance || {},
+        };
+      } else if (mid === 'aptitude' && !aptitudeResult) {
+        aptitudeResult = {
+          score_percentage: scoreVal,
+          topic_performance: b.topicPerformance || b.topic_performance || {},
+        };
+      } else if (mid === 'behavioural' && !behaviouralResult) {
+        behaviouralResult = {
+          score_percentage: scoreVal,
+          dimension_averages: b.dimensionAverages || b.dimension_averages || {},
+        };
+      } else if (mid === 'situational' && !situationalResult) {
+        situationalResult = {
+          score_percentage: scoreVal,
+          behavioural_signals: b.behaviouralSignals || b.behavioural_signals || {},
+        };
+      }
     }
   }
 
@@ -233,6 +275,7 @@ export async function loadStudentContext(userId: number | string): Promise<Stude
 
 /**
  * Calculates academic score (0-100) based on relevant subject assessment accuracy and school marks
+
  */
 function calculateAcademicScore(
   node: CareerNode,
@@ -243,6 +286,18 @@ function calculateAcademicScore(
   let assessmentScore: number | null = null;
   let schoolMarksScore: number | null = null;
 
+  const matchesSubject = (subName: string) => {
+    const s = subName.toLowerCase();
+    return relevant.some((r) => {
+      if (s.includes(r) || r.includes(s)) return true;
+      // Secondary school foundational subject mappings:
+      if (s === 'science' && (r.includes('physic') || r.includes('chem') || r.includes('bio'))) return true;
+      if (s === 'mathematics' && (r.includes('math') || r.includes('stat') || r.includes('quant') || r.includes('data'))) return true;
+      if (s === 'social science' && (r.includes('hist') || r.includes('pol') || r.includes('civic') || r.includes('geog') || r.includes('law') || r.includes('admin'))) return true;
+      return false;
+    });
+  };
+
   // 1. From Assessment Results (Subject-wise accuracy)
   if (context.academicResult?.subject_performance) {
     const perf = context.academicResult.subject_performance;
@@ -250,7 +305,7 @@ function calculateAcademicScore(
     let matchingCorrect = 0;
 
     for (const [subjName, data] of Object.entries(perf)) {
-      if (relevant.some((r) => subjName.toLowerCase().includes(r) || r.includes(subjName.toLowerCase()))) {
+      if (matchesSubject(subjName)) {
         matchingTotal += data.total;
         matchingCorrect += data.correct;
       }
@@ -272,7 +327,7 @@ function calculateAcademicScore(
     let sumMax = 0;
 
     for (const sub of context.enrolledSubjects) {
-      if (relevant.some((r) => sub.subject_name.toLowerCase().includes(r) || r.includes(sub.subject_name.toLowerCase()))) {
+      if (matchesSubject(sub.subject_name)) {
         sumMarks += sub.marks_obtained;
         sumMax += sub.maximum_marks;
       }
@@ -317,17 +372,31 @@ function calculateAptitudeScore(
     code === 'CAREER_SOFTWARE_ENGINEER' ||
     code === 'CAREER_DATA_SCIENTIST' ||
     code === 'CAREER_CHARTERED_ACCOUNTANT' ||
-    code === 'CAREER_INVESTMENT_BANKER'
+    code === 'CAREER_INVESTMENT_BANKER' ||
+    code === 'CAREER_CYBERSECURITY'
   ) {
-    const num = topics['Numerical Reasoning']?.percentage ?? topics['Numerical']?.percentage;
-    const log = topics['Logical Reasoning']?.percentage ?? topics['Logical']?.percentage;
+    let numScores: number[] = [];
+    let logScores: number[] = [];
 
-    if (num !== undefined && log !== undefined) {
-      weightedScore = Math.round(num * 0.5 + log * 0.5);
-    } else if (num !== undefined) {
-      weightedScore = Math.round(num * 0.6 + overall * 0.4);
-    } else if (log !== undefined) {
-      weightedScore = Math.round(log * 0.6 + overall * 0.4);
+    for (const [k, v] of Object.entries(topics)) {
+      const key = k.toLowerCase();
+      const pct = (v as any).percentage ?? (v as any).scorePercentage;
+      if (typeof pct === 'number') {
+        if (key.includes('number') || key.includes('ratio') || key.includes('numerical') || key.includes('quant')) {
+          numScores.push(pct);
+        } else {
+          logScores.push(pct);
+        }
+      }
+    }
+
+    if (numScores.length > 0 && logScores.length > 0) {
+      const avgNum = numScores.reduce((a, b) => a + b, 0) / numScores.length;
+      const avgLog = logScores.reduce((a, b) => a + b, 0) / logScores.length;
+      weightedScore = Math.round(avgNum * 0.5 + avgLog * 0.5);
+    } else if (numScores.length > 0) {
+      const avgNum = numScores.reduce((a, b) => a + b, 0) / numScores.length;
+      weightedScore = Math.round(avgNum * 0.6 + overall * 0.4);
     }
   }
 

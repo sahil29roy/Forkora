@@ -44,14 +44,16 @@ import {
   Percent,
 } from 'lucide-react';
 
-interface AcademicSubjectItem {
+export interface AcademicSubjectItem {
   id?: number;
   subject_name: string;
+  marks_obtained: number;
+  maximum_marks: number;
   marks_percentage: number;
-  grade?: string;
+  grade: string;
 }
 
-interface StudentFullProfile {
+export interface StudentFullProfile {
   student_name: string;
   current_class: number;
   phone_number?: string | null;
@@ -67,7 +69,7 @@ interface StudentFullProfile {
   preferred_location?: string;
 }
 
-interface AcademicRecordFull {
+export interface AcademicRecordFull {
   education_board: string;
   stream: string | null;
   class_level: number;
@@ -130,7 +132,7 @@ export function ProfilePage() {
       // 4. Fetch Career Preferences from /api/careers/preferences
       const preferencesPromise = careerService.getPreferences(token).catch(() => null);
 
-      // 5. Fetch Top Recommendations
+      // 5. Fetch Top Recommendations (deterministic from all assessments & marks)
       const recommendationsPromise = careerService.getRecommendations(token).catch(() => null);
 
       const [authRes, onboardingRes, assessRes, prefRes, recRes] = await Promise.all([
@@ -147,14 +149,13 @@ export function ProfilePage() {
       }
 
       if (onboardingRes) {
-        // May have studentProfile directly or wrapped
         const sp = onboardingRes.studentProfile || onboardingRes.student_profile || onboardingRes;
         const ar = onboardingRes.academicRecord || onboardingRes.academic_record;
 
         if (sp) {
           setStudentProfile({
             student_name: sp.student_name || authRes?.user?.display_name || 'Student',
-            current_class: sp.current_class || 12,
+            current_class: Number(sp.current_class || 10),
             phone_number: sp.phone_number || authRes?.user?.phone || null,
             contact_email: sp.contact_email || authRes?.user?.email || null,
             father_name: sp.father_name || 'Parent / Guardian',
@@ -176,101 +177,47 @@ export function ProfilePage() {
         }
 
         if (ar) {
+          // Deterministically map all enrolled subjects with their exact marks_obtained and maximum_marks
+          const rawSubs = Array.isArray(ar.subjects) ? ar.subjects : [];
+          const mappedSubs: AcademicSubjectItem[] = rawSubs.map((s: any) => {
+            const obtained = Number(s.marks_obtained ?? s.marks_percentage ?? 0);
+            const max = Number(s.maximum_marks ?? 100);
+            const pct = max > 0 ? Math.round((obtained / max) * 100) : Math.round(obtained);
+            const grade =
+              s.grade ||
+              (pct >= 90
+                ? 'A1'
+                : pct >= 80
+                ? 'A2'
+                : pct >= 70
+                ? 'B1'
+                : pct >= 60
+                ? 'B2'
+                : pct >= 50
+                ? 'C1'
+                : 'C2');
+
+            return {
+              id: s.id,
+              subject_name: s.subject_name || 'Subject',
+              marks_obtained: obtained,
+              maximum_marks: max,
+              marks_percentage: pct,
+              grade,
+            };
+          });
+
           setAcademicRecord({
             education_board: ar.education_board || 'CBSE',
-            stream: ar.stream || 'Science (PCM)',
-            class_level: ar.class_level || 12,
-            subjects: ar.subjects && ar.subjects.length > 0 ? ar.subjects : [
-              { subject_name: 'Mathematics', marks_percentage: 88, grade: 'A1' },
-              { subject_name: 'Physics', marks_percentage: 84, grade: 'A2' },
-              { subject_name: 'Chemistry', marks_percentage: 80, grade: 'B1' },
-              { subject_name: 'English Core', marks_percentage: 86, grade: 'A2' },
-              { subject_name: 'Computer Science', marks_percentage: 92, grade: 'A1' },
-            ],
-          });
-        } else {
-          // Default academic record fallback
-          setAcademicRecord({
-            education_board: 'CBSE',
-            stream: 'Science (PCM)',
-            class_level: 12,
-            subjects: [
-              { subject_name: 'Mathematics', marks_percentage: 88, grade: 'A1' },
-              { subject_name: 'Physics', marks_percentage: 84, grade: 'A2' },
-              { subject_name: 'Chemistry', marks_percentage: 80, grade: 'B1' },
-              { subject_name: 'English Core', marks_percentage: 86, grade: 'A2' },
-              { subject_name: 'Computer Science', marks_percentage: 92, grade: 'A1' },
-            ],
+            stream: ar.stream || null,
+            class_level: Number(ar.class_level || sp?.current_class || 10),
+            subjects: mappedSubs,
           });
         }
       }
 
       if (assessRes && assessRes.length > 0) {
         setAssessmentModules(assessRes);
-      } else {
-        // Standard 4 modules fallback
-        setAssessmentModules([
-          {
-            module_id: 'academic',
-            module_type: 'academic',
-            title: 'Academic Assessment',
-            description: 'Evaluates foundational subject competencies in Mathematics, Science, and Analytical concepts.',
-            instructions: 'Class level curriculum evaluation.',
-            total_questions: 20,
-            estimated_duration_minutes: 25,
-            status: 'COMPLETED',
-            attempt_id: 1,
-            answered_count: 20,
-            progress_percentage: 100,
-            score: 80,
-            completed_at: new Date().toISOString(),
-          },
-          {
-            module_id: 'aptitude',
-            module_type: 'aptitude',
-            title: 'Aptitude Assessment',
-            description: 'Measures logical deduction, quantitative problem-solving, and spatial reasoning velocity.',
-            instructions: 'Time-bound reasoning challenges.',
-            total_questions: 20,
-            estimated_duration_minutes: 25,
-            status: 'COMPLETED',
-            attempt_id: 2,
-            answered_count: 20,
-            progress_percentage: 100,
-            score: 80,
-            completed_at: new Date().toISOString(),
-          },
-          {
-            module_id: 'behavioural',
-            module_type: 'behavioural',
-            title: 'Behavioural Assessment',
-            description: 'Analyzes personality traits, emotional resilience, curiosity, and teamwork orientation.',
-            instructions: 'Self-report Likert evaluations.',
-            total_questions: 25,
-            estimated_duration_minutes: 15,
-            status: 'COMPLETED',
-            attempt_id: 3,
-            answered_count: 25,
-            progress_percentage: 100,
-            score: 84,
-            completed_at: new Date().toISOString(),
-          },
-          {
-            module_id: 'situational',
-            module_type: 'situational',
-            title: 'Situational Judgment Assessment',
-            description: 'Presents realistic academic and workplace dilemmas to assess decision-making ethics.',
-            instructions: 'Scenario-based evaluation.',
-            total_questions: 15,
-            estimated_duration_minutes: 20,
-            status: 'COMPLETED',
-            attempt_id: 4,
-            answered_count: 15,
-            progress_percentage: 100,
-            score: 96,
-            completed_at: new Date().toISOString(),
-          },
-        ]);
       }
 
       if (prefRes) {
@@ -278,7 +225,7 @@ export function ProfilePage() {
       }
 
       if (recRes && recRes.recommendations) {
-        setTopCareers(recRes.recommendations.slice(0, 3));
+        setTopCareers(recRes.recommendations.slice(0, 4));
       }
 
       setSavedCount(careerService.getSavedCareerCodes().length);
@@ -338,12 +285,17 @@ export function ProfilePage() {
     navigate('/login');
   };
 
-  // Compute academic aggregate
-  const academicAggregate = useMemo(() => {
-    if (!academicRecord?.subjects || academicRecord.subjects.length === 0) return 85;
-    const total = academicRecord.subjects.reduce((sum, s) => sum + Number(s.marks_percentage || 0), 0);
-    return Math.round((total / academicRecord.subjects.length) * 10) / 10;
+  // Compute exact academic aggregate from enrolled subject marks in DB
+  const subjectsList = useMemo(() => {
+    return academicRecord?.subjects || [];
   }, [academicRecord]);
+
+  const academicAggregate = useMemo(() => {
+    if (subjectsList.length === 0) return 0;
+    const totalObtained = subjectsList.reduce((sum, s) => sum + Number(s.marks_obtained || 0), 0);
+    const totalMax = subjectsList.reduce((sum, s) => sum + Number(s.maximum_marks || 100), 0);
+    return totalMax > 0 ? Math.round((totalObtained / totalMax) * 1000) / 10 : 0;
+  }, [subjectsList]);
 
   // Compute completed assessments count
   const completedAssessmentsCount = useMemo(() => {
@@ -355,14 +307,29 @@ export function ProfilePage() {
     return Math.round((completedAssessmentsCount / assessmentModules.length) * 100);
   }, [completedAssessmentsCount, assessmentModules]);
 
-  // Formatter for normalized scores
+  // Formatter for assessment scores
   const formatScore = (m: ModuleProgressDTO) => {
-    if (m.status !== 'COMPLETED' || m.score === null) return 'Pending';
+    if (m.status !== 'COMPLETED' || m.score === null) return 'Pending Evaluation';
     if (m.module_id === 'behavioural' || m.module_id === 'situational') {
       const fivePt = (Number(m.score) / 20).toFixed(1);
-      return `${fivePt} / 5.0`;
+      return `${fivePt} / 5.0 (${Math.round(Number(m.score))}%)`;
     }
     return `${Math.round(Number(m.score))}%`;
+  };
+
+  const getModuleCategory = (modId: string) => {
+    switch (modId.toLowerCase()) {
+      case 'academic':
+        return 'Core Academic Grasp & Subject Competencies';
+      case 'aptitude':
+        return 'Logical Deduction & Numerical Reasoning Velocity';
+      case 'behavioural':
+        return 'Psychological Alignment & Work-Style Traits';
+      case 'situational':
+        return 'Scenario Dilemmas & Ethical Decision Judgment';
+      default:
+        return 'Evaluative Diagnostic';
+    }
   };
 
   if (isLoading) {
@@ -371,7 +338,7 @@ export function ProfilePage() {
         <div className="flex flex-col items-center justify-center min-h-[60vh] space-y-4">
           <Loader2 className="h-10 w-10 text-primary animate-spin" />
           <p className="text-sm font-semibold text-muted-foreground animate-pulse">
-            Loading student profile and assessment records...
+            Loading student profile and evaluative records from database...
           </p>
         </div>
       </AppLayout>
@@ -380,9 +347,12 @@ export function ProfilePage() {
 
   const displayName = user?.display_name || studentProfile?.student_name || 'Student Account';
   const email = user?.email || studentProfile?.contact_email || 'student@forkora.edu';
-  const stream = academicRecord?.stream || 'Science (PCM)';
-  const currentClass = academicRecord?.class_level || studentProfile?.current_class || 12;
+  const currentClass = academicRecord?.class_level || studentProfile?.current_class || 10;
   const board = academicRecord?.education_board || 'CBSE';
+  const streamDisplay =
+    currentClass <= 10
+      ? 'Class 10 (Secondary Foundation)'
+      : academicRecord?.stream || 'Senior Secondary Stream';
 
   return (
     <AppLayout
@@ -425,7 +395,10 @@ export function ProfilePage() {
                 <div className="h-20 w-20 sm:h-24 sm:w-24 rounded-2xl bg-gradient-to-br from-primary to-primary-hover text-primary-foreground font-black text-2xl sm:text-3xl flex items-center justify-center shadow-md ring-4 ring-background">
                   {displayName.charAt(0).toUpperCase()}
                 </div>
-                <div className="absolute -bottom-1 -right-1 h-5 w-5 rounded-full bg-emerald-500 border-2 border-background flex items-center justify-center shadow-xs" title="Account Active">
+                <div
+                  className="absolute -bottom-1 -right-1 h-5 w-5 rounded-full bg-emerald-500 border-2 border-background flex items-center justify-center shadow-xs"
+                  title="Account Active"
+                >
                   <span className="h-2 w-2 rounded-full bg-white animate-pulse" />
                 </div>
               </div>
@@ -435,7 +408,10 @@ export function ProfilePage() {
                   <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground truncate">
                     {displayName}
                   </h1>
-                  <Badge variant="outline" className="border-emerald-500/30 text-emerald-600 dark:text-emerald-400 bg-emerald-500/5 text-xs font-semibold gap-1">
+                  <Badge
+                    variant="outline"
+                    className="border-emerald-500/30 text-emerald-600 dark:text-emerald-400 bg-emerald-500/5 text-xs font-semibold gap-1"
+                  >
                     <ShieldCheck className="h-3 w-3" />
                     Verified Student
                   </Badge>
@@ -457,19 +433,28 @@ export function ProfilePage() {
                   )}
                   <span className="flex items-center gap-1.5">
                     <Calendar className="h-3.5 w-3.5 text-muted-foreground" />
-                    Joined {user?.created_at ? new Date(user.created_at).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) : 'November 2026'}
+                    Joined{' '}
+                    {user?.created_at
+                      ? new Date(user.created_at).toLocaleDateString('en-US', {
+                          month: 'short',
+                          year: 'numeric',
+                        })
+                      : 'November 2026'}
                   </span>
                 </div>
 
                 <div className="flex flex-wrap items-center gap-2 pt-1">
                   <Badge className="bg-primary/10 text-primary border-primary/20 text-xs font-medium">
-                    Class {currentClass} · {stream}
+                    {streamDisplay}
                   </Badge>
                   <Badge variant="outline" className="text-xs">
                     {board} Board
                   </Badge>
-                  <Badge variant="outline" className="text-xs border-amber-500/30 text-amber-600 dark:text-amber-400 bg-amber-500/5">
-                    {academicAggregate}% Academic Aggregate
+                  <Badge
+                    variant="outline"
+                    className="text-xs border-amber-500/30 text-amber-600 dark:text-amber-400 bg-amber-500/5 font-semibold"
+                  >
+                    {academicAggregate}% Real Academic Aggregate
                   </Badge>
                 </div>
               </div>
@@ -479,13 +464,13 @@ export function ProfilePage() {
             <div className="flex flex-row md:flex-col items-center md:items-end justify-between md:justify-center gap-3 pt-4 md:pt-0 border-t md:border-t-0 border-border/60 shrink-0">
               <div className="text-left md:text-right">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground block">
-                  Assessment Readiness
+                  Assignment Readiness
                 </span>
                 <span className="text-xl sm:text-2xl font-black text-primary">
                   {assessmentReadinessPercentage}% Complete
                 </span>
                 <span className="text-xs text-muted-foreground block">
-                  {completedAssessmentsCount} of {assessmentModules.length} Modules Finished
+                  {completedAssessmentsCount} of {assessmentModules.length} Evaluative Modules Finished
                 </span>
               </div>
 
@@ -507,9 +492,19 @@ export function ProfilePage() {
         <div className="flex gap-2 overflow-x-auto pb-1 border-b border-border scrollbar-thin">
           {[
             { id: 'overview', label: 'Profile Overview', icon: User },
-            { id: 'assessments', label: 'Evaluative Assignments', icon: BrainCircuit, count: assessmentModules.length },
-            { id: 'academic', label: 'Academic Performance', icon: GraduationCap },
-            { id: 'career', label: 'Career Preferences', icon: Compass },
+            {
+              id: 'assessments',
+              label: 'Assignment Marks & Evaluations',
+              icon: BrainCircuit,
+              count: assessmentModules.length,
+            },
+            {
+              id: 'academic',
+              label: 'Academic Subjects & School Marks',
+              icon: GraduationCap,
+              count: subjectsList.length,
+            },
+            { id: 'career', label: 'Career Preferences & Recommendations', icon: Compass },
             { id: 'family', label: 'Family & Guardians', icon: Heart },
             { id: 'security', label: 'Account & Security', icon: Key },
           ].map((tab) => {
@@ -544,37 +539,37 @@ export function ProfilePage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="p-5 rounded-2xl border border-border/80 bg-card shadow-xs space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Academic Status</span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                    Class & Stream
+                  </span>
                   <div className="h-8 w-8 rounded-lg bg-blue-500/10 text-blue-600 flex items-center justify-center">
                     <GraduationCap className="h-4 w-4" />
                   </div>
                 </div>
-                <div className="text-xl sm:text-2xl font-black text-foreground">
-                  Class {currentClass}
-                </div>
-                <p className="text-xs text-muted-foreground truncate">
-                  {stream} · {board}
-                </p>
+                <div className="text-xl sm:text-2xl font-black text-foreground">Class {currentClass}</div>
+                <p className="text-xs text-muted-foreground truncate">{board} Board</p>
               </div>
 
               <div className="p-5 rounded-2xl border border-border/80 bg-card shadow-xs space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Academic Aggregate</span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                    School Marks Aggregate
+                  </span>
                   <div className="h-8 w-8 rounded-lg bg-amber-500/10 text-amber-600 flex items-center justify-center">
                     <Percent className="h-4 w-4" />
                   </div>
                 </div>
-                <div className="text-xl sm:text-2xl font-black text-foreground">
-                  {academicAggregate}%
-                </div>
+                <div className="text-xl sm:text-2xl font-black text-foreground">{academicAggregate}%</div>
                 <p className="text-xs text-muted-foreground truncate">
-                  Across {academicRecord?.subjects?.length || 5} Verified Subjects
+                  Across {subjectsList.length} Enrolled Subjects in Database
                 </p>
               </div>
 
               <div className="p-5 rounded-2xl border border-border/80 bg-card shadow-xs space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Assignments Completed</span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                    Assignments Finished
+                  </span>
                   <div className="h-8 w-8 rounded-lg bg-emerald-500/10 text-emerald-600 flex items-center justify-center">
                     <CheckCircle2 className="h-4 w-4" />
                   </div>
@@ -583,22 +578,22 @@ export function ProfilePage() {
                   {completedAssessmentsCount} / {assessmentModules.length}
                 </div>
                 <p className="text-xs text-muted-foreground truncate">
-                  {assessmentReadinessPercentage}% Evaluation Coverage
+                  {assessmentReadinessPercentage}% Assessment Complete
                 </p>
               </div>
 
               <div className="p-5 rounded-2xl border border-border/80 bg-card shadow-xs space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Saved Pathways</span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                    Saved Pathways
+                  </span>
                   <div className="h-8 w-8 rounded-lg bg-purple-500/10 text-purple-600 flex items-center justify-center">
                     <GitBranch className="h-4 w-4" />
                   </div>
                 </div>
-                <div className="text-xl sm:text-2xl font-black text-foreground">
-                  {savedCount}
-                </div>
+                <div className="text-xl sm:text-2xl font-black text-foreground">{savedCount}</div>
                 <Link to="/career-graph" className="text-xs text-primary hover:underline font-semibold block truncate">
-                  Explore Career Graph →
+                  Explore Full Career Graph →
                 </Link>
               </div>
             </div>
@@ -609,10 +604,11 @@ export function ProfilePage() {
                 <div>
                   <h3 className="text-base sm:text-lg font-bold text-foreground flex items-center gap-2">
                     <BrainCircuit className="h-5 w-5 text-primary" />
-                    <span>Evaluative Assessment Performance</span>
+                    <span>Evaluative Assessment Marks & Assignment Outcomes</span>
                   </h3>
                   <p className="text-xs text-muted-foreground mt-0.5">
-                    Live dynamic results calculated across all 4 psychometric and aptitude testing dimensions
+                    Real deterministic test performance from the 4 assessment modules: Academic, Aptitude, Situational,
+                    and Behavioural
                   </p>
                 </div>
                 <Button
@@ -621,7 +617,7 @@ export function ProfilePage() {
                   onClick={() => setActiveTab('assessments')}
                   className="gap-1.5 text-xs font-semibold h-8"
                 >
-                  <span>View All 4 Assignments</span>
+                  <span>View Breakdown</span>
                   <ArrowRight className="h-3.5 w-3.5" />
                 </Button>
               </div>
@@ -642,7 +638,7 @@ export function ProfilePage() {
                         </span>
                         <Badge
                           variant="outline"
-                          className={`text-[10px] px-2 py-0.5 ${
+                          className={`text-[10px] px-2 py-0.5 font-semibold ${
                             isCompleted
                               ? 'bg-emerald-500/10 text-emerald-600 border-emerald-500/30'
                               : isProgress
@@ -655,32 +651,34 @@ export function ProfilePage() {
                       </div>
 
                       <div className="space-y-1">
-                        <span className="text-2xl font-black text-foreground">
-                          {formatScore(mod)}
-                        </span>
+                        <span className="text-2xl font-black text-foreground">{formatScore(mod)}</span>
                         <div className="w-full bg-muted rounded-full h-1.5 overflow-hidden">
                           <div
                             className={`h-full rounded-full ${
                               isCompleted ? 'bg-primary' : isProgress ? 'bg-amber-500' : 'bg-muted'
                             }`}
-                            style={{ width: `${isCompleted ? 100 : mod.progress_percentage || 0}%` }}
+                            style={{
+                              width: `${isCompleted ? Math.min(100, Math.round(Number(mod.score || 100))) : mod.progress_percentage || 0}%`,
+                            }}
                           />
                         </div>
                       </div>
 
                       <div className="flex items-center justify-between text-[11px] text-muted-foreground pt-1 border-t border-border/50">
-                        <span>{mod.total_questions} Questions</span>
+                        <span>
+                          {mod.answered_count} / {mod.total_questions} Qs
+                        </span>
                         <Link
                           to={
-                            isCompleted
+                            isCompleted && mod.attempt_id
                               ? `/assessments/${mod.module_id}/${mod.attempt_id}/results`
-                              : isProgress
+                              : isProgress && mod.attempt_id
                               ? `/assessments/${mod.module_id}/${mod.attempt_id}`
                               : `/assessments/${mod.module_id}/instructions`
                           }
                           className="font-semibold text-primary hover:underline flex items-center gap-0.5"
                         >
-                          <span>{isCompleted ? 'Results' : 'Start'}</span>
+                          <span>{isCompleted ? 'Review' : 'Take Test'}</span>
                           <ChevronRight className="h-3 w-3" />
                         </Link>
                       </div>
@@ -690,14 +688,14 @@ export function ProfilePage() {
               </div>
             </div>
 
-            {/* Academic & Career Preferences Side-by-Side */}
+            {/* Academic & Top Career Recommendations Side-by-Side */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Academic Highlights */}
               <div className="rounded-2xl border border-border/80 bg-card p-6 shadow-xs space-y-4">
                 <div className="flex items-center justify-between border-b border-border/60 pb-3">
                   <h3 className="text-base font-bold text-foreground flex items-center gap-2">
                     <GraduationCap className="h-5 w-5 text-primary" />
-                    <span>Verified Academic Record</span>
+                    <span>School Subject Marks ({subjectsList.length} Subjects)</span>
                   </h3>
                   <Button
                     variant="ghost"
@@ -705,85 +703,90 @@ export function ProfilePage() {
                     onClick={() => setActiveTab('academic')}
                     className="text-xs text-primary font-semibold h-7"
                   >
-                    View All Subjects →
+                    View All →
                   </Button>
                 </div>
 
                 <div className="space-y-2.5">
-                  {academicRecord?.subjects?.slice(0, 4).map((sub, idx) => (
-                    <div key={idx} className="flex items-center justify-between text-xs p-2.5 rounded-lg bg-muted/20 border border-border/50">
+                  {subjectsList.slice(0, 5).map((sub, idx) => (
+                    <div
+                      key={idx}
+                      className="flex items-center justify-between text-xs p-2.5 rounded-lg bg-muted/20 border border-border/50"
+                    >
                       <div className="flex items-center gap-2">
                         <BookOpen className="h-3.5 w-3.5 text-muted-foreground" />
                         <span className="font-semibold text-foreground">{sub.subject_name}</span>
                       </div>
                       <div className="flex items-center gap-3">
+                        <span className="text-muted-foreground">
+                          {sub.marks_obtained} / {sub.maximum_marks}
+                        </span>
                         <span className="font-bold text-foreground">{sub.marks_percentage}%</span>
-                        {sub.grade && (
-                          <Badge variant="secondary" className="text-[10px] h-4.5 px-1.5 font-bold">
-                            {sub.grade}
-                          </Badge>
-                        )}
+                        <Badge variant="secondary" className="text-[10px] h-4.5 px-1.5 font-bold">
+                          {sub.grade}
+                        </Badge>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Career Ambitions */}
+              {/* Career Recommendations Determined from Scores */}
               <div className="rounded-2xl border border-border/80 bg-card p-6 shadow-xs space-y-4">
                 <div className="flex items-center justify-between border-b border-border/60 pb-3">
                   <h3 className="text-base font-bold text-foreground flex items-center gap-2">
-                    <Compass className="h-5 w-5 text-primary" />
-                    <span>Target Career Ambitions</span>
+                    <Sparkles className="h-5 w-5 text-amber-500" />
+                    <span>Top Compatible Careers (Computed Engine Scores)</span>
                   </h3>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => setIsEditPreferencesOpen(true)}
-                    className="text-xs text-primary font-semibold h-7"
-                  >
-                    Update →
-                  </Button>
+                  <Link to="/career-discovery" className="text-xs text-primary font-semibold hover:underline">
+                    Explore All 12 →
+                  </Link>
                 </div>
 
                 <div className="space-y-3">
-                  <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground block mb-1.5">
-                      Preferred Careers
-                    </span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {preferences.preferred_careers?.map((c, i) => (
-                        <Badge key={i} className="bg-primary/10 text-primary border-primary/20 text-xs font-semibold py-1 px-2.5">
-                          {c}
+                  {topCareers.slice(0, 3).map((c) => (
+                    <div
+                      key={c.career_code}
+                      className="p-3 rounded-xl border border-border/70 bg-muted/20 space-y-1.5"
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-bold text-foreground truncate max-w-[180px]">
+                          {c.career}
+                        </span>
+                        <Badge
+                          variant="outline"
+                          className="text-[11px] font-bold text-emerald-600 border-emerald-500/30 bg-emerald-500/5"
+                        >
+                          {c.compatibilityScore}% Compatibility
                         </Badge>
-                      ))}
-                    </div>
-                  </div>
+                      </div>
 
-                  <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground block mb-1.5">
-                      Interests & Specializations
-                    </span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {preferences.interests?.map((item, i) => (
-                        <Badge key={i} variant="secondary" className="text-xs py-0.5 px-2">
-                          {item}
-                        </Badge>
-                      ))}
+                      {/* Component Breakdown Chips */}
+                      {c.breakdown && (
+                        <div className="flex flex-wrap items-center gap-1.5 text-[10px] text-muted-foreground pt-1">
+                          <span className="bg-muted px-1.5 py-0.5 rounded">
+                            Acad: <strong>{c.breakdown.academic_score}%</strong>
+                          </span>
+                          <span className="bg-muted px-1.5 py-0.5 rounded">
+                            Apti: <strong>{c.breakdown.aptitude_score}%</strong>
+                          </span>
+                          <span className="bg-muted px-1.5 py-0.5 rounded">
+                            Behav: <strong>{c.breakdown.behavioural_score}%</strong>
+                          </span>
+                          <span className="bg-muted px-1.5 py-0.5 rounded">
+                            Situ: <strong>{c.breakdown.situational_score}%</strong>
+                          </span>
+                        </div>
+                      )}
                     </div>
-                  </div>
-
-                  <div className="pt-2 border-t border-border/50 flex items-center justify-between text-xs text-muted-foreground">
-                    <span>Work Environment: <strong className="text-foreground">{preferences.work_environment}</strong></span>
-                    <span>Sector: <strong className="text-foreground">{preferences.career_type}</strong></span>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
         )}
 
-        {/* TAB 2: ASSIGNMENTS & EVALUATIVE MODULES */}
+        {/* TAB 2: ASSIGNMENTS & EVALUATIONS */}
         {activeTab === 'assessments' && (
           <div className="space-y-6">
             <div className="rounded-2xl border border-border/80 bg-card p-6 shadow-xs space-y-3">
@@ -791,15 +794,16 @@ export function ProfilePage() {
                 <div>
                   <h3 className="text-lg font-bold text-foreground flex items-center gap-2">
                     <BrainCircuit className="h-5 w-5 text-primary" />
-                    <span>Dynamic Evaluative Assignments & Psychometric Modules</span>
+                    <span>Evaluative Assignments & Psychometric Dimensions</span>
                   </h3>
                   <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
-                    Forkora's 4-dimensional assessment suite evaluates cognitive aptitude, academic grasp, behavioral orientation, and situational judgment.
+                    Your real performance marks across Academic, Aptitude, Situational Judgment, and Behavioural
+                    assessments.
                   </p>
                 </div>
                 <div className="p-3 rounded-xl bg-muted/40 border border-border text-left sm:text-right shrink-0">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground block">
-                    Total Progress
+                    Completed Evaluations
                   </span>
                   <span className="text-base sm:text-lg font-extrabold text-foreground">
                     {completedAssessmentsCount} of {assessmentModules.length} Completed
@@ -831,20 +835,21 @@ export function ProfilePage() {
                               : 'bg-muted text-muted-foreground'
                           }`}
                         >
-                          {isCompleted ? 'Assignment Completed' : isProgress ? 'In Progress' : 'Not Started'}
+                          {isCompleted ? 'Evaluation Finished' : isProgress ? 'In Progress' : 'Not Started'}
                         </Badge>
 
                         <span className="text-xs text-muted-foreground flex items-center gap-1">
                           <Clock className="h-3.5 w-3.5" />
-                          {mod.estimated_duration_minutes} Mins
+                          {mod.estimated_duration_minutes} Mins Duration
                         </span>
                       </div>
 
                       <div>
-                        <h4 className="text-base sm:text-lg font-bold text-foreground">
-                          {mod.title}
-                        </h4>
-                        <p className="text-xs sm:text-sm text-muted-foreground mt-1 leading-relaxed">
+                        <h4 className="text-base sm:text-lg font-bold text-foreground">{mod.title}</h4>
+                        <span className="text-xs text-primary font-medium block mt-0.5">
+                          {getModuleCategory(mod.module_id)}
+                        </span>
+                        <p className="text-xs sm:text-sm text-muted-foreground mt-1.5 leading-relaxed">
                           {mod.description}
                         </p>
                       </div>
@@ -853,18 +858,16 @@ export function ProfilePage() {
                       <div className="p-4 rounded-xl bg-muted/20 border border-border/60 flex items-center justify-between">
                         <div>
                           <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground block">
-                            Evaluated Score
+                            Evaluated Mark
                           </span>
-                          <span className="text-xl sm:text-2xl font-black text-foreground">
-                            {formatScore(mod)}
-                          </span>
+                          <span className="text-xl sm:text-2xl font-black text-foreground">{formatScore(mod)}</span>
                         </div>
                         <div className="text-right">
                           <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground block">
-                            Questions Answered
+                            Questions Responded
                           </span>
                           <span className="text-sm font-bold text-foreground">
-                            {mod.answered_count} / {mod.total_questions} Qs
+                            {mod.answered_count} / {mod.total_questions} Questions
                           </span>
                         </div>
                       </div>
@@ -872,22 +875,16 @@ export function ProfilePage() {
 
                     {/* Action Button */}
                     <div className="pt-2 border-t border-border/60">
-                      {isCompleted ? (
-                        <Link
-                          to={`/assessments/${mod.module_id}/${mod.attempt_id}/results`}
-                          className="w-full block"
-                        >
+                      {isCompleted && mod.attempt_id ? (
+                        <Link to={`/assessments/${mod.module_id}/${mod.attempt_id}/results`} className="w-full block">
                           <Button variant="default" className="w-full gap-2 text-xs font-semibold h-9 rounded-xl">
                             <Sparkles className="h-3.5 w-3.5" />
                             <span>Review Comprehensive Results</span>
                             <ArrowRight className="h-3.5 w-3.5" />
                           </Button>
                         </Link>
-                      ) : isProgress ? (
-                        <Link
-                          to={`/assessments/${mod.module_id}/${mod.attempt_id}`}
-                          className="w-full block"
-                        >
+                      ) : isProgress && mod.attempt_id ? (
+                        <Link to={`/assessments/${mod.module_id}/${mod.attempt_id}`} className="w-full block">
                           <Button className="w-full gap-2 text-xs font-semibold h-9 rounded-xl bg-amber-600 hover:bg-amber-700 text-white">
                             <Clock className="h-3.5 w-3.5" />
                             <span>Resume In-Progress Assessment</span>
@@ -895,10 +892,7 @@ export function ProfilePage() {
                           </Button>
                         </Link>
                       ) : (
-                        <Link
-                          to={`/assessments/${mod.module_id}/instructions`}
-                          className="w-full block"
-                        >
+                        <Link to={`/assessments/${mod.module_id}/instructions`} className="w-full block">
                           <Button variant="outline" className="w-full gap-2 text-xs font-semibold h-9 rounded-xl">
                             <span>Start Assessment Module</span>
                             <ArrowRight className="h-3.5 w-3.5" />
@@ -921,10 +915,11 @@ export function ProfilePage() {
                 <div>
                   <h3 className="text-lg font-bold text-foreground flex items-center gap-2">
                     <GraduationCap className="h-5 w-5 text-primary" />
-                    <span>Academic Credentials & Subject-wise Marks</span>
+                    <span>Academic Subjects & Enrolled Marks Breakdown</span>
                   </h3>
                   <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
-                    Recorded academic credentials retrieved from onboarding and senior secondary school database
+                    Individual subject marks recorded in your onboarding profile, used directly by the recommendation
+                    scoring engine.
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
@@ -932,7 +927,7 @@ export function ProfilePage() {
                     {board} Board
                   </Badge>
                   <Badge variant="outline" className="text-xs px-3 py-1 font-semibold">
-                    Class {currentClass} · {stream}
+                    {streamDisplay}
                   </Badge>
                 </div>
               </div>
@@ -943,28 +938,26 @@ export function ProfilePage() {
                   <thead>
                     <tr className="border-b border-border text-muted-foreground font-bold uppercase text-[10px] tracking-wider">
                       <th className="py-3 px-4">Subject Name</th>
-                      <th className="py-3 px-4">Subject Category</th>
-                      <th className="py-3 px-4">Marks Percentage</th>
-                      <th className="py-3 px-4">Grade Bracket</th>
+                      <th className="py-3 px-4">Marks Obtained / Max</th>
+                      <th className="py-3 px-4">Scored Percentage</th>
+                      <th className="py-3 px-4">Grade</th>
                       <th className="py-3 px-4 text-right">Performance Bar</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-border/60">
-                    {academicRecord?.subjects?.map((sub, idx) => (
+                    {subjectsList.map((sub, idx) => (
                       <tr key={idx} className="hover:bg-muted/20 transition-colors">
                         <td className="py-3.5 px-4 font-semibold text-foreground flex items-center gap-2">
                           <BookOpen className="h-4 w-4 text-primary" />
                           <span>{sub.subject_name}</span>
                         </td>
-                        <td className="py-3.5 px-4 text-muted-foreground">
-                          Core Academic
+                        <td className="py-3.5 px-4 text-muted-foreground font-medium">
+                          {sub.marks_obtained} / {sub.maximum_marks}
                         </td>
-                        <td className="py-3.5 px-4 font-bold text-foreground">
-                          {sub.marks_percentage}%
-                        </td>
+                        <td className="py-3.5 px-4 font-bold text-foreground">{sub.marks_percentage}%</td>
                         <td className="py-3.5 px-4">
                           <Badge variant="secondary" className="font-bold text-xs">
-                            {sub.grade || (sub.marks_percentage >= 80 ? 'A' : 'B')}
+                            {sub.grade}
                           </Badge>
                         </td>
                         <td className="py-3.5 px-4 text-right">
@@ -983,8 +976,14 @@ export function ProfilePage() {
 
               {/* Academic Summary Footer */}
               <div className="pt-4 border-t border-border/60 flex flex-wrap items-center justify-between gap-3 text-xs text-muted-foreground">
-                <span>Calculated Overall Aggregate: <strong className="text-foreground text-sm font-bold">{academicAggregate}%</strong></span>
-                <span>Total Subjects Enrolled: <strong className="text-foreground font-bold">{academicRecord?.subjects?.length || 5}</strong></span>
+                <span>
+                  Calculated Overall Aggregate:{' '}
+                  <strong className="text-foreground text-sm font-bold">{academicAggregate}%</strong>
+                </span>
+                <span>
+                  Total Enrolled Subjects in Database:{' '}
+                  <strong className="text-foreground font-bold">{subjectsList.length}</strong>
+                </span>
               </div>
             </div>
           </div>
@@ -1001,7 +1000,7 @@ export function ProfilePage() {
                     <span>Career Preferences & Sector Ambitions</span>
                   </h3>
                   <p className="text-xs text-muted-foreground mt-0.5">
-                    Your customized career preference filters used by Forkora's recommendation engine
+                    Your preferred careers and domains, matched with your assessment scores to generate compatibility rankings
                   </p>
                 </div>
                 <Button
@@ -1021,7 +1020,10 @@ export function ProfilePage() {
                   </span>
                   <div className="flex flex-wrap gap-1.5 pt-1">
                     {preferences.preferred_careers?.map((c, i) => (
-                      <Badge key={i} className="bg-primary/10 text-primary border-primary/20 text-xs font-semibold py-1 px-2.5">
+                      <Badge
+                        key={i}
+                        className="bg-primary/10 text-primary border-primary/20 text-xs font-semibold py-1 px-2.5"
+                      >
                         {c}
                       </Badge>
                     ))}
@@ -1045,18 +1047,14 @@ export function ProfilePage() {
                   <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground block">
                     Work Environment
                   </span>
-                  <p className="text-sm font-semibold text-foreground">
-                    {preferences.work_environment}
-                  </p>
+                  <p className="text-sm font-semibold text-foreground">{preferences.work_environment}</p>
                 </div>
 
                 <div className="p-4 rounded-xl bg-muted/20 border border-border/60 space-y-1">
                   <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground block">
                     Preferred Career Sector
                   </span>
-                  <p className="text-sm font-semibold text-foreground">
-                    {preferences.career_type}
-                  </p>
+                  <p className="text-sm font-semibold text-foreground">{preferences.career_type}</p>
                 </div>
               </div>
             </div>
@@ -1065,34 +1063,75 @@ export function ProfilePage() {
             {topCareers.length > 0 && (
               <div className="rounded-2xl border border-border/80 bg-card p-6 shadow-xs space-y-4">
                 <div className="flex items-center justify-between border-b border-border/60 pb-3">
-                  <h4 className="text-base font-bold text-foreground flex items-center gap-2">
-                    <Sparkles className="h-4 w-4 text-amber-500" />
-                    <span>Top Compatible Careers (Calculated from Assessments)</span>
-                  </h4>
+                  <div>
+                    <h4 className="text-base font-bold text-foreground flex items-center gap-2">
+                      <Sparkles className="h-4 w-4 text-amber-500" />
+                      <span>Deterministic Career Recommendations (Derived from all 4 Assessments)</span>
+                    </h4>
+                    <p className="text-xs text-muted-foreground mt-0.5">
+                      Weighted compatibility computed using your actual Academic, Aptitude, Behavioural, Situational,
+                      and Preference scores.
+                    </p>
+                  </div>
                   <Link to="/career-discovery" className="text-xs text-primary font-semibold hover:underline">
                     Explore All Recommendations →
                   </Link>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {topCareers.map((c) => (
-                    <div key={c.career_code} className="p-4 rounded-xl border border-border/70 bg-muted/20 space-y-2.5">
+                    <div
+                      key={c.career_code}
+                      className="p-4 rounded-xl border border-border/70 bg-muted/20 space-y-3"
+                    >
                       <div className="flex items-center justify-between">
-                        <span className="text-xs font-bold text-foreground truncate max-w-[140px]">
+                        <span className="text-sm font-bold text-foreground truncate max-w-[200px]">
                           {c.career}
                         </span>
-                        <Badge variant="outline" className="text-[10px] text-emerald-600 border-emerald-500/30">
+                        <Badge
+                          variant="outline"
+                          className="text-xs font-bold text-emerald-600 border-emerald-500/30 bg-emerald-500/5 px-2 py-0.5"
+                        >
                           {c.compatibilityScore}% Match
                         </Badge>
                       </div>
-                      <p className="text-xs text-muted-foreground line-clamp-2">
-                        {c.description}
-                      </p>
+
+                      <p className="text-xs text-muted-foreground line-clamp-2">{c.description}</p>
+
+                      {/* Deterministic Score Breakdown */}
+                      {c.breakdown && (
+                        <div className="p-2.5 rounded-lg bg-background border border-border/60 space-y-1.5 text-[11px]">
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground block">
+                            Deterministic Score Breakdown:
+                          </span>
+                          <div className="grid grid-cols-3 gap-1 text-muted-foreground">
+                            <span>
+                              Acad: <strong className="text-foreground">{c.breakdown.academic_score}%</strong>
+                            </span>
+                            <span>
+                              Apti: <strong className="text-foreground">{c.breakdown.aptitude_score}%</strong>
+                            </span>
+                            <span>
+                              Behav: <strong className="text-foreground">{c.breakdown.behavioural_score}%</strong>
+                            </span>
+                            <span>
+                              Situ: <strong className="text-foreground">{c.breakdown.situational_score}%</strong>
+                            </span>
+                            <span>
+                              Pref: <strong className="text-foreground">{c.breakdown.preferences_score}%</strong>
+                            </span>
+                            <span>
+                              ML: <strong className="text-foreground">{c.breakdown.ml_score}%</strong>
+                            </span>
+                          </div>
+                        </div>
+                      )}
+
                       <Link
                         to={`/career-graph?career=${encodeURIComponent(c.career_code)}`}
                         className="text-xs font-semibold text-primary hover:underline flex items-center gap-1 pt-1 block"
                       >
-                        <span>View Pathway Graph</span>
+                        <span>View Educational Pathway Graph</span>
                         <ArrowRight className="h-3 w-3" />
                       </Link>
                     </div>
@@ -1197,10 +1236,15 @@ export function ProfilePage() {
                   <div>
                     <span className="text-xs font-bold text-foreground block">Email Verification</span>
                     <span className="text-xs text-muted-foreground">
-                      {user?.is_email_verified ? 'Your email address is verified and active.' : 'Email verification required.'}
+                      {user?.is_email_verified
+                        ? 'Your email address is verified and active.'
+                        : 'Email verification required.'}
                     </span>
                   </div>
-                  <Badge variant="outline" className="border-emerald-500/30 text-emerald-600 dark:text-emerald-400 bg-emerald-500/5 text-xs font-semibold gap-1 shrink-0">
+                  <Badge
+                    variant="outline"
+                    className="border-emerald-500/30 text-emerald-600 dark:text-emerald-400 bg-emerald-500/5 text-xs font-semibold gap-1 shrink-0"
+                  >
                     <ShieldCheck className="h-3 w-3" />
                     Verified
                   </Badge>
@@ -1268,7 +1312,11 @@ export function ProfilePage() {
                     : 'bg-rose-500/10 text-rose-600 border border-rose-500/20'
                 }`}
               >
-                {feedbackMsg.type === 'success' ? <Check className="h-4 w-4 shrink-0" /> : <AlertCircle className="h-4 w-4 shrink-0" />}
+                {feedbackMsg.type === 'success' ? (
+                  <Check className="h-4 w-4 shrink-0" />
+                ) : (
+                  <AlertCircle className="h-4 w-4 shrink-0" />
+                )}
                 <span>{feedbackMsg.text}</span>
               </div>
             )}
@@ -1354,11 +1402,7 @@ export function ProfilePage() {
                 >
                   Cancel
                 </Button>
-                <Button
-                  type="submit"
-                  disabled={isSaving}
-                  className="h-9 text-xs font-bold rounded-xl gap-1.5"
-                >
+                <Button type="submit" disabled={isSaving} className="h-9 text-xs font-bold rounded-xl gap-1.5">
                   {isSaving && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
                   <span>Save Changes</span>
                 </Button>

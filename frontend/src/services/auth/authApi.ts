@@ -6,6 +6,7 @@ export interface AuthUser {
   is_email_verified: boolean
   class_level?: number | null
   school_id?: number | null
+  phone?: string | null
   preferred_language?: string | null
   created_at?: string
 }
@@ -290,6 +291,29 @@ export const authApi = {
     } catch (err: any) {
       if (err instanceof AuthApiError) throw err
       throw new AuthApiError('Failed to fetch user profile.', 0, 'NetworkError')
+    }
+  },
+
+  /**
+   * Updates authenticated user profile details.
+   */
+  async updateProfile(
+    data: { display_name?: string; phone?: string },
+    token: string
+  ): Promise<{ status: string; message: string; user: AuthUser }> {
+    try {
+      const res = await fetch(`${API_BASE_URL}/profile`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(data),
+      })
+      return await handleResponse<{ status: string; message: string; user: AuthUser }>(res)
+    } catch (err: any) {
+      if (err instanceof AuthApiError) throw err
+      throw new AuthApiError('Failed to update profile.', 0, 'NetworkError')
     }
   },
 

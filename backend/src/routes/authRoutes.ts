@@ -9,6 +9,7 @@ import {
   resetPassword,
   me,
   signout,
+  updateProfile,
 } from '../controllers/authController';
 import { authenticateToken } from '../middleware/authMiddleware';
 
@@ -25,6 +26,7 @@ router.post('/reset-password', resetPassword);
 
 // Protected Auth Routes
 router.get('/me', authenticateToken as any, me as any);
+router.put('/profile', authenticateToken as any, updateProfile as any);
 router.post('/signout', authenticateToken as any, signout as any);
 
 export default router;

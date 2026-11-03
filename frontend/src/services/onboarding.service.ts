@@ -121,6 +121,39 @@ export const onboardingService = {
   },
 
   /**
+   * Updates parent / guardian details.
+   */
+  async updateParents(
+    payload: {
+      father_name: string
+      father_occupation?: string
+      mother_name: string
+      mother_occupation?: string
+    },
+    token: string | null
+  ): Promise<{ status: string; message: string; data?: any }> {
+    try {
+      const res = await fetch(`${ONBOARDING_API_BASE}/parents`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+        body: JSON.stringify(payload),
+      })
+      const isJson = res.headers.get('content-type')?.includes('application/json')
+      const responseData = isJson ? await res.json() : null
+      if (!res.ok) {
+        throw new OnboardingApiError(responseData?.message || 'Failed to update parent details', res.status)
+      }
+      return responseData
+    } catch (err: any) {
+      if (err instanceof OnboardingApiError) throw err
+      throw new OnboardingApiError('Network error while updating parent details.', 0)
+    }
+  },
+
+  /**
    * Caches Class 10 academic draft to ensure state is never lost on navigation.
    */
   saveAcademicDraft(draft: any): void {

@@ -16,6 +16,8 @@ import { AssessmentSessionPage } from '@/pages/assessment/AssessmentSessionPage'
 import { AssessmentReviewPage } from '@/pages/assessment/AssessmentReviewPage'
 import { AssessmentResultsPage } from '@/pages/assessment/AssessmentResultsPage'
 import { CareerDiscoveryPage } from '@/pages/CareerDiscoveryPage'
+import { CareerGraphPage } from '@/pages/CareerGraphPage'
+import { ProfilePage } from '@/pages/ProfilePage'
 
 function App() {
   return (
@@ -32,6 +34,13 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/career-discovery" element={<CareerDiscoveryPage />} />
             <Route path="/career-exploration" element={<CareerDiscoveryPage />} />
+            <Route path="/career-graph" element={<CareerGraphPage />} />
+            <Route path="/careergraph" element={<Navigate to="/career-graph" replace />} />
+            <Route path="/career-pathways" element={<Navigate to="/career-graph" replace />} />
+            <Route path="/career-pathway" element={<Navigate to="/career-graph" replace />} />
+            <Route path="/saved-paths" element={<CareerGraphPage initialView="saved" />} />
+            <Route path="/compare" element={<CareerDiscoveryPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
             <Route path="/assessments" element={<AssessmentOverviewPage />} />
             <Route path="/assessment" element={<AssessmentOverviewPage />} />
             <Route path="/assessment/intro" element={<AssessmentIntro />} />

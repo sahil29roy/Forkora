@@ -1,7 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
+import { query } from '../config/db';
 import {
   createUser,
   findUserByEmail,
+  findUserById,
   updateEmailVerified,
   updateLastActive,
   updateUserPassword,
@@ -503,3 +505,41 @@ export async function signout(req: Request, res: Response, next: NextFunction): 
     next(err);
   }
 }
+
+/**
+ * @route   PUT /api/auth/profile
+ * @desc    Updates authenticated student profile (display name, phone).
+ */
+export async function updateProfile(req: AuthenticatedRequest, res: Response, next: NextFunction): Promise<Response | void> {
+  try {
+    const rawUserId = req.user?.id;
+    const userId = Number(rawUserId);
+    if (!rawUserId || isNaN(userId)) {
+      return res.status(401).json({ error: 'Unauthorized', message: 'Authentication required.' });
+    }
+
+    const { display_name, phone } = req.body;
+
+    if (display_name && typeof display_name === 'string' && display_name.trim()) {
+      await query(`UPDATE users SET display_name = $1, updated_at = CURRENT_TIMESTAMP WHERE id = $2`, [display_name.trim(), userId]);
+      await query(`UPDATE student_profiles SET student_name = $1, updated_at = CURRENT_TIMESTAMP WHERE user_id = $2`, [display_name.trim(), userId]);
+    }
+
+    if (phone !== undefined) {
+      const cleanPhone = phone ? String(phone).trim() : null;
+      await query(`UPDATE users SET phone = $1, updated_at = CURRENT_TIMESTAMP WHERE id = $2`, [cleanPhone, userId]);
+      await query(`UPDATE student_profiles SET phone_number = $1, updated_at = CURRENT_TIMESTAMP WHERE user_id = $2`, [cleanPhone, userId]);
+    }
+
+    const updatedUser = await findUserById(String(userId));
+
+    return res.status(200).json({
+      status: 'success',
+      message: 'Profile updated successfully!',
+      user: updatedUser,
+    });
+  } catch (err) {
+    next(err);
+  }
+}
+
